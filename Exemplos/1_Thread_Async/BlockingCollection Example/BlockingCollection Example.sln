@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockingCollection Example", "BlockingCollection Example\BlockingCollection Example.csproj", "{30824558-A5CC-4344-81A7-D028B7ED42A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30824558-A5CC-4344-81A7-D028B7ED42A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30824558-A5CC-4344-81A7-D028B7ED42A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30824558-A5CC-4344-81A7-D028B7ED42A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30824558-A5CC-4344-81A7-D028B7ED42A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB574999-E2B6-4BD8-8F9A-A7C892BCE516}
+	EndGlobalSection
+EndGlobal

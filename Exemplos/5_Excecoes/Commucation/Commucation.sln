@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commucation", "Commucation\Commucation.csproj", "{D51693FB-8751-4340-A262-BE33563F219A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{37A399A5-D776-4E7E-8E3B-A3CC0900A629} = {37A399A5-D776-4E7E-8E3B-A3CC0900A629}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebWCF", "WebWCF\WebWCF.csproj", "{37A399A5-D776-4E7E-8E3B-A3CC0900A629}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D51693FB-8751-4340-A262-BE33563F219A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D51693FB-8751-4340-A262-BE33563F219A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51693FB-8751-4340-A262-BE33563F219A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D51693FB-8751-4340-A262-BE33563F219A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A399A5-D776-4E7E-8E3B-A3CC0900A629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A399A5-D776-4E7E-8E3B-A3CC0900A629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A399A5-D776-4E7E-8E3B-A3CC0900A629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A399A5-D776-4E7E-8E3B-A3CC0900A629}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58888810-9D1A-4BEF-86C2-DBC36FEBB30A}
+	EndGlobalSection
+EndGlobal

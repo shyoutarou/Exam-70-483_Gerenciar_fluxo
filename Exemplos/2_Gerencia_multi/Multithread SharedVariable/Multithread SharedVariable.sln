@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multithread SharedVariable", "Multithread SharedVariable\Multithread SharedVariable.csproj", "{8A67191F-1D1E-40D5-B719-3360ADB379B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A67191F-1D1E-40D5-B719-3360ADB379B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A67191F-1D1E-40D5-B719-3360ADB379B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A67191F-1D1E-40D5-B719-3360ADB379B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A67191F-1D1E-40D5-B719-3360ADB379B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26740BE3-1AD9-4B7E-A1C6-55B0AFEAFEE6}
+	EndGlobalSection
+EndGlobal

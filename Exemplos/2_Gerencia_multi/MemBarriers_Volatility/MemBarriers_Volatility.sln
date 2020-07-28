@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemBarriers_Volatility", "MemBarriers_Volatility\MemBarriers_Volatility.csproj", "{AACF4197-259E-4D65-8C81-3F45A285D26D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AACF4197-259E-4D65-8C81-3F45A285D26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AACF4197-259E-4D65-8C81-3F45A285D26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AACF4197-259E-4D65-8C81-3F45A285D26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AACF4197-259E-4D65-8C81-3F45A285D26D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90CF0AE5-C038-4899-8180-61EFE2F48822}
+	EndGlobalSection
+EndGlobal
