@@ -45,7 +45,7 @@ Os algoritmos comuns de escalonamento de sistemas em lote incluem:
 | Algoritmo Fair-Share  |  	O escalonamento é feito considerando o dono dos processos, onde cada usuário recebe uma fração da CPU e processos são escalonados procurando garantir essa fração. Se um usuário A possui mais processos que um usuário B e os dois têm a mesma prioridade, os processos de A serão mais demorados que os do B. |
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/runrun.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/runrun.png" alt="Image" width="400px" />
 </p>
 
 Exemplo : Executar um navegador(chrome, Firefox) e enviar um e-mail e executar aplicativo do sistema (MS Word, calculadora ou Excel simultaneamente.
@@ -74,25 +74,25 @@ Thread é a unidade de execução básica de um programa em execução. Nas vers
 - **Monothread**: Os sistemas que suportam uma única thread (em real execução), uma thread deve aguardar a conclusão de outra ação.
  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/monothread.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/monothread.png" alt="Image" width="400px" />
 </p>
 
 - **Multithread**: os sistemas que suportam múltiplas threads;
 o	Compartilham o ambiente de execução de um único processo
 o	Em uma CPU de núcleo único, o processo alterna entre threads.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadunico.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadunico.png" alt="Image" width="400px" />
 </p>
  
 o	Em uma CPU com vários núcleos, os dois threads podem executar em paralelo
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadvarios.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadvarios.png" alt="Image" width="400px" />
 </p>
  
 
 Exemplo: O melhor exemplo de thread são as guias de um navegador. Se você tem 5 abas que estão sendo abertas e usadas, então o programa realmente cria 5 threads do programa (multi-threading).
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/firefox.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/firefox.png" alt="Image" width="400px" />
 </p>
 
  
@@ -129,7 +129,7 @@ Por padrão, um programa tem um thread chamado Main Thread. O thread principal i
 A propriedade ThreadState é útil para fins de diagnóstico, mas inadequada para sincronização, porque o estado de um thread pode mudar entre o teste do ThreadState e a atuação nessas informações.
   
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstate.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstate.png" alt="Image" width="500px" />
 </p>
 
 ### Usos e mau uso de thread
@@ -234,7 +234,7 @@ Console.WriteLine("Hello From Main Thread");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="400px" />
 </p>
 
 O Tópico Principal inicializa “mythread” e imprime “Hello From Main Thread”. Enquanto "mythread" estava sendo inicializado, "myThread.Start ()" altera seu estado para execução e depois executa "MyThreadMethod ()". "Hello From Main Thread" fazia parte do MainThread e foi exibido na tela primeiro, porque "myThread" estava demorando para mudar seu estado para execução.
@@ -242,7 +242,7 @@ O Tópico Principal inicializa “mythread” e imprime “Hello From Main Threa
   <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythread.png" alt="Image" width="100%" />
 </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellothread.png" alt="Image" width="100%" />
+  <img src="https://raw.gibusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellothread.png" alt="Image" width="400px" />
 </p>
 
 ### ParameterizedThreadStart
@@ -543,7 +543,7 @@ static void Main(string[] args)
 No snippet de código acima, o threadA e o threadB têm seus valores locais exclusivos com o atributo "ThreadStatic" _count_ts. Ambos os threads aumentaram o valor de _count 10 vezes. O resultado final não é 19, porque cada thread aumentou o valor de sua cópia local da variável _count_ts. Na variável _count não marcou com o atributo "ThreadStatic", portanto, os dois threads compartilharam a mesma variável _count. Quando um thread incrementa o valor de _count, ele afeta o valor da _count que é usada no outro thread chegando o valor até 19.
  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="400px" />
 </p>
 
 ### Classe ThreadLocal<T>
@@ -636,7 +636,7 @@ myThread.Start();
 Console.WriteLine("Hello From Main Thread");
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="400px%" />
 </p>
 
 
@@ -675,7 +675,7 @@ Task task = Task.Run(() =>
 });
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/ellapsed.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/ellapsed.png" alt="Image" width="400px" />
 </p>
 
 ### Classe BackgroundWorker 
@@ -787,7 +787,7 @@ Um dos maiores problemas mencionados anteriormente foi que seu aplicativo pode n
 
 Os aplicativos Windows Forms e WPF têm threads dedicados que atualizam a interface do usuário para evitar uma situação que possa surgir em aplicativos multithread, chamados condições de corrida (race conditions). Uma condição de corrida ocorre quando dois ou mais threads acessam dados compartilhados, para gravação, ao mesmo tempo. Se você tentar atualizar a interface do usuário (thread em primeiro plano) de outro thread (que realiza o serviço, em segundo plano), o .NET Framework emitirá uma InvalidOperationException contendo a seguinte mensagem:
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lblresult.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lblresult.png" alt="Image" width="400px" />
 </p>
 
 Se o BackgroundWorker for iniciado a partir de outra thread a partir da interface do usuário, você obteria a mesma exceção mencionada anteriormente. 
@@ -837,11 +837,19 @@ A classe System.Threading.ThreadPool oferece vários métodos estáticos que voc
 | RegisterWaitForSingleObject  | 	Registra um método a ser chamado quando o WaitHandle é especificado quando o primeiro parâmetro é sinalizado ou quando o tempo limite especificado como quarto parâmetro passa. Esse método possui quatro sobrecargas, uma para cada modo, que o tempo limite pode ser expresso como: int, long, unsigned int ou TimeSpan. | 
 	
 Essa lista não está completa e é recomendado não utilizar nenhum desses métodos. Dessa lista, é mais provável que você use apenas um método: QueueUserWorkItem. O ThreadPool terá um desempenho melhor com seu próprio algoritmo de alocação de threads. Tocar com os limites do conjunto de threads geralmente resulta em desempenho pior, não melhor. Se você acha que seu aplicativo precisa de centenas ou milhares de threads, há algo seriamente errado com a arquitetura do aplicativo e a maneira como ele está usando threads. O método QueueUserWorkItem tem duas sobrecargas:
-- public static bool QueueUserWorkItem (WaitCallback callBack)
-- public static bool QueueUserWorkItem (WaitCallback callBack, Object state)
+
+```csharp
+public static bool QueueUserWorkItem (WaitCallback callBack)
+public static bool QueueUserWorkItem (WaitCallback callBack, Object state)
+```
+
 
 O parâmetro do tipo System.Threading.WaitCallback, é um delegado definido da seguinte forma:
-- public delegate void WaitCallback(Object state)
+
+```csharp
+public delegate void WaitCallback(Object state)
+```
+
 
 O pool de threads funciona da seguinte maneira. Quando você precisa que um método de execução longa seja executado em um thread separado, em vez de criar um novo thread, chame o método QueueUserWorkItem para colocar um novo item de trabalho em uma fila gerenciada pelo pool de threads. Não é possível cancelar um item de trabalho após ele ter sido enfileirado. Se houver um thread inativo no pool, ele seleciona o item de trabalho e o executa até a conclusão, como qualquer thread. Se não houver um thread disponível e o número total no pool for menor que MaxThreads, o pool criará um novo thread para executar o item de trabalho; caso contrário, o item de trabalho do trabalho aguardará na fila pelo primeiro thread disponível. SetMinThread é usado para preencher previamente o pool com threads para melhorar o desempenho do seu aplicativo quando você souber que irá usar o pool de threads. A prioridade de um thread em pool pode ser alterada (Thread.CurrentThread.Priority = ThreadPriority.AboveNormal) , e ele será restaurado ao normal quando liberado de volta para o pool
 
@@ -1144,7 +1152,7 @@ Task.Factory.StartNew(() =>
 }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="400px" />
 </p>
 
 Criando a tarefa dessa maneira, ela será executada pelo thread da interface do usuário assim que o thread da interface do usuário puder processá-lo.
@@ -1178,13 +1186,14 @@ Para criar uma tarefa que não retorna um valor, usamos uma classe Task do names
 |     WhenAny()          |     Este método   estático cria uma tarefa que é marcada como concluída quando qualquer uma das   tarefas enviadas como parâmetros é concluída.    |
 
 A propriedade estática Factory é do tipo TaskFactory e é usada para criar novas tarefas. A tabela abaico descreve alguns dos métodos mais comuns.
+
+
 |     Métodos            |     Descrição                                                                                                                                               |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     ContinueWhenAll    |     Cria uma tarefa   que inicia quando todas as tarefas enviadas como parâmetros são concluídas.                                                           |
 |     ContinueWhenAny    |     Cria uma tarefa   que inicia quando qualquer uma das tarefas enviadas como parâmetros é   concluída.                                                    |
 |     FromAsync          |     Vários métodos sobrecarregados usados para trazer o código APM antigo   para o novo modelo TAP, envolvendo uma tarefa em torno da chamada assíncrona    |
 |     StartNew           |     Vários métodos sobrecarregados usados para criar uma tarefa e   iniciá-la.                                                                              |
-
 
 A tarefa é uma parte importante da programação assíncrona e é executada em um thread ThreadPool. Geralmente, uma expressão lambda é usada para especificar o trabalho que a Tarefa deve executar.
 
@@ -1282,12 +1291,15 @@ Com a classe de Task, ao invés de invocar o método Start(), você pode invocar
 
 O Task.Run() retorna e executa uma tarefa atribuindo uma unidade de trabalho na forma de um método ("myMethod"). No .NET 4.5, é preferível usar o Task.Run porque gerencia o Task com mais eficiência do que o Task.Factory.StartNew. Isso de forma alguma obsoleta o Task.Factory.StartNew, mas deve ser simplesmente considerado uma maneira rápida de usar o Task.Factory.StartNew sem a necessidade de especificar vários parâmetros. De fato, o Task.Run é realmente implementado em termos da mesma lógica usada para Task.Factory.StartNew, apenas transmitindo alguns parâmetros padrão. Quando você passa uma ação para Task.Run:
 
-```Task.Run(someAction);```
+```csharp
+Task.Run(someAction);
+```
 
 isso é exatamente equivalente a:
 
-```Task.Factory.StartNew(someAction, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);```
-
+```csharp
+Task.Factory.StartNew(someAction, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+```
 ```csharp
 //initialize and Run mytask and assign
 //a unit of work in form of 'myMethod()'
@@ -1537,20 +1549,20 @@ As tarefas são executadas de forma assíncrona em um thread do conjunto de thre
 ### Aguarde uma ou mais tarefas
 
 O método Wait bloqueia a execução de um thread de chamada até que a execução de uma tarefa especificada seja concluída. A seguir, são apresentados métodos importantes de espera que ajudam a sincronizar um thread principal com as Tarefas.
-|     Metodos                                                                                                                                                                                                                   |     Descrição                                                                                                                                                                                |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Wait()                                                                                                                                                                                                                    |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                       |
-|                                       |      Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec  <br>   myTask.Wait();                                                                                                                                                                               													       |
-|     Wait   <br>  (milissegundos)                                                                                                                                                                                              |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                              |
-|       				|      Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec                                                                                                                                              |
-|     WaitAll()                                                                                                                                                                                                                 |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.    |
-|                                       |      Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks);                                                                                                                                                        |
-|     WaitAll <br>    (milissegundos)                                                                                                                                                                                           |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                             |
-|     					|      Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks, 1200);                                                                                                                                                    |
-|     WaitAny()                                                                                                                                                                                                                 |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                               |
-|     			                |      Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec   <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAny(allTasks);                                                                                                                                                         |
-|     WaitAny <br> (milissegundos)                                                                                                                                                                                              |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                            |
-|     				        |      Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec  <br>    Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAny(allTasks, 1200);                                                                                                                                                   |
+|     Metodos                        |     Descrição                                                                                                                                                                                                                 |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Wait()                         |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                                                        |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     <br> myTask.Wait();                                                                                                                                        |
+|     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                                                               |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     <br> Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec    |
+|     WaitAll()                      |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.                                     |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAll(allTasks);              |
+|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                                                              |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks, 1200);          |
+|     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                                                                |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks);                |
+|     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                                                             |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks, 1200);          |
 
 
 É comum para uma operação assíncrona, na conclusão, invocar uma segunda operação e passar os dados para ela. Na biblioteca Task.Parallel, a mesma funcionalidade é fornecida por tarefas de continuação. Uma tarefa de continuação é uma tarefa assíncrona que é invocada por outra tarefa (conhecido como a antecedente), quando ela termina.
@@ -1568,8 +1580,9 @@ A seguir, estão quatro cenários principais:
 ### Parallel.Invoke
 
 Conforme discutido, as tarefas são abstrações que representam operações assíncronas executadas por threads. Embora sejam mais leves que os threads, às vezes você só precisa de uma abstração melhor para realizar esse tipo de trabalho multitarefa. É por isso que a Microsoft criou a classe Parallel. Esta classe faz parte do namespace System.Threading.Tasks. Esta classe possui três métodos estáticos, conforme descrito na tabela abaixo.
-|     Método     |     Descrição                                                                                                                                                                                                                                       |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+|     Método     |    Descrição               |
+|----------------|--------------------------------------------------------|
 |     For        |     Semelhante ao loop for, mas as iterações podem   ser executadas em paralelo. Existem 12 sobrecargas para esse método, algumas   delas aceitando um parâmetro ParallelOptions, outras usando ParallelLoopState   para controlar o loop.          |
 |     ForEach    |     Semelhante a um loop foreach, mas as iterações   podem ser executadas em paralelo. Existem 20 sobrecargas para esse método,   algumas delas aceitando um parâmetro ParallelOptions, outras usando   ParallelLoopState para controlar o loop.    |
 |     Invoke     |     Este método tentará executar as ações fornecidas   em paralelo. Existem duas sobrecargas para esse método, ambas aceitando uma   matriz de delegados Actions como execute. Uma das sobrecargas aceita um   parâmetro ParallelOptions            |
@@ -1732,7 +1745,7 @@ continuacao.Wait();
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="400px" />
 </p>
 
 O método tarefaFactory.ContinueWith executa e retorna uma nova tarefa quando o tarefaFactory concluir sua execução. Aqui o parâmetro antecedent do método ContinueWith é a referência de tarefaFactory. Esse antecedent pode ser utilizado no corpo de uma expressão lambda. Por exemplo, se tarefaFactory retornar um valor, usando antecedent o valor de retorno poderá ser usado no corpo de uma expressão lambda.
@@ -1766,7 +1779,7 @@ Console.WriteLine(continuacao.Result + " e Amanhã é " + tarefaB.Result);
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/thursday.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/thursday.png" alt="Image" width="400px" />
 </p>
 
 
@@ -1805,7 +1818,7 @@ tarefas[1].Start();
 continuation.Wait();
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="400px" />
 </p>
 
 
@@ -1842,14 +1855,17 @@ static void Metodos_ContinueWhenAll()
 ### TaskContinuationOption
 
 TaskContinuationOption é uma enumeração usada para especificar quando uma tarefa em uma cadeia contínua é executada. A seguir, estão algumas das enumerações mais comuns para TaskContinuationOption:
-|     Opções                   |     Descrição                                                                                                                                                                                         |
-|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+
+|     Opções                   |     Descrição                   |
+|------------------------------|---------------------------------|
 |     OnlyOnFaulted            |     Especifica que a tarefa de continuação deve ser   agendada apenas se seu antecedente lançou uma exceção não tratada.                                                                              |
 |     NotOnFaulted             |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não lançar uma exceção não tratada.                                                                                 |
 |     OnlyOnCanceled           |     Especifica que a continuação deve ser agendada   apenas se seu antecedente foi cancelado. Uma tarefa será cancelada se sua   propriedade Task.Status após a conclusão for TaskStatus.Canceled.    |
 |     NotOnCanceled            |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não tiver sido cancelado.                                                                                           |
 |     OnlyOnRanToCompletion    |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente for concluído.                                                                                                      |
 |     NotOnRanToCompletion     |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não for executado até a conclusão.                                                                                  |
+                                                                                 |
 
 ```csharp
 Task<string> tsk1 = Task.Run(() =>
@@ -1976,7 +1992,7 @@ Task.WaitAll(listC.ToArray());
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/chamadas.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/chamadas.png" alt="Image" width="200px" />
 </p>
  
 Ao usar as palavras-chaves async and await, lembre-se disso. Apenas agrupar todas as operações em uma tarefa e aguardá-las não fará com que seu aplicativo tenha um desempenho melhor. No entanto, poderia melhorar a capacidade de resposta, o que é muito importante nos aplicativos clientes.
@@ -2022,7 +2038,7 @@ for (int i = 0; i < 100; i++)
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tipoderetorno.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tipoderetorno.png" alt="Image" width="500px" />
 </p>
  
 
@@ -2203,13 +2219,14 @@ No entanto, desde que o modo de acesso não sequencial tem de armazenar os dados
 ### PLINQ - Parallel Language Integrated Query
 
 PLINQ é a versão paralela do LINQ. Você pode usá-lo em objetos para potencialmente transformar uma consulta seqüencial em paralela sobre todos os tipos de dados. Isso significa que as consultas podem ser executadas em vários threads, particionando a fonte de dados em threads. Cada threadé executado em threads de trabalho separados em paralelo em vários processadores. Os métodos de extensão para usar o PLINQ são definidos na classe System.Linq.ParallelEnumerable. Versões paralelas de operadores LINQ, como Where, Select, SelectMany, GroupBy, Join, OrderBy, Skip e Take, podem ser usadas. Os seguintes métodos comuns para ajudar no paralelismo:
+
 |     Método             |     Descrição                                                          |
 |------------------------|------------------------------------------------------------------------|
-|     AsParallel ()      |     Divide a fonte de dados em threads em vários   threads             |
-|     AsSequential ()    |     Especifique que a consulta deve ser executada   sequencialmente    |
-|     AsOrdered ()       |     Especifique que a consulta deve preservar a ordem   dos dados      |
+|     AsParallel()      |     Divide a fonte de dados em threads em vários   threads             |
+|     AsSequential()    |     Especifique que a consulta deve ser executada   sequencialmente    |
+|     AsOrdered()       |     Especifique que a consulta deve preservar a ordem   dos dados      |
 |     AsUnordered()      |     a consulta não deve preservar a ordem dos dados                    |
-|     ForAll ()          |     Processa o resultado em paralelo                                   |
+|     ForAll()          |     Processa o resultado em paralelo                                   |
 
 O tempo de execução determina se faz sentido transformar sua consulta em paralela. Ao fazer isso, ele gera objetos Task e começa a executá-los. Se você deseja forçar o PLINQ a uma consulta paralela, pode usar o método WithExecutionMode e especificar que ele sempre deve executar a consulta em paralelo.
 
@@ -2279,8 +2296,8 @@ Da lista acima, o ConcurrentDictionary pode ser usado como uma coleção de uso 
 ### ```ConcurrentDictionary<TKey, T>```
 
 Um ConcurrentDictionary armazena pares de chave e valor de maneira segura para threads. Você pode usar métodos para adicionar e remover itens e atualizar itens no local, se existirem. Ao trabalhar com um ConcurrentDictionary, você tem métodos que podem adicionar, obter e atualizar itens atomicamente. Uma operação atômica significa que será iniciada e finalizada como uma única etapa sem que outros threads interfiram. A tabela abaixo mostra os métodos que você pode usar em um ConcurrentDictionary.
-|     Método         |     Descrição                                                                                                                                                                |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Método         |     Descrição                                            |
+|--------------------|--------------------------------------------|
 |     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
 |     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.                                                                                             |
 |     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.                                                                     |
@@ -2344,7 +2361,7 @@ foreach (var item in dic)
 Console.WriteLine("Program ran succussfully");
 ```
 
-**```BlockingCollection <T>```**
+### ```BlockingCollection<T>```
 
 Esta coleção é segura para threads para adicionar e remover dados. A remoção de um item da coleção pode ser bloqueada até que os dados estejam disponíveis. A adição de dados é rápida, mas você pode definir um limite máximo. Se esse limite for atingido, a adição de um item bloqueará o thread de chamada até que haja espaço. BlockingCollection é, na realidade, um invólucro em torno de outros tipos de coleção. Se você não fornecer instruções específicas, ele usará o ConcurrentQueue por padrão.
 
@@ -2424,7 +2441,7 @@ Task read = Task.Run(() =>
 ```
 
 
-**```ConcurrentBag<T>```** 
+### ```ConcurrentBag<T>``` 
 
 Um ConcurrentBag é apenas um saco de itens. Permite duplicatas e não possui uma ordem específica. Os métodos importantes são Add, TryTake e TryPeek.
 
@@ -2460,7 +2477,7 @@ Task.Run(() =>
 
 Esse código exibe apenas 42 porque o outro valor é adicionado após o início da iteração sobre a bolsa.
 
-### ConcurrentQueue<T>
+### ```ConcurrentQueue<T>```
 
 Uma fila é uma coleção FIFO (primeiro a entrar, primeiro a sair). ConcurrentQueue oferece os métodos Enqueue e TryDequeue para adicionar e remover itens da coleção. Ele também possui um método TryPeek e implementa IEnumerable criando um instantâneo dos dados. A código abaixo mostra como usar um ConcurrentQueue.
 
@@ -2541,6 +2558,7 @@ A seguir iremos avaliar prós e contras de diferentes abordagens, começaremos c
 
 No exemplo abaixo, a fila genérica é usada para armazenar informações do pedido. Além disso, o método GetOrders é chamado na maneira de sincronização regular.
 
+```csharp
 private static void GetOrders(string custName, Queue<string> phoneOrders)
 {
     for (int i = 0; i < 3; i++)
@@ -2559,14 +2577,17 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Como o método GetOrders é chamado em sincronia ou um após o outro, a saída também é impressa de maneira semelhante (ou seja, primeiro Prakash e depois Aradhana).
  
 
-Fila regular com mais de um thread
+### Fila regular com mais de um thread
 
 Agora, vamos fazer a pequena alteração no código anterior, tornando-o assíncrono. Para isso, usamos uma tarefa que chamará GetOrders por dois threads diferentes.
 
+```csharp
 var phoneOrders = new Queue<string>();
 Task t1 = Task.Run(() => GetOrders("Prakash", phoneOrders));
 Task t2 = Task.Run(() => GetOrders("Aradhana", phoneOrders));
@@ -2576,15 +2597,18 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Ocorre uma exceção porque o método Enqueue da Fila não foi projetado para funcionar com mais de um thread paralelamente.O Multi-threading com a fila regular é imprevisível. Pode funcionar em alguns casos, mas se você tentar várias vezes, provavelmente receberá uma exceção, como acima.
  
  
 
-Fila regular com bloqueio manual e mais de um thread
+### Fila regular com bloqueio manual e mais de um thread
 
 A solução é ter algum tipo de sincronização de threads, manualmente ou fora da caixa. A seguir, vamos ver a maneira manual com uso da palavra-chave de lock. 
 
+```csharp
 static object lockObj = new object();
 private static void GetOrdersWithLock(string custName, Queue<string> phoneOrders)
 {
@@ -2608,13 +2632,16 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Portanto, não há exceção neste momento, depois de colocar o bloqueio no método Enqueue Mas e se o Enqueue for chamado várias vezes, você teria que usar a instrução lock em várias partes.
 
-ConcurrentQueue com mais de um thread
+### ConcurrentQueue com mais de um thread
 
 Como você pode ver, para gerenciar a simultaneidade, não precisamos mais de bloqueio manual. É mais útil em situações em que, em um ambiente multithread, estamos lidando com métodos de fila em vários locais; e, colocar o bloqueio manual em todo lugar pode tornando um código impossível de manter.
 
+```csharp
 private static void GetOrders(string custName, object phoneOrders)
 {
     for (int i = 0; i < 3; i++)
@@ -2638,6 +2665,8 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Os métodos mais usados do ConcurrentQueue são:
 - TryPeek: que buscará o elemento desde o início da fila sem removê-lo
@@ -2645,6 +2674,7 @@ Os métodos mais usados do ConcurrentQueue são:
 
 Eles definem o elemento excluído na variável out e retorna true, caso contrário, retorna false. Vamos dar uma olhada no código e como usá-lo.
 
+```csharp
 Console.WriteLine("Total orders before Dequeue/TryPeek are: {0}", phoneOrders.Count);
                 
 string myOrder;
@@ -2660,11 +2690,14 @@ else
 Console.WriteLine("Total orders after Dequeue/TryPeek are: {0}", phoneOrders.Count);
 
  
+```
 
-ConcurrentStack<T>
+
+### ```ConcurrentStack<T>```
 
 As implementações de ConcurrentStack são similares ao do ConcurrentQueue, com a diferença que  a coleção ConcurrentStack é uma pilha LIFO (último a entrar, primeiro a sair). O ConcurrentStack possui dois métodos importantes: Push e TryPop. Push é usado para adicionar um item à pilha; O TryPop tenta obter um item da pilha. Você nunca pode ter certeza se há itens na pilha porque vários threads podem estar acessando sua coleção ao mesmo tempo. Você também pode adicionar e remover vários itens de uma vez usando PushRange e TryPopRange. Quando você enumera a coleção, é tirado um instantâneo. O exemplo a seguir mostra como esses métodos funcionam.
 
+```csharp
 ConcurrentStack<int> stack = new ConcurrentStack<int>();
 stack.Push(42);
 int result;
@@ -2675,9 +2708,12 @@ int[] values = new int[2];
 stack.TryPopRange(values);
 foreach (int i in values)
     Console.WriteLine(i);
+```
+
 
 Uma impementação semelhante da ConcurrentQueue<T> que vimos em exemplo anterior. Primeiro, uma pilha é inicializada e preenchida com todos os valores inteiros entre um e um milhão. Todo valor é então retirado da pilha e somado. O processo continua até que uma exceção seja lançada quando a pilha estiver esgotada. Devemos esperar que o total final seja de 500.000.500.000. No entanto, estamos usando duas tarefas paralelas para processar a pilha e a pilha básica <T> não é segura para threads. Isso leva a condições de corrida e a um resultado incorreto ao usar um computador com mais de um núcleo de processador.
 
+```csharp
 IEnumerable<int> numbers = Enumerable.Range(1, 1000000);
 Stack<int> _stack = new Stack<int>(numbers);
 
@@ -2703,9 +2739,12 @@ Task task2 = Task.Run(() =>
 Task.WaitAll(task1, task2);
 
 Console.WriteLine("Total: {0}", _total);
+```
+
  
 Como no exemplo do artigo ConcurrentQueue <T>, você pode resolver esse problema com a instrução lock. No entanto, a classe ConcurrentStack <T> torna muito mais simples.
 
+```csharp
 IEnumerable<int> numbers = Enumerable.Range(1, 1000000);
 ConcurrentQueue<int> _queued = new ConcurrentQueue<int>(numbers);
 long _total = 0;
@@ -2730,20 +2769,24 @@ Task task2 = Task.Run(() =>
 Task.WaitAll(task1, task2);
 
 Console.WriteLine("Total: {0}", _total); // Total: 499933914565
+```
 
-Interface  IProducerConsumerCollection<T> 
+
+### ```Interface  IProducerConsumerCollection<T>```
 
 Define métodos para manipular coleções thread-safe destinadas ao uso de produtor/consumidor. Essa interface fornece uma representação unificada de coleções de produtor/consumidor para que abstrações de níveis mais altos, como o BlockingCollection<T>, possam usar a coleção como o mecanismo de armazenamento subjacente.
 
 Com exceção da classe ConcurrentDictionary, todas as classes de coleção simultânea implantadas pela Microsoft implementam a interface IProducerConsumerCollection. Essa interface requer uma classe que a implemente para fornecer os métodos abaixo:
-Método	Descrição
-CopyTo	Copia os elementos do objeto IProducerConsumerCollection em uma matriz, iniciando no local especificado.
-ToArray	Retorna uma nova matriz que contém todos os elementos no IProducerConsumerCollection.
-TryAdd	Tenta adicionar um objeto ao IProducerConsumerCollection.
-TryTake	Tenta remover e retornar um objeto do IProducerConsumerCollection.
+|     Método     |     Descrição                                  |
+|----------------|----------------------------------------------------------------|
+|     CopyTo     |     Copia os elementos do objeto   IProducerConsumerCollection em uma matriz, iniciando no local especificado.    |
+|     ToArray    |     Retorna uma nova matriz que contém todos os   elementos no IProducerConsumerCollection.                       |
+|     TryAdd     |     Tenta adicionar um objeto ao   IProducerConsumerCollection.                                                   |
+|     TryTake    |     Tenta remover e retornar um objeto do   IProducerConsumerCollection.                                          |
 
 O exemplo a seguir mostra uma estrutura de dados de pilha que implementa a interface: 
 
+```csharp
 public class SafeStack<T> : IProducerConsumerCollection<T>
 {
     // Used for enforcing thread-safety
@@ -2842,10 +2885,11 @@ IProducerConsumerCollection<int> ipcc = (IProducerConsumerCollection<int>)stack;
 stack.Push(10); Console.WriteLine("Pushed 10");
 ipcc.TryAdd(20); Console.WriteLine("IPCC.TryAdded 20");
 stack.Push(15); Console.WriteLine("Pushed 15");
- 
+```
 
-Gerenciar multithreading 
-- Sincronizar recursos; implementar bloqueio; cancelar uma tarefa de execução longa; implementar métodos thread-safe para manipular condições de corrida
+
+## Gerenciar multithreading 
+- **Sincronizar recursos; implementar bloqueio; cancelar uma tarefa de execução longa; implementar métodos thread-safe para manipular condições de corrida**
 
 Embora o multithreading possa oferecer muitas vantagens, não é fácil escrever um aplicativo multithread. Podem ocorrer problemas quando threads diferentes acessam alguns dados compartilhados, tais como:
 - Não é tão fácil de seguir e entender.
@@ -2855,12 +2899,14 @@ Embora o multithreading possa oferecer muitas vantagens, não é fácil escrever
 
 Como afirmado anteriormente, um dos problemas mais comuns é chamado de condição de corrida. Isso acontece quando dois threads tentam atualizar os mesmos dados. O que deve acontecer quando ambos tentam mudar algo ao mesmo tempo? Para fazer isso funcionar com sucesso, é importante sincronizar recursos.
 
-SINCRONIZAÇÃO DE VARIÁVEIS NO MULTITHREADING
+### SINCRONIZAÇÃO DE VARIÁVEIS NO MULTITHREADING
 
 Em um ambiente multithreading, a mesma variável pode ser acessada por dois ou mais threads. Se a operação executada em uma variável compartilhada for atômica ou segura para threads, ela produzirá um resultado preciso. Se a operação não for atômica ou não for segura para threads, ela produzirá resultados imprecisos.
 
 Na operação atômica, apenas um único thread de cada vez pode executar uma única instrução e produzir resultados precisos; enquanto, em uma operação não atômica, mais de um thread está acessando e manipulando o valor de uma variável compartilhada, o que produz um resultado impreciso (por exemplo, se um thread está lendo um valor e o outro thread ao mesmo tempo está editando isto).
 
+
+```csharp
 int num = 0;
 int length = 500000;
 //Run on separate thread of threadpool
@@ -2878,45 +2924,47 @@ for (int i = 0; i < length; i++)
 }
 tsk.Wait();
 Console.WriteLine(num); //-6674 OU o OU 655
+```
 
 O trecho de código acima fornece resultados imprecisos porque dois threads estão acessando e manipulando o valor de "num" ao mesmo tempo. A declaração "num = num + 1;" é realmente uma combinação de mais de uma declaração; primeiro ele lerá o valor atual de "num", depois adiciona ou subtrai 1 do seu valor atual e o atribuirá a "num".
 
 Imagine se a Main thread leu o valor de num = 6, mas o outro thread leu o valor de num = 3. Quando a Main thread diminui o valor de "num", ela se torna 5. Mas o outro thread já leu o valor de num = 3; quando incrementado, o valor de num torna-se "4", o que é totalmente errado. Isso ocorre porque a operação não é atômica. Consiste em uma leitura e uma gravação que acontecem em momentos diferentes. É por isso que o acesso aos dados com os quais você trabalha precisa ser sincronizado, para que você possa prever com segurança como seus dados são afetados.
 
 As construções de sincronização podem ser divididas em quatro categorias:
-1.	Métodos de bloqueio simples
+1.	**Métodos de bloqueio simples**
 Eles aguardam a conclusão de outro thread ou o período de tempo decorrido. Os métodos são: 
-- Thread.Sleep
-- Thread.Join
-- Task.Wait/WaitAll
-2.	Construções de bloqueio (locks)
+     - **Thread.Sleep**
+     - **Thread.Join**
+     - **Task.Wait/WaitAll**
+2.	**Construções de bloqueio (locks)**
 Isso limita o número de threads que podem executar alguma atividade ou executar uma seção de código por vez. Construções de bloqueio exclusivas são as mais comuns - elas permitem apenas um thread de cada vez e permitem que os threads concorrentes acessem dados comuns sem interferir entre si. As construções de bloqueio exclusivas padrão são:
-- Palavra-chave lock 
-- Monitor (Enter/Exit)
-- Mutex 
-- SpinLock
+     - **Palavra-chave lock**
+     - **Monitor (Enter/Exit)**
+     - **Mutex**
+     - **SpinLock**
 As construções de bloqueio não-exclusivas são: 
-- Semaphore/SemaphoreSlim (introduced in Framework 4.0)
-- ReaderWriterLockSlim 
-3.	Construções de sinalização
+     - **Semaphore/SemaphoreSlim (introduced in Framework 4.0)**
+     - **ReaderWriterLockSlim**
+3.	**Construções de sinalização**
 Isso permite que um thread pause até receber uma notificação de outro thread, evitando a necessidade de pesquisas ineficientes. Existem dois dispositivos de sinalização comumente usados: 
-- EventWaitHandle (AutoResetEvent, ManualResetEvent)
-- Monitor (métodos Wait/Pulse/PulseAll) 
+     - **EventWaitHandle (AutoResetEvent, ManualResetEvent)**
+     - **Monitor (métodos Wait/Pulse/PulseAll)** 
 No Framework 4.0 apresenta as classes:
-- CountdownEvent 
-- Barrier
-4.	Construções de sincronização sem bloqueio
+     - **CountdownEvent** 
+     - **Barrier**
+4.	**Construções de sincronização sem bloqueio**
 Eles protegem o acesso a um campo comum, chamando as primitivas do processador. O CLR e o C# fornecem as seguintes construções sem bloqueio: 
-- Thread.MemoryBarrier, 
-- Thread.VolatileRead, 
-- Thread.VolatileWrite
-- Palavra-chave Volatile 
-- Interlock
+     - **Thread.MemoryBarrier**
+     - **Thread.VolatileRead**
+     - **Thread.VolatileWrite**
+     - **Palavra-chave Volatile**
+     - **Interlock**
 
-Dead Lock
+### Dead Lock
 
 Em um ambiente multithread, quando ocorre um deadlock pode ocorrer; ele congela o aplicativo porque duas ou mais atividades aguardam a conclusão uma da outra, fazendo com que nenhum deles seja concluído.
 
+```csharp
 //used as lock objects
 object thislockA = new object();
 object thislockB = new object();
@@ -2948,6 +2996,8 @@ Task tsk2 = Task.Run(() =>
 Task[] allTasks = { tsk1, tsk2 };
 Task.WaitAll(allTasks); // Wait for all tasks
 Console.WriteLine("Program executed succussfully");
+```
+
 
 Aqui está como o aplicativo ficou congelado.
 1.	Tsk1 adquire o bloqueio "thislockA".
@@ -2959,12 +3009,14 @@ Para impedir que um aplicativo congele, é importante usar uma declaração de l
 
 Abaixo iremos examinar brevemente as maneiras comuns de lidar com variáveis de sincronização em um ambiente multithread.
 
-MÉTODOS DE BLOQUEIO SIMPLES
+### MÉTODOS DE BLOQUEIO SIMPLES
 
-Join and Sleep
+### Join and Sleep
 
 Você pode esperar que outro thread termine chamando seu método Join. Por exemplo:
 
+
+```csharp
 static void Main(string[] args)
 {
     Thread t = new Thread(Go);
@@ -2977,13 +3029,19 @@ static void Go()
 {
     for (int i = 0; i < 1000; i++) Console.Write("y");
 }
+```
+
 
 Isso imprime "y" 1.000 vezes, seguido de "O tópico t terminou!" imediatamente depois. Você pode incluir um tempo limite ao chamar Join, em milissegundos ou como TimeSpan. Em seguida, retorna true se o thread terminou ou false se o tempo limite expirou.
 
+
+```csharp
 Thread.Sleep pausa o thread atual por um período especificado:
 
 Thread.Sleep(TimeSpan.FromHours(1));  // sleep for 1 hour
 Thread.Sleep(500);                     // sleep for 500 milliseconds
+```
+
 
 Enquanto aguarda um Sleep ou Join, um thread é bloqueado e, portanto, não consome recursos da CPU.
 
@@ -2991,14 +3049,16 @@ Thread.Sleep (0) renuncia imediatamente ao intervalo de tempo atual do thread, e
 
 O modo de Thread.Sleep(0) ou Thread.Yield() é ocasionalmente útil no código de produção para ajustes avançados de desempenho. Também é uma excelente ferramenta de diagnóstico para ajudar a descobrir problemas de segurança de threads: se inserir Thread.Yield() em qualquer lugar do seu código cria ou interrompe o programa, você quase certamente tem um erro.
 
-CONSTRUÇÕES DE BLOQUEIO
+### CONSTRUÇÕES DE BLOQUEIO
 
-Lock (objeto)
+### Lock (objeto)
 
 O Lock é uma palavra-chave em C#; impede que um thread execute o mesmo bloco de código que outro thread está executando. Esse bloco de código é chamado de código bloqueado. Portanto, se um thread tentar inserir um código bloqueado, ele aguardará até que o objeto seja liberado. A palavra-chave lock chama Enter no início do bloco e Exit no final do bloco. A melhor prática é usar a palavra-chave lock com um objeto particular ou com uma variável de objeto estático particular para proteger dados comuns a todas as instâncias.
 
 Ao aplicar um Lock o compilador traduz em uma chamada para System.Thread.Monitor. O exemplo abaixo mostra o uso do operador de Lock para corrigir o exemplo anterior.
 
+
+```csharp
 int num = 0;
 int length = 500000;
 object _lock = new object();
@@ -3019,15 +3079,17 @@ for (int i = 0; i < length; i++)
 }
 tsk.Wait();
 Console.WriteLine(num); //0
+```
 
-	Onde:
+
+**Onde:**
 - lock (_lock){...}: Impede que outros threads manipulem a memória compartilhada, ou seja, "n". Quando o controle sai do bloco, a memória compartilhada se torna utilizável para qualquer thread.
 - _lock: é a mesma variável usada em vários threads, notificando outros threads se alguém já o usou para bloquear um bloco de código.
 - Portanto, a memória compartilhada se torna segura para threads e o programa fornece um resultado preciso
 
 Após essa alteração, o programa sempre gera 0 porque o acesso à variável n agora está sincronizado. Não há como um thread alterar o valor enquanto o outro thread estiver trabalhando com ele. No entanto, também faz com que os threads sejam bloqueados enquanto eles aguardam um pelo outro. Isso pode causar problemas de desempenho e pode até levar a um impasse (deadlock).
 
-Monitor (métodos Enter/Exit)
+### Monitor (métodos Enter/Exit)
 
 A classe Monitor também garante que nenhum outro thread possa executar a mesma seção de código ou uma memória compartilhada até que seja executado pelo proprietário do bloqueio. Monitores são primitivas de sincronização usadas para sincronizar o acesso a objetos. Eles são implementados no .NET na classe System.Threading.Monitor. A classe Monitor é usada em conjunto com tipos de referência, não tipos de valor, para garantir que apenas um thread possa acessar esse objeto por vez. 
 
@@ -3035,10 +3097,14 @@ A razão para não se adotar objetos de valor é que eles são copiados (boxed) 
 
 A melhor prática para lidar com bloqueios é criando um objeto de referência que é privado para a classe e que será usado apenas para esse fim. Um objeto público pode ser usado por outros threads para adquirir um bloqueio sem que seu código saiba. Se você precisar lidar com código legado ou procurar amostras na Internet, poderá encontrar um código que esteja bloqueado utilzando o “this” como objeto de referência. O código fica assim:
 
+```csharp
 lock (this) { // Code updating some shared data}
+```
+
 
 Embora esse seja um snippet de código C# perfeitamente válido e, de fato, adquire e libera um bloqueio no objeto atual, esse código possui um erro latente que pode se manifestar a qualquer momento. Isso porque a  variável  “this” pode ser usada por outro código para criar um bloqueio, causando conflitos. Veja o seguinte trecho de código:
 
+```csharp
 public class LockThisBadSample
 {
     public void OneMethod()
@@ -3061,6 +3127,8 @@ public class UsingTheLockedObject
         }
     }
 }
+
+```
 
 Como você pode ver, AnotherMethod adquire um bloqueio no lockObject, que é essa referência dentro da chamada OneMethod. Como você não tem controle sobre todo o código que gostaria de adquirir bloqueios nos objetos, isso pode facilmente levar a conflitos. A lição aqui é evitar o lock (this), mesmo que você veja exemplos online usando esse tipo de programação, e o MSDN não é uma exceção.
 
@@ -7129,7 +7197,7 @@ catch (AggregateException e)
 }
 
 Quando estamos fazendo o tratamento de exceção em um determinado programa, pode ser interressante primeiro classifica-los em  quatro tipos:
-- Rxceções fatais: não são sua culpa, você não pode evitá-las e não pode limpar sensivelmente delas. Elas quase sempre acontecem porque o processo está profundamente doente e está prestes a ser eliminado de sua miséria. Falta de memória, encadeamento interrompido e assim por diante. Não há absolutamente nenhum sentido em capturá-los, porque nada que seu código de usuário insignificante possa fazer resolverá o problema. Apenas deixe seus blocos "finalmente" correrem e espere o melhor.
+- Exceções fatais: não são sua culpa, você não pode evitá-las e não pode limpar sensivelmente delas. Elas quase sempre acontecem porque o processo está profundamente doente e está prestes a ser eliminado de sua miséria. Falta de memória, encadeamento interrompido e assim por diante. Não há absolutamente nenhum sentido em capturá-los, porque nada que seu código de usuário insignificante possa fazer resolverá o problema. Apenas deixe seus blocos "finalmente" correrem e espere o melhor.
 - Exceções desordenadas: são sua própria falha, você poderia tê-las evitado e, portanto, são erros no seu código. Você não deve pegá-los; isso é ocultar um bug no seu código. Em vez disso, você deve escrever seu código para que a exceção não possa ocorrer em primeiro lugar e, portanto, não precise ser detectada. Esse argumento é nulo, o tipo de conversão é ruim, o índice está fora do intervalo, você está tentando dividir por zero - todos esses problemas que você poderia ter evitado com muita facilidade em primeiro lugar, portanto, evite a bagunça em primeiro lugar ao invés de tentar limpá-lo.
 - Exceções irritantes: são o resultado de decisões infelizes de design. As exceções irritantes são lançadas em uma circunstância completamente não excepcional e, portanto, devem ser capturadas e manipuladas o tempo todo. O exemplo clássico de uma exceção irritante é Int32.Parse, que lança se você der uma string que não possa ser analisada como um número inteiro. Mas o caso de uso de 99% para esse método está transformando as seqüências de caracteres inseridas pelo usuário, o que pode ser algo antigo e, portanto, não é de forma alguma excepcional que a análise falhe. Pior, não há como o chamador determinar antecipadamente se o argumento é ruim sem implementar o método inteiro, caso em que não precisaria chamá-lo em primeiro lugar. Essa infeliz decisão de design foi tão irritante é claro que a equipe de estruturas implementou o TryParse logo em seguida, o que faz a coisa certa. Você precisa capturar exceções irritantes, mas fazê-lo é irritante. Tente nunca escrever uma biblioteca que gere uma exceção irritante.
 - Exceções exógenas: parecem ser um pouco como exceções irritantes, exceto que elas não são o resultado de escolhas infelizes de design. Em vez disso, são o resultado de realidades externas desarrumadas que afetam sua lógica bonita e nítida do programa. Considere este código pseudo-C #, por exemplo:
