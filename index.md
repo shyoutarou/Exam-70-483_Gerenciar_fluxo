@@ -45,7 +45,7 @@ Os algoritmos comuns de escalonamento de sistemas em lote incluem:
 | Algoritmo Fair-Share  |  	O escalonamento é feito considerando o dono dos processos, onde cada usuário recebe uma fração da CPU e processos são escalonados procurando garantir essa fração. Se um usuário A possui mais processos que um usuário B e os dois têm a mesma prioridade, os processos de A serão mais demorados que os do B. |
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/runrun.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/runrun.png" alt="Image" width="400px" />
 </p>
 
 Exemplo : Executar um navegador(chrome, Firefox) e enviar um e-mail e executar aplicativo do sistema (MS Word, calculadora ou Excel simultaneamente.
@@ -74,25 +74,25 @@ Thread é a unidade de execução básica de um programa em execução. Nas vers
 - **Monothread**: Os sistemas que suportam uma única thread (em real execução), uma thread deve aguardar a conclusão de outra ação.
  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/monothread.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/monothread.png" alt="Image" width="400px" />
 </p>
 
 - **Multithread**: os sistemas que suportam múltiplas threads;
 o	Compartilham o ambiente de execução de um único processo
 o	Em uma CPU de núcleo único, o processo alterna entre threads.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadunico.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadunico.png" alt="Image" width="400px" />
 </p>
  
 o	Em uma CPU com vários núcleos, os dois threads podem executar em paralelo
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadvarios.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multithreadvarios.png" alt="Image" width="400px" />
 </p>
  
 
 Exemplo: O melhor exemplo de thread são as guias de um navegador. Se você tem 5 abas que estão sendo abertas e usadas, então o programa realmente cria 5 threads do programa (multi-threading).
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/firefox.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/firefox.png" alt="Image" width="400px" />
 </p>
 
  
@@ -129,7 +129,7 @@ Por padrão, um programa tem um thread chamado Main Thread. O thread principal i
 A propriedade ThreadState é útil para fins de diagnóstico, mas inadequada para sincronização, porque o estado de um thread pode mudar entre o teste do ThreadState e a atuação nessas informações.
   
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstate.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstate.png" alt="Image" width="500px" />
 </p>
 
 ### Usos e mau uso de thread
@@ -234,7 +234,7 @@ Console.WriteLine("Hello From Main Thread");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="400px" />
 </p>
 
 O Tópico Principal inicializa “mythread” e imprime “Hello From Main Thread”. Enquanto "mythread" estava sendo inicializado, "myThread.Start ()" altera seu estado para execução e depois executa "MyThreadMethod ()". "Hello From Main Thread" fazia parte do MainThread e foi exibido na tela primeiro, porque "myThread" estava demorando para mudar seu estado para execução.
@@ -242,7 +242,7 @@ O Tópico Principal inicializa “mythread” e imprime “Hello From Main Threa
   <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythread.png" alt="Image" width="100%" />
 </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellothread.png" alt="Image" width="100%" />
+  <img src="https://raw.gibusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellothread.png" alt="Image" width="400px" />
 </p>
 
 ### ParameterizedThreadStart
@@ -543,7 +543,7 @@ static void Main(string[] args)
 No snippet de código acima, o threadA e o threadB têm seus valores locais exclusivos com o atributo "ThreadStatic" _count_ts. Ambos os threads aumentaram o valor de _count 10 vezes. O resultado final não é 19, porque cada thread aumentou o valor de sua cópia local da variável _count_ts. Na variável _count não marcou com o atributo "ThreadStatic", portanto, os dois threads compartilharam a mesma variável _count. Quando um thread incrementa o valor de _count, ele afeta o valor da _count que é usada no outro thread chegando o valor até 19.
  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="400px" />
 </p>
 
 ### Classe ThreadLocal<T>
@@ -636,7 +636,7 @@ myThread.Start();
 Console.WriteLine("Hello From Main Thread");
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="400px%" />
 </p>
 
 
@@ -675,7 +675,7 @@ Task task = Task.Run(() =>
 });
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/ellapsed.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/ellapsed.png" alt="Image" width="400px" />
 </p>
 
 ### Classe BackgroundWorker 
@@ -787,7 +787,7 @@ Um dos maiores problemas mencionados anteriormente foi que seu aplicativo pode n
 
 Os aplicativos Windows Forms e WPF têm threads dedicados que atualizam a interface do usuário para evitar uma situação que possa surgir em aplicativos multithread, chamados condições de corrida (race conditions). Uma condição de corrida ocorre quando dois ou mais threads acessam dados compartilhados, para gravação, ao mesmo tempo. Se você tentar atualizar a interface do usuário (thread em primeiro plano) de outro thread (que realiza o serviço, em segundo plano), o .NET Framework emitirá uma InvalidOperationException contendo a seguinte mensagem:
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lblresult.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lblresult.png" alt="Image" width="400px" />
 </p>
 
 Se o BackgroundWorker for iniciado a partir de outra thread a partir da interface do usuário, você obteria a mesma exceção mencionada anteriormente. 
@@ -837,11 +837,19 @@ A classe System.Threading.ThreadPool oferece vários métodos estáticos que voc
 | RegisterWaitForSingleObject  | 	Registra um método a ser chamado quando o WaitHandle é especificado quando o primeiro parâmetro é sinalizado ou quando o tempo limite especificado como quarto parâmetro passa. Esse método possui quatro sobrecargas, uma para cada modo, que o tempo limite pode ser expresso como: int, long, unsigned int ou TimeSpan. | 
 	
 Essa lista não está completa e é recomendado não utilizar nenhum desses métodos. Dessa lista, é mais provável que você use apenas um método: QueueUserWorkItem. O ThreadPool terá um desempenho melhor com seu próprio algoritmo de alocação de threads. Tocar com os limites do conjunto de threads geralmente resulta em desempenho pior, não melhor. Se você acha que seu aplicativo precisa de centenas ou milhares de threads, há algo seriamente errado com a arquitetura do aplicativo e a maneira como ele está usando threads. O método QueueUserWorkItem tem duas sobrecargas:
-- public static bool QueueUserWorkItem (WaitCallback callBack)
-- public static bool QueueUserWorkItem (WaitCallback callBack, Object state)
+
+```csharp
+public static bool QueueUserWorkItem (WaitCallback callBack)
+public static bool QueueUserWorkItem (WaitCallback callBack, Object state)
+```
+
 
 O parâmetro do tipo System.Threading.WaitCallback, é um delegado definido da seguinte forma:
-- public delegate void WaitCallback(Object state)
+
+```csharp
+public delegate void WaitCallback(Object state)
+```
+
 
 O pool de threads funciona da seguinte maneira. Quando você precisa que um método de execução longa seja executado em um thread separado, em vez de criar um novo thread, chame o método QueueUserWorkItem para colocar um novo item de trabalho em uma fila gerenciada pelo pool de threads. Não é possível cancelar um item de trabalho após ele ter sido enfileirado. Se houver um thread inativo no pool, ele seleciona o item de trabalho e o executa até a conclusão, como qualquer thread. Se não houver um thread disponível e o número total no pool for menor que MaxThreads, o pool criará um novo thread para executar o item de trabalho; caso contrário, o item de trabalho do trabalho aguardará na fila pelo primeiro thread disponível. SetMinThread é usado para preencher previamente o pool com threads para melhorar o desempenho do seu aplicativo quando você souber que irá usar o pool de threads. A prioridade de um thread em pool pode ser alterada (Thread.CurrentThread.Priority = ThreadPriority.AboveNormal) , e ele será restaurado ao normal quando liberado de volta para o pool
 
@@ -1144,7 +1152,7 @@ Task.Factory.StartNew(() =>
 }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="400px" />
 </p>
 
 Criando a tarefa dessa maneira, ela será executada pelo thread da interface do usuário assim que o thread da interface do usuário puder processá-lo.
@@ -1178,13 +1186,14 @@ Para criar uma tarefa que não retorna um valor, usamos uma classe Task do names
 |     WhenAny()          |     Este método   estático cria uma tarefa que é marcada como concluída quando qualquer uma das   tarefas enviadas como parâmetros é concluída.    |
 
 A propriedade estática Factory é do tipo TaskFactory e é usada para criar novas tarefas. A tabela abaico descreve alguns dos métodos mais comuns.
+
+
 |     Métodos            |     Descrição                                                                                                                                               |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     ContinueWhenAll    |     Cria uma tarefa   que inicia quando todas as tarefas enviadas como parâmetros são concluídas.                                                           |
 |     ContinueWhenAny    |     Cria uma tarefa   que inicia quando qualquer uma das tarefas enviadas como parâmetros é   concluída.                                                    |
 |     FromAsync          |     Vários métodos sobrecarregados usados para trazer o código APM antigo   para o novo modelo TAP, envolvendo uma tarefa em torno da chamada assíncrona    |
 |     StartNew           |     Vários métodos sobrecarregados usados para criar uma tarefa e   iniciá-la.                                                                              |
-
 
 A tarefa é uma parte importante da programação assíncrona e é executada em um thread ThreadPool. Geralmente, uma expressão lambda é usada para especificar o trabalho que a Tarefa deve executar.
 
@@ -1282,12 +1291,15 @@ Com a classe de Task, ao invés de invocar o método Start(), você pode invocar
 
 O Task.Run() retorna e executa uma tarefa atribuindo uma unidade de trabalho na forma de um método ("myMethod"). No .NET 4.5, é preferível usar o Task.Run porque gerencia o Task com mais eficiência do que o Task.Factory.StartNew. Isso de forma alguma obsoleta o Task.Factory.StartNew, mas deve ser simplesmente considerado uma maneira rápida de usar o Task.Factory.StartNew sem a necessidade de especificar vários parâmetros. De fato, o Task.Run é realmente implementado em termos da mesma lógica usada para Task.Factory.StartNew, apenas transmitindo alguns parâmetros padrão. Quando você passa uma ação para Task.Run:
 
-```Task.Run(someAction);```
+```csharp
+Task.Run(someAction);
+```
 
 isso é exatamente equivalente a:
 
-```Task.Factory.StartNew(someAction, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);```
-
+```csharp
+Task.Factory.StartNew(someAction, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+```
 ```csharp
 //initialize and Run mytask and assign
 //a unit of work in form of 'myMethod()'
@@ -1537,20 +1549,20 @@ As tarefas são executadas de forma assíncrona em um thread do conjunto de thre
 ### Aguarde uma ou mais tarefas
 
 O método Wait bloqueia a execução de um thread de chamada até que a execução de uma tarefa especificada seja concluída. A seguir, são apresentados métodos importantes de espera que ajudam a sincronizar um thread principal com as Tarefas.
-|     Metodos                                                                                                                                                                                                                   |     Descrição                                                                                                                                                                                |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Wait()                                                                                                                                                                                                                    |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                       |
-|                                       |      Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec  <br>   myTask.Wait();                                                                                                                                                                               													       |
-|     Wait   <br>  (milissegundos)                                                                                                                                                                                              |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                              |
-|       				|      Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec                                                                                                                                              |
-|     WaitAll()                                                                                                                                                                                                                 |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.    |
-|                                       |      Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks);                                                                                                                                                        |
-|     WaitAll <br>    (milissegundos)                                                                                                                                                                                           |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                             |
-|     					|      Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks, 1200);                                                                                                                                                    |
-|     WaitAny()                                                                                                                                                                                                                 |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                               |
-|     			                |      Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec   <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAny(allTasks);                                                                                                                                                         |
-|     WaitAny <br> (milissegundos)                                                                                                                                                                                              |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                            |
-|     				        |      Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec  <br>    Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAny(allTasks, 1200);                                                                                                                                                   |
+|     Metodos                        |     Descrição                                                                                                                                                                                                                 |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Wait()                         |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                                                        |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     myTask.Wait();                                                                                                                                        |
+|     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                                                               |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec     myTask.Wait(1000);// wait for 1 sec     myTask2.Wait(1000);// wait for 1 sec    |
+|     WaitAll()                      |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.                                     |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks);              |
+|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                                                              |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks, 1200);          |
+|     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                                                                |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks);                |
+|     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                                                             |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks, 1200);          |
 
 
 É comum para uma operação assíncrona, na conclusão, invocar uma segunda operação e passar os dados para ela. Na biblioteca Task.Parallel, a mesma funcionalidade é fornecida por tarefas de continuação. Uma tarefa de continuação é uma tarefa assíncrona que é invocada por outra tarefa (conhecido como a antecedente), quando ela termina.
