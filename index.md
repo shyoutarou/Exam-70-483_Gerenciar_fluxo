@@ -2298,9 +2298,9 @@ Da lista acima, o ConcurrentDictionary pode ser usado como uma coleção de uso 
 ### ```ConcurrentDictionary<TKey, T>```
 
 Um ConcurrentDictionary armazena pares de chave e valor de maneira segura para threads. Você pode usar métodos para adicionar e remover itens e atualizar itens no local, se existirem. Ao trabalhar com um ConcurrentDictionary, você tem métodos que podem adicionar, obter e atualizar itens atomicamente. Uma operação atômica significa que será iniciada e finalizada como uma única etapa sem que outros threads interfiram. A tabela abaixo mostra os métodos que você pode usar em um ConcurrentDictionary.
-|     Método         |     Descrição                                                                                                                                                                |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     TryAdd         |     Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
+|     Método         |     Descrição                                                                                                         |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------|
+|     TryAdd         |     Se outro thread tentar adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
 |     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.                                                                                             |
 |     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.                                                                     |
 |     GetOrAdd       |     obtém o valor atual de um item, se estiver disponível; caso   contrário, ele adiciona o novo valor usando um método de fábrica.                                          |
