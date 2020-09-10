@@ -167,19 +167,6 @@ A classe Thread não é algo que você deve usar em seus aplicativos, exceto qua
 |     Priority              |     Obtém ou define um   valor que indica a prioridade de agendamento de um thread.             |
 |     ThreadState           |     Obtém um valor que   contém os estados do thread atual.                                     |
 
-
-|     Propriedades          |     Descrição               |
-|---------------------------|-----------------------------|
-|     CurrentContext        |     Obtém o contexto atual no qual o thread está em execução.  |
-|     CurrentThread         |     Obtém o thread em execução no momento.  |
-|     IsAlive               |     Obtém um valor que indica o status de execução do thread atual.  |
-|     IsBackground          |     Obtém ou define um valor que indica se um thread é ou não um thread de segundo plano.     |
-|     IsThreadPoolThread    |     Obtém um valor que indica se um thread pertence ao pool de threads gerenciados ou não.    |
-|     ManagedThreadId       |     Obtém um identificador exclusivo para o thread gerenciado atual.    |
-|     Name                  |     Obtém ou define o nome do thread.   |
-|     Priority              |     Obtém ou define um valor que indica a prioridade de agendamento de um thread.  |
-|     ThreadState           |     Obtém um valor que contém os estados do thread atual.   |
-
 | Métodos | Descrição | 
 |:----------|------|
 | Abort() | Gera um ThreadAbortException no thread no qual ele é invocado, para iniciar o processo de encerramento do thread. Geralmente, a chamada a esse método termina o thread. | 
@@ -1563,20 +1550,21 @@ As tarefas são executadas de forma assíncrona em um thread do conjunto de thre
 ### Aguarde uma ou mais tarefas
 
 O método Wait bloqueia a execução de um thread de chamada até que a execução de uma tarefa especificada seja concluída. A seguir, são apresentados métodos importantes de espera que ajudam a sincronizar um thread principal com as Tarefas.
-|     Metodos         |     Descrição             |
-|---------------------|---------------------------|
-|     Wait()          |     Bloqueia o thread de chamada até que a tarefa especificada conclua sua execução.         |
-|                     |     Task myTask = Task.Run(() => {Thread.Sleep(1000);}); //1 Sec <br> myTask.Wait();            |
-|     Wait (milissegundos)  |    Bloqueia a execução de um thread de chamada até a tarefa especificada terminar ou um intervalo de tempo limite decorrido.  |
-|                     |    Task myTask = Task.Run(() => {Thread.Sleep(2000);}); //2 Sec     <br> Task myTask2 = Task.Run(() => {Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec    |
-|     WaitAll()       |     Bloqueia a execução de um thread de chamada até que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.    |
-|                     |    Task myTask1 = Task.Run(() => {Thread.Sleep(100);}); //1/10 Sec   <br>  Task myTask2 = Task.Run(() => { Thread.Sleep(500);}); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2};   <br>  Task.WaitAll(allTasks);              |
-|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até que todas as tarefas especificadas terminem ou que um intervalo de tempo limite termine.        |
-|                     |     Task myTask1 = Task.Run(() => {Thread.Sleep(500);}); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {Thread.Sleep(2000);}); //2 Sec   <br>  Task[] allTasks = { tsk1, tsk2};  <br>   Task.WaitAll(allTasks, 1200);          |
-|     WaitAny()       |     Bloqueia a execução de um thread de chamada até que a qualquer  tarefa de uma coleção de tarefas conclua sua execução.    |
-|                     |     Task myTask1 = Task.Run(() => {Thread.Sleep(1000);}); //1 Sec  <br>   Task myTask2 = Task.Run(() => {Thread.Sleep(500);}); //1/2 Sec   <br>  Task[] allTasks = {tsk1, tsk2 };   <br>  Task.WaitAny(allTasks);  |
-|  WaitAny (milissegundos)   |     Bloqueia a execução de um thread de chamada até que qualquer tarefa de uma coleção de tarefas seja concluída ou que um intervalo de tempo limite termine.  |
-|                     |    Task myTask1 = Task.Run(() => {Thread.Sleep(500);}); //1/w Sec   <br>  Task myTask2 = Task.Run(() => {Thread.Sleep(2000);}); //2 Sec  <br>   Task[] allTasks = {tsk1, tsk2};   <br>  Task.WaitAny(allTasks, 1200);          |
+
+|     Metodos                        |     Descrição                                                                                                                                                                                                                 |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Wait()                         |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                                                        |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     myTask.Wait();                                                                                                                                        |
+|     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                                                               |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec     myTask.Wait(1000);// wait for 1 sec     myTask2.Wait(1000);// wait for 1 sec    |
+|     WaitAll()                      |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.                                     |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks);              |
+|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                                                              |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks, 1200);          |
+|     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                                                                |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks);                |
+|     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                                                             |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks, 1200);          ||
 
 
 É comum para uma operação assíncrona, na conclusão, invocar uma segunda operação e passar os dados para ela. Na biblioteca Task.Parallel, a mesma funcionalidade é fornecida por tarefas de continuação. Uma tarefa de continuação é uma tarefa assíncrona que é invocada por outra tarefa (conhecido como a antecedente), quando ela termina.
