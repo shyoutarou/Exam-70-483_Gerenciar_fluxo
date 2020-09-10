@@ -152,17 +152,17 @@ O thread também incorre em um custo de recurso e CPU na programação e troca d
 ### Gerenciando um thread
 
 A classe Thread não é algo que você deve usar em seus aplicativos, exceto quando você tiver necessidades especiais. No entanto, ao usar a classe Thread, você tem controle sobre todas as opções de configuração. Você pode, por exemplo, especificar a prioridade do seu Thread, informar ao Windows que seu Thread está demorando ou configurar outras opções avançadas.  A classe System.Threading.Thread contém os seguintes métodos e propriedades comuns, que são úteis para gerenciar um thread.
-| Propriedades | Descrição | 
-|:----------|------|
-| CurrentContext | Obtém o contexto atual no qual o thread está em execução. | 
-| CurrentThread  | Obtém o thread em execução no momento. |
-| IsAlive  |  Obtém um valor que indica o status de execução do thread atual. | 
-| IsBackground | Obtém ou define um valor que indica se um thread é ou não um thread de segundo plano. | 
-| IsThreadPoolThread  |  Obtém um valor que indica se um thread pertence ao pool de threads gerenciados ou não. |
-| ManagedThreadId  | Obtém um identificador exclusivo para o thread gerenciado atual. | 
-| Name | Obtém ou define o nome do thread. | 
-| Priority  |  Obtém ou define um valor que indica a prioridade de agendamento de um thread. |
-| ThreadState  |  Obtém um valor que contém os estados do thread atual. | 
+|     Propriedades          |     Descrição               |
+|---------------------------|-----------------------------|
+|     CurrentContext        |     Obtém o contexto   atual no qual o thread está em execução.  |
+|     CurrentThread         |     Obtém o thread em   execução no momento.  |
+|     IsAlive               |     Obtém um valor que   indica o status de execução do thread atual.  |
+|     IsBackground          |     Obtém ou define um   valor que indica se um thread é ou não um thread de segundo plano.     |
+|     IsThreadPoolThread    |     Obtém um valor que   indica se um thread pertence ao pool de threads gerenciados ou não.    |
+|     ManagedThreadId       |     Obtém um   identificador exclusivo para o thread gerenciado atual.    |
+|     Name                  |     Obtém ou define o   nome do thread.   |
+|     Priority              |     Obtém ou define um   valor que indica a prioridade de agendamento de um thread.  |
+|     ThreadState           |     Obtém um valor que   contém os estados do thread atual.   |
 
 | Métodos | Descrição | 
 |:----------|------|
@@ -239,7 +239,7 @@ Console.WriteLine("Hello From Main Thread");
 
 O Tópico Principal inicializa “mythread” e imprime “Hello From Main Thread”. Enquanto "mythread" estava sendo inicializado, "myThread.Start ()" altera seu estado para execução e depois executa "MyThreadMethod ()". "Hello From Main Thread" fazia parte do MainThread e foi exibido na tela primeiro, porque "myThread" estava demorando para mudar seu estado para execução.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythread.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythread.png" alt="Image" width="500px" />
 </p>
 <p align="center">
   <img src="https://raw.gibusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellothread.png" alt="Image" width="400px" />
@@ -329,7 +329,7 @@ Console.WriteLine("Hello From Main Thread");
 Desta vez, devido ao método “mythread.Join()”, MainThread (thread de chamada) imprimirá “Hello From Main Thread” por último, porque o método “mythread.join ()” força MainThread (thread de chamada) a esperar até que mythread seja não encerrado.
   
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythreadjoin.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mythreadjoin.png" alt="Image" width="500px" />
 </p>
 
 ### Thread.Sleep
@@ -636,7 +636,7 @@ myThread.Start();
 Console.WriteLine("Hello From Main Thread");
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="400px%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="400px" />
 </p>
 
 
@@ -827,10 +827,9 @@ A classe System.Threading.ThreadPool oferece vários métodos estáticos que voc
 | Método | Descrição | 
 |:----------|------|
 | CorSetMaxThreads | Função definida no arquivo mscoree.h. Para alterar o número de threads de código não gerenciado | 
-| GetAvailableThreads  |  1.17.3 |
-|Expo  |  Recupera a diferença entre o número máximo de threads do pool de threads retornados pelo método GetMaxThreads e o número de ativos no momento. Isso representa o número de threads que podem selecionar itens de trabalho da fila.  | 
+| GetAvailableThreads  |   Recupera a diferença entre o número máximo de threads do pool de threads retornados pelo método GetMaxThreads e o número de ativos no momento. Isso representa o número de threads que podem selecionar itens de trabalho da fila.  | 
 | GetMaxThreads | Recupera o número real máximo de threads que podem ser criados pelo pool de threads | 
-| GetMinThreads  |  Recupera o número real mínimosde threads que estarão disponíveis no pool de threads |
+| GetMinThreads  |  Recupera o número real mínimo de threads que estarão disponíveis no pool de threads |
 | QueueUserWorkItem | Adiciona uma solicitação de execução à fila do conjunto de threads. Se houver threads disponíveis no pool de threads, a solicitação será executada imediatamente. | 
 | SetMaxThreads  | Define o número máximo de threads que podem ser criados no pool de threads. |
 | SetMinThreads  |  Define o número mínimo de threads que estarão disponíveis no conjunto de threads a qualquer momento. | 
@@ -1049,8 +1048,7 @@ Na maioria das vezes, você precisa executar algum trabalho de forma unitária e
 | Comparação | Threads | Tasks |
 |:----------|------|---------------------|
 | Namespace | System.Threading |  System.Threading.Tasks |
-| Definição  | 1.	É uma forma de um processo dividir a si mesmo em duas ou mais tarefas que podem ser executadas concorrentemente. <br> 
-2.	É algo mais próximo do concreto. É um dos muitos possíveis trabalhadores que executa essa tarefa.	 | 1.	Representa uma unidade de trabalho que deverá ser realizada, é uma promessa, ou seja, uma ```Task<T>``` promete devolver um T em algum momento mais tarde. <br> 2.	É algo mais abstrato. É algo que você deseja fazer, está se dizendo que precisa de algo pronto em algum momento futuro.  |
+| Definição  | 1.	É uma forma de um processo dividir a si mesmo em duas ou mais tarefas que podem ser executadas concorrentemente. <br>  2.	É algo mais próximo do concreto. É um dos muitos possíveis trabalhadores que executa essa tarefa.	 | 1.	Representa uma unidade de trabalho que deverá ser realizada, é uma promessa, ou seja, uma ```Task<T>``` promete devolver um T em algum momento mais tarde. <br> 2.	É algo mais abstrato. É algo que você deseja fazer, está se dizendo que precisa de algo pronto em algum momento futuro.  |
 |Exemplo  | Thread.Sleep() consome processamento para esperar um tempo |  Task.Delay() cria uma interrupção no processador (através do OS) para o código ser invocado. |
 | Retorno  |  Não há mecanismo direto para retornar o resultado. |  Pode retornar um resultado |
 | Exceção  |  Se ocorrer uma exceção não é possível capturá-la na função Pai. |  Uma Task filha pode propagar para a Task pai. |
@@ -1152,7 +1150,7 @@ Task.Factory.StartNew(() =>
 }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/numbercities.png" alt="Image" width="300px" />
 </p>
 
 Criando a tarefa dessa maneira, ela será executada pelo thread da interface do usuário assim que o thread da interface do usuário puder processá-lo.
@@ -1549,19 +1547,19 @@ As tarefas são executadas de forma assíncrona em um thread do conjunto de thre
 ### Aguarde uma ou mais tarefas
 
 O método Wait bloqueia a execução de um thread de chamada até que a execução de uma tarefa especificada seja concluída. A seguir, são apresentados métodos importantes de espera que ajudam a sincronizar um thread principal com as Tarefas.
-|     Metodos                        |     Descrição                                                                                                                                                                                                                 |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Wait()                         |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                                                        |
-|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     <br> myTask.Wait();                                                                                                                                        |
-|     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                                                               |
+|     Metodos                        |     Descrição             |
+|------------------------------------|---------------------------|
+|     Wait()           |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.         |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     <br> myTask.Wait();            |
+|     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.       |
 |                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     <br> Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec    |
 |     WaitAll()                      |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.                                     |
 |                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAll(allTasks);              |
-|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                                                              |
+|     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.        |
 |                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks, 1200);          |
-|     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                                                                |
+|     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.    |
 |                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks);                |
-|     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                                                             |
+|     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.        |
 |                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks, 1200);          |
 
 
@@ -1745,7 +1743,7 @@ continuacao.Wait();
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="300px" />
 </p>
 
 O método tarefaFactory.ContinueWith executa e retorna uma nova tarefa quando o tarefaFactory concluir sua execução. Aqui o parâmetro antecedent do método ContinueWith é a referência de tarefaFactory. Esse antecedent pode ser utilizado no corpo de uma expressão lambda. Por exemplo, se tarefaFactory retornar um valor, usando antecedent o valor de retorno poderá ser usado no corpo de uma expressão lambda.
@@ -1818,7 +1816,7 @@ tarefas[1].Start();
 continuation.Wait();
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="300px" />
 </p>
 
 
@@ -2296,12 +2294,12 @@ Da lista acima, o ConcurrentDictionary pode ser usado como uma coleção de uso 
 ### ```ConcurrentDictionary<TKey, T>```
 
 Um ConcurrentDictionary armazena pares de chave e valor de maneira segura para threads. Você pode usar métodos para adicionar e remover itens e atualizar itens no local, se existirem. Ao trabalhar com um ConcurrentDictionary, você tem métodos que podem adicionar, obter e atualizar itens atomicamente. Uma operação atômica significa que será iniciada e finalizada como uma única etapa sem que outros threads interfiram. A tabela abaixo mostra os métodos que você pode usar em um ConcurrentDictionary.
-|     Método         |     Descrição                                            |
-|--------------------|--------------------------------------------|
-|     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
-|     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.                                                                                             |
-|     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.                                                                     |
-|     GetOrAdd       |     obtém o valor atual de um item, se estiver disponível; caso   contrário, ele adiciona o novo valor usando um método de fábrica.                                          |
+|     Método         |     Descrição                      |
+|--------------------|------------------------------------|
+|     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.  |
+|     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.  |
+|     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.   |
+|     GetOrAdd       |     obtém o valor atual de um item, se estiver disponível; caso   contrário, ele adiciona o novo valor usando um método de fábrica.     |
 
 ```csharp
 var dict = new ConcurrentDictionary<string, int>();
@@ -2361,7 +2359,7 @@ foreach (var item in dic)
 Console.WriteLine("Program ran succussfully");
 ```
 
-### ```BlockingCollection<T>```
+### ```### BlockingCollection<T>```
 
 Esta coleção é segura para threads para adicionar e remover dados. A remoção de um item da coleção pode ser bloqueada até que os dados estejam disponíveis. A adição de dados é rápida, mas você pode definir um limite máximo. Se esse limite for atingido, a adição de um item bloqueará o thread de chamada até que haja espaço. BlockingCollection é, na realidade, um invólucro em torno de outros tipos de coleção. Se você não fornecer instruções específicas, ele usará o ConcurrentQueue por padrão.
 
@@ -2778,11 +2776,11 @@ Define métodos para manipular coleções thread-safe destinadas ao uso de produ
 
 Com exceção da classe ConcurrentDictionary, todas as classes de coleção simultânea implantadas pela Microsoft implementam a interface IProducerConsumerCollection. Essa interface requer uma classe que a implemente para fornecer os métodos abaixo:
 |     Método     |     Descrição                                  |
-|----------------|----------------------------------------------------------------|
+|----------------|------------------------------------------------|
 |     CopyTo     |     Copia os elementos do objeto   IProducerConsumerCollection em uma matriz, iniciando no local especificado.    |
-|     ToArray    |     Retorna uma nova matriz que contém todos os   elementos no IProducerConsumerCollection.                       |
-|     TryAdd     |     Tenta adicionar um objeto ao   IProducerConsumerCollection.                                                   |
-|     TryTake    |     Tenta remover e retornar um objeto do   IProducerConsumerCollection.                                          |
+|     ToArray    |     Retorna uma nova matriz que contém todos os   elementos no IProducerConsumerCollection.     |
+|     TryAdd     |     Tenta adicionar um objeto ao   IProducerConsumerCollection.          |
+|     TryTake    |     Tenta remover e retornar um objeto do   IProducerConsumerCollection.     |
 
 O exemplo a seguir mostra uma estrutura de dados de pilha que implementa a interface: 
 
@@ -3219,7 +3217,7 @@ No código acima, criamos uma função booleana chamada "IsInstance", que verifi
 A primeira linha de comando aberta exibirá a mensagem como: Nova instância criada Todas as outras linhas de comando abertas exibirão mensagens como: Instância já adquirida
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.mutex/MCSDcert.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.mutex/MCSDcert.png" alt="Image" width="500px" />
 </p>
 
 
@@ -3736,7 +3734,7 @@ using (ProducerConsumerQueue q = new ProducerConsumerQueue())
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/producerconsumerqueue.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/producerconsumerqueue.png" alt="Image" width="500px" />
 </p>
 
  
@@ -3889,14 +3887,14 @@ Quando um thread é temporariamente impedido de executar, ele chama Wait() Isso 
 Você pode ter notado um pequeno problema com o código acima. Se o thread A mantém a lock no objeto key, por que a thread B não é bloqueada quando tenta obter a lock? Obviamente, isso é tratado adequadamente. A chamada Wait no thread A libera o lock antes de aguardar. Isso permite que o thread B adquira o lock e a chamada Pulse. O thread A é retomado, mas precisa aguardar até o thread B liberar o lock, para que ele possa recuperá-lo e concluir a chamada Wait. Observe que Pulse nunca bloqueia.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lockowner.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lockowner.png" alt="Image" width="600px" />
 </p>
 
 
-A ready queue é a coleção de threads que aguardam um lock  específico. Os métodos Monitor.Wait introduzem outra fila: waiting queue. Isso é necessário, pois esperar por um Pulse é diferente de esperar para adquirir um lock. Como a fila pronta, a fila de espera é FIFO.
+A ready queue é a coleção de threads que aguardam um lock específico. Os métodos Monitor.Wait introduzem outra fila: waiting queue. Isso é necessário, pois esperar por um Pulse é diferente de esperar para adquirir um lock. Como a fila pronta, a fila de espera é FIFO.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/readyqueue.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/readyqueue.png" alt="Image" width="400px" />
 </p>
 
 Essas filas podem levar a um comportamento inesperado. Quando Pulse ocorre, o cabeçalho da fila de espera é liberado e adicionado à fila de espera. No entanto, se houver outros threads na fila pronta, eles adquirirão o bloqueio antes do thread lançado. Isso é um problema, porque a linha que adquire o bloqueio pode alterar o estado em que a thread pulsada depende. A solução é usar uma condição while dentro da lockinstrução:
@@ -4335,7 +4333,7 @@ class IfYouThinkYouUnderstandVolatile
 }
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/volatile.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/volatile.png" alt="Image" width="400px" />
 </p>
 
 Isso representa um forte argumento para evitar a volatilidade: mesmo se você entender a sutileza neste exemplo, outros desenvolvedores trabalhando no seu código também a entenderão? Uma cerca completa entre cada uma das duas atribuições no Teste1 e Teste2 (ou uma trava) resolve o problema.
@@ -4577,7 +4575,7 @@ Console.WriteLine("Press enter to end the application");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/cancellationtoken.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/cancellationtoken.png" alt="Image" width="400px" />
 </p>
  
 
@@ -4617,7 +4615,7 @@ Console.WriteLine("Press enter to end the application");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/taskcancel.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/taskcancel.png" alt="Image" width="400px" />
 </p>
 
 
@@ -4645,7 +4643,7 @@ cts.Cancel();
 
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/endapp.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/endapp.png" alt="Image" width="400px" />
 </p>
 
  
@@ -4806,7 +4804,7 @@ Ao trabalhar com instruções de controle de fluxo, você trabalhará automatica
 |     false       |     sado como um operador bool para indicar mentira em uma expressão.     |     bool success = false;    |
 
 
-Você pode combinar esses operadores usando os operadores OR (||), AND (&&) e OR exclusivo (^). Esses operadores usam um operando esquerdo e um direito, significando a parte esquerda e direita da expressão. O operador OR retorna true quando um dos dois operandos for true. Se ambos forem falsos, retornará falso. Se ambos forem verdadeiros, ele retornará verdadeiro. O código abaixo mostra um exemplo.
+Você pode combinar esses operadores usando os operadores OR ```(||)```, AND (&&) e OR exclusivo (^). Esses operadores usam um operando esquerdo e um direito, significando a parte esquerda e direita da expressão. O operador OR retorna true quando um dos dois operandos for true. Se ambos forem falsos, retornará falso. Se ambos forem verdadeiros, ele retornará verdadeiro. O código abaixo mostra um exemplo.
 
 ```csharp
 bool x2 = true;
@@ -5025,7 +5023,7 @@ for (int index = 0; index < values.Length; index++)
 Como você pode ver, o loop for consiste em três partes diferentes:
 
 ```csharp
-for (inicial; condição; loop)
+for (inicial; condition; loop)
 ```
 
 
@@ -5320,7 +5318,7 @@ Se a instrução return for usada no bloco try/catch e este try/catch finalmente
 As instruções jump, como break e continue, podem ser usadas em algumas situações. Se possível, você deve evitá-los. Ao refatorar seu código, você pode removê-lo a maior parte do tempo e isso melhora a legibilidade do seu código. A declaração goto é ainda pior. É considerado uma má prática. Embora o C# restrinja a maneira como o operador goto se comporta, como uma diretriz, você deve evitar o uso de goto. Uma área em que o goto é usado está no código gerado, como o código que o compilador gera quando você usa o novo recurso de async/await no C# 5.
 
 **Sumário**
-- Expressões booleanas podem usar vários operadores: ==,! =, <,>, <=,> =,!. Esses operadores podem ser combinados usando AND (&&), OR (||) e XOR (^).
+- Expressões booleanas podem usar vários operadores: ==, !=, <, >, <=, >=, !. Esses operadores podem ser combinados usando AND (&&), OR ```(||)``` e XOR (^).
 - Você pode usar a instrução if-else para executar o código, dependendo de uma condição específica.
 - A instrução switch pode ser usada ao combinar um valor com algumas opções.
 - O loop for pode ser usado ao iterar sobre uma coleção em que você conhece o número de iterações antecipadamente.
@@ -5341,11 +5339,11 @@ Um delegate é um tipo que representa referências aos métodos com lista de par
 
 Delegates são usados para passar métodos como argumentos a outros métodos. Os manipuladores de eventos nada mais são do que métodos chamados por meio de delegates. Ao criar um método personalizado, uma classe como um controle do Windows poderá chamá-lo quando um determinado evento ocorrer. 
 |     Versão             |     Sintaxe          |
-|-------------|----------------|
+|------------------------|----------------------|
 |     C# 1.0          |     Introdução dos   delegates       |
 |     C# 2.0     |     Oferece uma   maneira mais simple   |
-|     C# 2.0 e versões   posteriores    |     Declarados e   instanciados com método anônimo      |
-|     C# 3.0 e versões   posteriores    |     Declarados e   instanciados com expressão lambda    |
+|     C# 2.0 e versões   posteriores   |    Declarados e   instanciados com método anônimo      |
+|     C# 3.0 e versões   posteriores   |    Declarados e   instanciados com expressão lambda    |
 
 ```csharp
 static void Notify(string name)
@@ -5521,7 +5519,7 @@ allMethodsDelegate("MultiCast");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multicast.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multicast.png" alt="Image" width="500px" />
 </p>
 
 
@@ -5593,7 +5591,7 @@ bob.PrintMethods();
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/printmethods.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/printmethods.png" alt="Image" width="500px" />
 </p>
 
 
@@ -6487,7 +6485,7 @@ static void Show()
 
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/delegadoproblem.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/delegadoproblem.png" alt="Image" width="500px" />
 </p>
 
 
@@ -6564,11 +6562,11 @@ Da mesma forma, o evento C# é usado na classe para fornecer notificações aos 
 - As classes que recebem (ou manipulam) os eventos são chamadas de Subscribers
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/publisher.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/publisher.png" alt="Image" width="500px" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribers.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribers.png" alt="Image" width="500px" />
 </p>
 
 
@@ -6680,7 +6678,7 @@ public static void CreateAndRaise_Event()
 }
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/createandraise.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/createandraise.png" alt="Image" width="500px" />
 </p>
 
  
@@ -6858,7 +6856,7 @@ public static void CreateAndRaiseError()
 }
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribercalled.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribercalled.png" alt="Image" width="400px" />
 </p>
 
 
@@ -6963,17 +6961,17 @@ O uso de exceções também gera um leve impacto no desempenho. Como o tempo de 
 
 Quando você precisa lançar uma exceção, é importante saber quais exceções já estão definidas no .NET Framework. Como os desenvolvedores estão familiarizados com essas exceções, eles devem ser usados sempre que possível. Algumas exceções são lançadas apenas pelo tempo de execução. Você não deve usar essas exceções em seu próprio código. A tabela abaixo lista essas exceções.
 |     Nome           |     Descrição               |
-|------------------|----------------------|
+|--------------------|-----------------------------|
 |     ArithmeticException      |     Uma classe base para   outras exceções que ocorrem durante operações aritméticas.    |
 |     ArrayTypeMismatchException     |     Lançado quando você   deseja armazenar um elemento incompatível dentro de uma matriz.    |
-|     DivideByZeroException          |     Lançado quando você   tenta dividir um valor por zero.            |
+|     DivideByZeroException     |    Lançado quando você   tenta dividir um valor por zero.     |
 |     IndexOutOfRangeException       |     Lançado quando você   tenta acessar uma matriz com um índice menor que zero ou maior que o tamanho   da matriz.    |
-|     InvalidCastException   |     Lançado quando você   tenta converter um elemento em um tipo incompatível.       |
+|     InvalidCastException   |     Lançado quando você   tenta converter um elemento em um tipo incompatível.    |
 |     NullReferenceException         |     Lançado quando você   tenta fazer referência a um elemento que é nulo.     |
 |     OutOfMemoryException     |     Lançado ao criar um   novo objeto falha porque o CLR não possui memória suficiente disponível.    |
 |     OverflowException     |     Lançada quando uma   operação aritmética transborda em um contexto verificado.     |
-|     StackOverflowException         |     Lançado quando a   pilha de execução está cheia. Isso pode acontecer em uma operação recursiva   que não sai.      |
-|     TypeInitializationException   |    Lançado quando um   construtor estático lança uma exceção que não é tratada.      |
+|     StackOverflowException   |     Lançado quando a   pilha de execução está cheia. Isso pode acontecer em uma operação recursiva   que não sai.      |
+|     TypeInitializationException   |    Lançado quando um   construtor estático lança uma exceção que não é tratada.    |
 
 Para lidar com uma exceção, você pode usar uma instrução try/catch/finally. 
 
@@ -7005,16 +7003,16 @@ Este código tenta analisar o valor da variável, se o valor não for um número
 
 Você deve evitar usar diretamente a classe base Exception ao capturar e lançar exceções. Em vez disso, você deve tentar usar a exceção mais específica disponível. A tabela abaixo mostra exceções populares no .NET Framework que você pode usar em seus próprios aplicativos.
 |     Nome                           |     Descrição         |
-|------------------------------------|------------------|
-|     Exception                      |     A classe base para   todas as exceções. Tente evitar lançar e capturar essa exceção porque é muito   genérica.     |
-|     ArgumentException              |     Lance essa exceção   quando um argumento para o seu método for inválido.       |
+|------------------------------------|-----------------------|
+|    Exception    |     A classe base para   todas as exceções. Tente evitar lançar e capturar essa exceção porque é muito   genérica.     |
+|     ArgumentException   |     Lance essa exceção   quando um argumento para o seu método for inválido.  |
 |     ArgumentNullException          |     Uma forma   especializada de ArgumentException que você pode lançar quando um de seus   argumentos for nulo e isso não for permitido.  |
 |     ArgumentOutOfRangeException    |     Uma forma   especializada de ArgumentException que você pode lançar quando um argumento   estiver fora do intervalo permitido de valores.    |
-|     FormatException    |     Lance essa exceção   quando um argumento não tiver um formato válido.      |
-|     InvalidOperationException      |     Lance essa exceção   quando um método for chamado inválido para o estado atual do objeto.               |
-|     NotImplementedException        |     Essa exceção é   frequentemente usada no código gerado, em que um método ainda não foi   implementado.           |
-|     NotSupportedException          |     Lance essa exceção quando   um método for invocado que você não oferece suporte.       |
-|     ObjectDisposedException        |     Lance quando um   usuário da sua classe tenta acessar métodos quando Dispose já foi chamado.           |
+|  FormatException   |   Lance essa exceção   quando um argumento não tiver um formato válido.  |
+|     InvalidOperationException  |   Lance essa exceção   quando um método for chamado inválido para o estado atual do objeto.    |
+|     NotImplementedException        |     Essa exceção é   frequentemente usada no código gerado, em que um método ainda não foi implementado.  |
+|     NotSupportedException   |     Lance essa exceção quando   um método for invocado que você não oferece suporte.       |
+|     ObjectDisposedException   |     Lance quando um   usuário da sua classe tenta acessar métodos quando Dispose já foi chamado.  |
 
 O exemplo abaixo mostra um exemplo de captura de FormatException.
 
@@ -7033,16 +7031,16 @@ catch (FormatException)
 
 
 Se você incluir o ExceptionType, a variável é uma variável da classe ExceptionType que fornece informações sobre a exceção. Todas as classes de exceção fornecem uma propriedade Message que fornece informações textuais sobre a exceção. Às vezes, você pode exibir essa mensagem para o usuário, mas geralmente a mensagem é técnica o suficiente para ser confusa para os usuários. A tabela abaixo lista as propriedades da classe base System.Exception.
-|     Propriedade       |     Descrição         |
+|     Propriedade       |     Descrição            |
 |-----------------------|--------------------------|
-|     StackTrace        |     Uma sequência que   descreve todos os métodos atualmente em execução. Isso fornece uma maneira de   rastrear qual método gerou a exceção e como esse método foi alcançado.     |
-|     InnerException    |     Quando uma nova   exceção é lançada porque ocorreu outra exceção, as duas são vinculadas à   propriedade InnerException.                       |
-|     Message           |     Uma mensagem   (esperançosamente) amigável para humanos que descreve a exceção.                  |
-|     HelpLink          |     Um nome de recurso   uniforme (URN) ou localizador de recurso uniforme (URL) que aponta para um   arquivo de ajuda.                                    |
-|     HResult           |     Um valor de 32 bits   que descreve a gravidade de um erro, a área na qual a exceção ocorreu e um   número exclusivo para a exceção Esse valor é usado apenas ao cruzar limites   gerenciados e nativos.                                |
-|     Source            |     O nome do aplicativo   que causou o erro. Se a Origem não estiver definida explicitamente, o nome do   assembly será usado.               |
-|     TargetSite        |     Contém o nome do   método que causou a exceção. Se esses dados não estiverem disponíveis, a   propriedade será nula.                                 |
-|     Data              |     Um dicionário de   pares de chave/valor que você pode usar para armazenar dados extras para sua   exceção. Esses dados podem ser lidos por outros blocos de captura e podem ser   usados para controlar o processamento da exceção.    |
+|     StackTrace        |     Uma sequência que descreve todos os métodos atualmente em execução. Isso fornece uma maneira de rastrear qual método gerou a exceção e como esse método foi alcançado.  |
+|     InnerException    |     Quando uma nova exceção é lançada porque ocorreu outra exceção, as duas são vinculadas à propriedade InnerException.   |
+|     Message    |     Uma mensagem (esperançosamente) amigável para humanos que descreve a exceção.   |
+|     HelpLink          |     Um nome de recurso uniforme (URN) ou localizador de recurso uniforme (URL) que aponta para um arquivo de ajuda.                                    |
+|     HResult           |     Um valor de 32 bits que descreve a gravidade de um erro, a área na qual a exceção ocorreu e um número exclusivo para a exceção Esse valor é usado apenas ao cruzar limites   gerenciados e nativos.  |
+|     Source            |     O nome do aplicativo que causou o erro. Se a Origem não estiver definida explicitamente, o nome do   assembly será usado.               |
+|     TargetSite        |     Contém o nome do método que causou a exceção. Se esses dados não estiverem disponíveis, a propriedade será nula.                                 |
+|     Data              |     Um dicionário de pares de chave/valor que você pode usar para armazenar dados extras para sua exceção. Esses dados podem ser lidos por outros blocos de captura e podem ser usados para controlar o processamento da exceção.    |
 
 Ao usar um bloco catch, você pode usar um tipo de exceção e um identificador nomeado. Dessa forma, você efetivamente cria uma variável que manterá a exceção para você, para poder inspecionar suas propriedades. O exemplo abaixo mostra como fazer isso.
 
@@ -7409,7 +7407,7 @@ finally
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/programcomplete .png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/programcomplete.png" alt="Image" width="100%" />
 </p>
 
 
