@@ -1890,7 +1890,7 @@ tsk2.Wait();
 No exemplo acima, o segundo parâmetro do método tsk1.ContinueWith (TaskContinuationOptions) foi especificado com OnlyOnFaulted, que diz que o tsk2 só pode ser executado se o tsk1 lançou uma exceção sem tratamento, caso contrário, ignorará a execução do tsk2.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threwexception.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/exception.png" alt="Image" width="100%" />
 </p>
  
 Da mesma forma, podemos especificar TaskContinuationOptions com outras enumerações, ou seja, OnlyOnCanceled, NotOnFaulted, etc. A tarefa retornada não será agendada para execução até que a tarefa atual seja concluída. Se os critérios de continuação especificados por meio do parâmetro continuationOptions não forem atendidos, a tarefa de continuação será cancelada em vez de agendada. Dessa forma, você pode adicionar diferentes métodos de continuação que serão executados quando ocorrer uma exceção, a tarefa for cancelada ou a tarefa for concluída com êxito. O código abaixo mostra como fazer isso.
@@ -2298,12 +2298,13 @@ Da lista acima, o ConcurrentDictionary pode ser usado como uma coleção de uso 
 ### ```ConcurrentDictionary<TKey, T>```
 
 Um ConcurrentDictionary armazena pares de chave e valor de maneira segura para threads. Você pode usar métodos para adicionar e remover itens e atualizar itens no local, se existirem. Ao trabalhar com um ConcurrentDictionary, você tem métodos que podem adicionar, obter e atualizar itens atomicamente. Uma operação atômica significa que será iniciada e finalizada como uma única etapa sem que outros threads interfiram. A tabela abaixo mostra os métodos que você pode usar em um ConcurrentDictionary.
-|     Método         |     Descrição                      |
-|--------------------|------------------------------------|
-|     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.  |
-|     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.  |
-|     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.   |
-|     GetOrAdd       |     obtém o valor atual de um item, se estiver disponível; caso   contrário, ele adiciona o novo valor usando um método de fábrica.     |
+|     Método         |     Descrição                                                                                                                                                                |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
+|     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.                                                                                             |
+|     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.                                                                     |
+|     GetOrAdd       |     obtém o valor atual de um item, se estiver disponível; caso   contrário, ele adiciona o novo valor usando um método de fábrica.                                          |
+
 
 ```csharp
 var dict = new ConcurrentDictionary<string, int>();
