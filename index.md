@@ -3740,7 +3740,7 @@ using (ProducerConsumerQueue q = new ProducerConsumerQueue())
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/producerconsumerqueue.png" alt="Image" width="500px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/producerconsumerqueue.png" alt="Image" width="400px" />
 </p>
 
  
@@ -5344,6 +5344,7 @@ Um evento pode ser usado para fornecer notificações. Você pode se inscrever e
 Um delegate é um tipo que representa referências aos métodos com lista de parâmetros e tipo de retorno específicos. Um delegate é um tipo que encapsula com segurança um método, semelhante a um ponteiro de função em C e C++. No entanto, ao contrário dos ponteiros de função de C, delegates são orientados a objeto, fortemente tipados e seguros. Ao instanciar um delegate, você pode associar sua instância a qualquer método com assinatura e tipo de retorno compatíveis. Você pode invocar (ou chamar) o método através da instância do delegate.
 
 Delegates são usados para passar métodos como argumentos a outros métodos. Os manipuladores de eventos nada mais são do que métodos chamados por meio de delegates. Ao criar um método personalizado, uma classe como um controle do Windows poderá chamá-lo quando um determinado evento ocorrer. 
+
 |     Versão             |     Sintaxe          |
 |------------------------|----------------------|
 |     C# 1.0          |     Introdução dos   delegates       |
@@ -6684,7 +6685,7 @@ public static void CreateAndRaise_Event()
 }
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/createandraise.png" alt="Image" width="500px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/createandraise.png" alt="Image" width="400px" />
 </p>
 
  
@@ -6862,7 +6863,7 @@ public static void CreateAndRaiseError()
 }
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribercalled.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribercalled.png" alt="Image" width="300px" />
 </p>
 
 
@@ -6966,6 +6967,7 @@ Você não deve lançar exceções ao lidar com as situações esperadas. Você 
 O uso de exceções também gera um leve impacto no desempenho. Como o tempo de execução precisa pesquisar todos os blocos externos de captura até encontrar um bloco correspondente e, quando não for, deve procurar se um depurador está conectado, leva um pouco mais de tempo para manipular. Quando ocorrer uma situação real inesperada que encerre o aplicativo, isso não será um problema. Mas para o fluxo regular do programa, isso deve ser evitado. Em vez disso, você deve ter a validação adequada e não confiar apenas em exceções.
 
 Quando você precisa lançar uma exceção, é importante saber quais exceções já estão definidas no .NET Framework. Como os desenvolvedores estão familiarizados com essas exceções, eles devem ser usados sempre que possível. Algumas exceções são lançadas apenas pelo tempo de execução. Você não deve usar essas exceções em seu próprio código. A tabela abaixo lista essas exceções.
+
 |     Nome           |     Descrição               |
 |--------------------|-----------------------------|
 |     ArithmeticException      |     Uma classe base para   outras exceções que ocorrem durante operações aritméticas.    |
@@ -7008,6 +7010,7 @@ catch
 Este código tenta analisar o valor da variável, se o valor não for um número inteiro, a instrução int.Parse emitirá uma exceção e a seção catch exibirá uma mensagem. Nesse caso, apenas uma mensagem é apropriada, independentemente da exceção lançada. Após a instrução try, você pode adicionar vários blocos de catch diferentes.
 
 Você deve evitar usar diretamente a classe base Exception ao capturar e lançar exceções. Em vez disso, você deve tentar usar a exceção mais específica disponível. A tabela abaixo mostra exceções populares no .NET Framework que você pode usar em seus próprios aplicativos.
+
 |     Nome                           |     Descrição         |
 |------------------------------------|-----------------------|
 |    Exception    |     A classe base para   todas as exceções. Tente evitar lançar e capturar essa exceção porque é muito   genérica.     |
@@ -7037,6 +7040,7 @@ catch (FormatException)
 
 
 Se você incluir o ExceptionType, a variável é uma variável da classe ExceptionType que fornece informações sobre a exceção. Todas as classes de exceção fornecem uma propriedade Message que fornece informações textuais sobre a exceção. Às vezes, você pode exibir essa mensagem para o usuário, mas geralmente a mensagem é técnica o suficiente para ser confusa para os usuários. A tabela abaixo lista as propriedades da classe base System.Exception.
+
 |     Propriedade       |     Descrição            |
 |-----------------------|--------------------------|
 |     StackTrace        |     Uma sequência que descreve todos os métodos atualmente em execução. Isso fornece uma maneira de rastrear qual método gerou a exceção e como esse método foi alcançado.  |
@@ -7413,7 +7417,7 @@ finally
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/programcomplete.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/programcomplete.png" alt="Image" width="400px" />
 </p>
 
 
