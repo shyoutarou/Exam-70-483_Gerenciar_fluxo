@@ -1554,17 +1554,17 @@ O método Wait bloqueia a execução de um thread de chamada até que a execuç�
 |     Metodos                        |     Descrição                                                                                                                                                                                                                 |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     Wait()                         |     Bloqueia o thread de chamada até que a tarefa   especificada conclua sua execução.                                                                                                                                        |
-|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     myTask.Wait();                                                                                                                                        |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(1000);}); //1 Sec     <br> myTask.Wait();                                                                                                                                        |
 |     Wait     (milissegundos)       |     Bloqueia a execução de um thread de chamada até a   tarefa especificada terminar ou um intervalo de tempo limite decorrido.                                                                                               |
-|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec     myTask.Wait(1000);// wait for 1 sec     myTask2.Wait(1000);// wait for 1 sec    |
+|                                    |     Task myTask = Task.Run(() => {   Thread.Sleep(2000);}); //2 Sec     <br> Task myTask2 = Task.Run(() => {   Thread.Sleep(500);}); //1/2 Sec   <br>  myTask.Wait(1000);// wait for 1 sec  <br>   myTask2.Wait(1000);// wait for 1 sec    |
 |     WaitAll()                      |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas concluam sua execução. Todos os objetos de   tarefa devem ser referenciados em uma única matriz.                                     |
-|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks);              |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(100); }); //1/10 Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAll(allTasks);              |
 |     WaitAll     (milissegundos)    |     Bloqueia a execução de um thread de chamada até   que todas as tarefas especificadas terminem ou que um intervalo de tempo   limite termine.                                                                              |
-|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAll(allTasks, 1200);          |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };  <br>   Task.WaitAll(allTasks, 1200);          |
 |     WaitAny()                      |     Bloqueia a execução de um thread de chamada até   que a qualquer  tarefa de uma coleção   de tarefas conclua sua execução.                                                                                                |
-|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks);                |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(1000); }); //1 Sec  <br>   Task myTask2 = Task.Run(() => {   Thread.Sleep(500); }); //1/2 Sec   <br>  Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks);                |
 |     WaitAny (milissegundos)        |     Bloqueia a execução de um thread de chamada até   que qualquer tarefa de uma coleção de tarefas seja concluída ou que um   intervalo de tempo limite termine.                                                             |
-|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec     Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec     Task[] allTasks = { tsk1, tsk2 };     Task.WaitAny(allTasks, 1200);          |
+|                                    |     Task myTask1 = Task.Run(() => {   Thread.Sleep(500); }); //1/w Sec   <br>  Task myTask2 = Task.Run(() => {   Thread.Sleep(2000); }); //2 Sec  <br>   Task[] allTasks = { tsk1, tsk2 };   <br>  Task.WaitAny(allTasks, 1200);          |
 
 
 É comum para uma operação assíncrona, na conclusão, invocar uma segunda operação e passar os dados para ela. Na biblioteca Task.Parallel, a mesma funcionalidade é fornecida por tarefas de continuação. Uma tarefa de continuação é uma tarefa assíncrona que é invocada por outra tarefa (conhecido como a antecedente), quando ela termina.
@@ -1582,8 +1582,9 @@ A seguir, estão quatro cenários principais:
 ### Parallel.Invoke
 
 Conforme discutido, as tarefas são abstrações que representam operações assíncronas executadas por threads. Embora sejam mais leves que os threads, às vezes você só precisa de uma abstração melhor para realizar esse tipo de trabalho multitarefa. É por isso que a Microsoft criou a classe Parallel. Esta classe faz parte do namespace System.Threading.Tasks. Esta classe possui três métodos estáticos, conforme descrito na tabela abaixo.
-|     Método     |     Descrição                                                                                                                                                                                                                                       |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+|     Método     |    Descrição               |
+|----------------|--------------------------------------------------------|
 |     For        |     Semelhante ao loop for, mas as iterações podem   ser executadas em paralelo. Existem 12 sobrecargas para esse método, algumas   delas aceitando um parâmetro ParallelOptions, outras usando ParallelLoopState   para controlar o loop.          |
 |     ForEach    |     Semelhante a um loop foreach, mas as iterações   podem ser executadas em paralelo. Existem 20 sobrecargas para esse método,   algumas delas aceitando um parâmetro ParallelOptions, outras usando   ParallelLoopState para controlar o loop.    |
 |     Invoke     |     Este método tentará executar as ações fornecidas   em paralelo. Existem duas sobrecargas para esse método, ambas aceitando uma   matriz de delegados Actions como execute. Uma das sobrecargas aceita um   parâmetro ParallelOptions            |
@@ -1746,7 +1747,7 @@ continuacao.Wait();
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tsktsk.png" alt="Image" width="400px" />
 </p>
 
 O método tarefaFactory.ContinueWith executa e retorna uma nova tarefa quando o tarefaFactory concluir sua execução. Aqui o parâmetro antecedent do método ContinueWith é a referência de tarefaFactory. Esse antecedent pode ser utilizado no corpo de uma expressão lambda. Por exemplo, se tarefaFactory retornar um valor, usando antecedent o valor de retorno poderá ser usado no corpo de uma expressão lambda.
@@ -1780,7 +1781,7 @@ Console.WriteLine(continuacao.Result + " e Amanhã é " + tarefaB.Result);
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/thursday.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/thursday.png" alt="Image" width="400px" />
 </p>
 
 
@@ -1819,7 +1820,7 @@ tarefas[1].Start();
 continuation.Wait();
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/continuation.png" alt="Image" width="400px" />
 </p>
 
 
@@ -1856,14 +1857,17 @@ static void Metodos_ContinueWhenAll()
 ### TaskContinuationOption
 
 TaskContinuationOption é uma enumeração usada para especificar quando uma tarefa em uma cadeia contínua é executada. A seguir, estão algumas das enumerações mais comuns para TaskContinuationOption:
-|     Opções                   |     Descrição                                                                                                                                                                                         |
-|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+
+|     Opções                   |     Descrição                   |
+|------------------------------|---------------------------------|
 |     OnlyOnFaulted            |     Especifica que a tarefa de continuação deve ser   agendada apenas se seu antecedente lançou uma exceção não tratada.                                                                              |
 |     NotOnFaulted             |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não lançar uma exceção não tratada.                                                                                 |
 |     OnlyOnCanceled           |     Especifica que a continuação deve ser agendada   apenas se seu antecedente foi cancelado. Uma tarefa será cancelada se sua   propriedade Task.Status após a conclusão for TaskStatus.Canceled.    |
 |     NotOnCanceled            |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não tiver sido cancelado.                                                                                           |
 |     OnlyOnRanToCompletion    |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente for concluído.                                                                                                      |
 |     NotOnRanToCompletion     |     Especifica que a tarefa de continuação deve ser   agendada se seu antecedente não for executado até a conclusão.                                                                                  |
+                                                                                 |
 
 ```csharp
 Task<string> tsk1 = Task.Run(() =>
@@ -1990,7 +1994,7 @@ Task.WaitAll(listC.ToArray());
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/chamadas.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/chamadas.png" alt="Image" width="200px" />
 </p>
  
 Ao usar as palavras-chaves async and await, lembre-se disso. Apenas agrupar todas as operações em uma tarefa e aguardá-las não fará com que seu aplicativo tenha um desempenho melhor. No entanto, poderia melhorar a capacidade de resposta, o que é muito importante nos aplicativos clientes.
@@ -2036,7 +2040,7 @@ for (int i = 0; i < 100; i++)
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tipoderetorno.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/tipoderetorno.png" alt="Image" width="500px" />
 </p>
  
 
@@ -2217,13 +2221,14 @@ No entanto, desde que o modo de acesso não sequencial tem de armazenar os dados
 ### PLINQ - Parallel Language Integrated Query
 
 PLINQ é a versão paralela do LINQ. Você pode usá-lo em objetos para potencialmente transformar uma consulta seqüencial em paralela sobre todos os tipos de dados. Isso significa que as consultas podem ser executadas em vários threads, particionando a fonte de dados em threads. Cada threadé executado em threads de trabalho separados em paralelo em vários processadores. Os métodos de extensão para usar o PLINQ são definidos na classe System.Linq.ParallelEnumerable. Versões paralelas de operadores LINQ, como Where, Select, SelectMany, GroupBy, Join, OrderBy, Skip e Take, podem ser usadas. Os seguintes métodos comuns para ajudar no paralelismo:
+
 |     Método             |     Descrição                                                          |
 |------------------------|------------------------------------------------------------------------|
-|     AsParallel ()      |     Divide a fonte de dados em threads em vários   threads             |
-|     AsSequential ()    |     Especifique que a consulta deve ser executada   sequencialmente    |
-|     AsOrdered ()       |     Especifique que a consulta deve preservar a ordem   dos dados      |
+|     AsParallel()      |     Divide a fonte de dados em threads em vários   threads             |
+|     AsSequential()    |     Especifique que a consulta deve ser executada   sequencialmente    |
+|     AsOrdered()       |     Especifique que a consulta deve preservar a ordem   dos dados      |
 |     AsUnordered()      |     a consulta não deve preservar a ordem dos dados                    |
-|     ForAll ()          |     Processa o resultado em paralelo                                   |
+|     ForAll()          |     Processa o resultado em paralelo                                   |
 
 O tempo de execução determina se faz sentido transformar sua consulta em paralela. Ao fazer isso, ele gera objetos Task e começa a executá-los. Se você deseja forçar o PLINQ a uma consulta paralela, pode usar o método WithExecutionMode e especificar que ele sempre deve executar a consulta em paralelo.
 
@@ -2293,8 +2298,8 @@ Da lista acima, o ConcurrentDictionary pode ser usado como uma coleção de uso 
 ### ```ConcurrentDictionary<TKey, T>```
 
 Um ConcurrentDictionary armazena pares de chave e valor de maneira segura para threads. Você pode usar métodos para adicionar e remover itens e atualizar itens no local, se existirem. Ao trabalhar com um ConcurrentDictionary, você tem métodos que podem adicionar, obter e atualizar itens atomicamente. Uma operação atômica significa que será iniciada e finalizada como uma única etapa sem que outros threads interfiram. A tabela abaixo mostra os métodos que você pode usar em um ConcurrentDictionary.
-|     Método         |     Descrição                                                                                                                                                                |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Método         |     Descrição                                            |
+|--------------------|--------------------------------------------|
 |     TryAdd         |      Se outro thread tentar   adicionar um novo valor de chave que já foi adicionado por outro thread, ele   ignora a iteração e move o controle para a próxima iteração.    |
 |     TryUpdate      |     Verifica se o valor atual é igual ao valor existente antes de   atualizá-lo.                                                                                             |
 |     AddOrUpdate    |     garante que um item seja adicionado se não estiver lá e atualizado   para um novo valor, se estiver.                                                                     |
@@ -2358,7 +2363,7 @@ foreach (var item in dic)
 Console.WriteLine("Program ran succussfully");
 ```
 
-**```BlockingCollection <T>```**
+### ```BlockingCollection<T>```
 
 Esta coleção é segura para threads para adicionar e remover dados. A remoção de um item da coleção pode ser bloqueada até que os dados estejam disponíveis. A adição de dados é rápida, mas você pode definir um limite máximo. Se esse limite for atingido, a adição de um item bloqueará o thread de chamada até que haja espaço. BlockingCollection é, na realidade, um invólucro em torno de outros tipos de coleção. Se você não fornecer instruções específicas, ele usará o ConcurrentQueue por padrão.
 
@@ -2438,7 +2443,7 @@ Task read = Task.Run(() =>
 ```
 
 
-**```ConcurrentBag<T>```** 
+### ```ConcurrentBag<T>``` 
 
 Um ConcurrentBag é apenas um saco de itens. Permite duplicatas e não possui uma ordem específica. Os métodos importantes são Add, TryTake e TryPeek.
 
@@ -2474,7 +2479,7 @@ Task.Run(() =>
 
 Esse código exibe apenas 42 porque o outro valor é adicionado após o início da iteração sobre a bolsa.
 
-### ConcurrentQueue<T>
+### ```ConcurrentQueue<T>```
 
 Uma fila é uma coleção FIFO (primeiro a entrar, primeiro a sair). ConcurrentQueue oferece os métodos Enqueue e TryDequeue para adicionar e remover itens da coleção. Ele também possui um método TryPeek e implementa IEnumerable criando um instantâneo dos dados. A código abaixo mostra como usar um ConcurrentQueue.
 
@@ -2555,6 +2560,7 @@ A seguir iremos avaliar prós e contras de diferentes abordagens, começaremos c
 
 No exemplo abaixo, a fila genérica é usada para armazenar informações do pedido. Além disso, o método GetOrders é chamado na maneira de sincronização regular.
 
+```csharp
 private static void GetOrders(string custName, Queue<string> phoneOrders)
 {
     for (int i = 0; i < 3; i++)
@@ -2573,14 +2579,17 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Como o método GetOrders é chamado em sincronia ou um após o outro, a saída também é impressa de maneira semelhante (ou seja, primeiro Prakash e depois Aradhana).
  
 
-Fila regular com mais de um thread
+### Fila regular com mais de um thread
 
 Agora, vamos fazer a pequena alteração no código anterior, tornando-o assíncrono. Para isso, usamos uma tarefa que chamará GetOrders por dois threads diferentes.
 
+```csharp
 var phoneOrders = new Queue<string>();
 Task t1 = Task.Run(() => GetOrders("Prakash", phoneOrders));
 Task t2 = Task.Run(() => GetOrders("Aradhana", phoneOrders));
@@ -2590,15 +2599,18 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Ocorre uma exceção porque o método Enqueue da Fila não foi projetado para funcionar com mais de um thread paralelamente.O Multi-threading com a fila regular é imprevisível. Pode funcionar em alguns casos, mas se você tentar várias vezes, provavelmente receberá uma exceção, como acima.
  
  
 
-Fila regular com bloqueio manual e mais de um thread
+### Fila regular com bloqueio manual e mais de um thread
 
 A solução é ter algum tipo de sincronização de threads, manualmente ou fora da caixa. A seguir, vamos ver a maneira manual com uso da palavra-chave de lock. 
 
+```csharp
 static object lockObj = new object();
 private static void GetOrdersWithLock(string custName, Queue<string> phoneOrders)
 {
@@ -2622,13 +2634,16 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Portanto, não há exceção neste momento, depois de colocar o bloqueio no método Enqueue Mas e se o Enqueue for chamado várias vezes, você teria que usar a instrução lock em várias partes.
 
-ConcurrentQueue com mais de um thread
+### ConcurrentQueue com mais de um thread
 
 Como você pode ver, para gerenciar a simultaneidade, não precisamos mais de bloqueio manual. É mais útil em situações em que, em um ambiente multithread, estamos lidando com métodos de fila em vários locais; e, colocar o bloqueio manual em todo lugar pode tornando um código impossível de manter.
 
+```csharp
 private static void GetOrders(string custName, object phoneOrders)
 {
     for (int i = 0; i < 3; i++)
@@ -2652,6 +2667,8 @@ foreach (var order in phoneOrders)
 {
     Console.WriteLine("Phone Order: {0}", order);
 }
+```
+
 
 Os métodos mais usados do ConcurrentQueue são:
 - TryPeek: que buscará o elemento desde o início da fila sem removê-lo
@@ -2659,6 +2676,7 @@ Os métodos mais usados do ConcurrentQueue são:
 
 Eles definem o elemento excluído na variável out e retorna true, caso contrário, retorna false. Vamos dar uma olhada no código e como usá-lo.
 
+```csharp
 Console.WriteLine("Total orders before Dequeue/TryPeek are: {0}", phoneOrders.Count);
                 
 string myOrder;
@@ -2674,11 +2692,14 @@ else
 Console.WriteLine("Total orders after Dequeue/TryPeek are: {0}", phoneOrders.Count);
 
  
+```
 
-ConcurrentStack<T>
+
+### ```ConcurrentStack<T>```
 
 As implementações de ConcurrentStack são similares ao do ConcurrentQueue, com a diferença que  a coleção ConcurrentStack é uma pilha LIFO (último a entrar, primeiro a sair). O ConcurrentStack possui dois métodos importantes: Push e TryPop. Push é usado para adicionar um item à pilha; O TryPop tenta obter um item da pilha. Você nunca pode ter certeza se há itens na pilha porque vários threads podem estar acessando sua coleção ao mesmo tempo. Você também pode adicionar e remover vários itens de uma vez usando PushRange e TryPopRange. Quando você enumera a coleção, é tirado um instantâneo. O exemplo a seguir mostra como esses métodos funcionam.
 
+```csharp
 ConcurrentStack<int> stack = new ConcurrentStack<int>();
 stack.Push(42);
 int result;
@@ -2689,9 +2710,12 @@ int[] values = new int[2];
 stack.TryPopRange(values);
 foreach (int i in values)
     Console.WriteLine(i);
+```
+
 
 Uma impementação semelhante da ConcurrentQueue<T> que vimos em exemplo anterior. Primeiro, uma pilha é inicializada e preenchida com todos os valores inteiros entre um e um milhão. Todo valor é então retirado da pilha e somado. O processo continua até que uma exceção seja lançada quando a pilha estiver esgotada. Devemos esperar que o total final seja de 500.000.500.000. No entanto, estamos usando duas tarefas paralelas para processar a pilha e a pilha básica <T> não é segura para threads. Isso leva a condições de corrida e a um resultado incorreto ao usar um computador com mais de um núcleo de processador.
 
+```csharp
 IEnumerable<int> numbers = Enumerable.Range(1, 1000000);
 Stack<int> _stack = new Stack<int>(numbers);
 
@@ -2717,9 +2741,12 @@ Task task2 = Task.Run(() =>
 Task.WaitAll(task1, task2);
 
 Console.WriteLine("Total: {0}", _total);
+```
+
  
 Como no exemplo do artigo ConcurrentQueue <T>, você pode resolver esse problema com a instrução lock. No entanto, a classe ConcurrentStack <T> torna muito mais simples.
 
+```csharp
 IEnumerable<int> numbers = Enumerable.Range(1, 1000000);
 ConcurrentQueue<int> _queued = new ConcurrentQueue<int>(numbers);
 long _total = 0;
@@ -2744,20 +2771,24 @@ Task task2 = Task.Run(() =>
 Task.WaitAll(task1, task2);
 
 Console.WriteLine("Total: {0}", _total); // Total: 499933914565
+```
 
-Interface  IProducerConsumerCollection<T> 
+
+### ```Interface  IProducerConsumerCollection<T>```
 
 Define métodos para manipular coleções thread-safe destinadas ao uso de produtor/consumidor. Essa interface fornece uma representação unificada de coleções de produtor/consumidor para que abstrações de níveis mais altos, como o BlockingCollection<T>, possam usar a coleção como o mecanismo de armazenamento subjacente.
 
 Com exceção da classe ConcurrentDictionary, todas as classes de coleção simultânea implantadas pela Microsoft implementam a interface IProducerConsumerCollection. Essa interface requer uma classe que a implemente para fornecer os métodos abaixo:
-Método	Descrição
-CopyTo	Copia os elementos do objeto IProducerConsumerCollection em uma matriz, iniciando no local especificado.
-ToArray	Retorna uma nova matriz que contém todos os elementos no IProducerConsumerCollection.
-TryAdd	Tenta adicionar um objeto ao IProducerConsumerCollection.
-TryTake	Tenta remover e retornar um objeto do IProducerConsumerCollection.
+|     Método     |     Descrição                                  |
+|----------------|----------------------------------------------------------------|
+|     CopyTo     |     Copia os elementos do objeto   IProducerConsumerCollection em uma matriz, iniciando no local especificado.    |
+|     ToArray    |     Retorna uma nova matriz que contém todos os   elementos no IProducerConsumerCollection.                       |
+|     TryAdd     |     Tenta adicionar um objeto ao   IProducerConsumerCollection.                                                   |
+|     TryTake    |     Tenta remover e retornar um objeto do   IProducerConsumerCollection.                                          |
 
 O exemplo a seguir mostra uma estrutura de dados de pilha que implementa a interface: 
 
+```csharp
 public class SafeStack<T> : IProducerConsumerCollection<T>
 {
     // Used for enforcing thread-safety
@@ -2856,10 +2887,11 @@ IProducerConsumerCollection<int> ipcc = (IProducerConsumerCollection<int>)stack;
 stack.Push(10); Console.WriteLine("Pushed 10");
 ipcc.TryAdd(20); Console.WriteLine("IPCC.TryAdded 20");
 stack.Push(15); Console.WriteLine("Pushed 15");
- 
+```
 
-Gerenciar multithreading 
-- Sincronizar recursos; implementar bloqueio; cancelar uma tarefa de execução longa; implementar métodos thread-safe para manipular condições de corrida
+
+## Gerenciar multithreading 
+- **Sincronizar recursos; implementar bloqueio; cancelar uma tarefa de execução longa; implementar métodos thread-safe para manipular condições de corrida**
 
 Embora o multithreading possa oferecer muitas vantagens, não é fácil escrever um aplicativo multithread. Podem ocorrer problemas quando threads diferentes acessam alguns dados compartilhados, tais como:
 - Não é tão fácil de seguir e entender.
@@ -2869,12 +2901,14 @@ Embora o multithreading possa oferecer muitas vantagens, não é fácil escrever
 
 Como afirmado anteriormente, um dos problemas mais comuns é chamado de condição de corrida. Isso acontece quando dois threads tentam atualizar os mesmos dados. O que deve acontecer quando ambos tentam mudar algo ao mesmo tempo? Para fazer isso funcionar com sucesso, é importante sincronizar recursos.
 
-SINCRONIZAÇÃO DE VARIÁVEIS NO MULTITHREADING
+### SINCRONIZAÇÃO DE VARIÁVEIS NO MULTITHREADING
 
 Em um ambiente multithreading, a mesma variável pode ser acessada por dois ou mais threads. Se a operação executada em uma variável compartilhada for atômica ou segura para threads, ela produzirá um resultado preciso. Se a operação não for atômica ou não for segura para threads, ela produzirá resultados imprecisos.
 
 Na operação atômica, apenas um único thread de cada vez pode executar uma única instrução e produzir resultados precisos; enquanto, em uma operação não atômica, mais de um thread está acessando e manipulando o valor de uma variável compartilhada, o que produz um resultado impreciso (por exemplo, se um thread está lendo um valor e o outro thread ao mesmo tempo está editando isto).
 
+
+```csharp
 int num = 0;
 int length = 500000;
 //Run on separate thread of threadpool
@@ -2892,45 +2926,47 @@ for (int i = 0; i < length; i++)
 }
 tsk.Wait();
 Console.WriteLine(num); //-6674 OU o OU 655
+```
 
 O trecho de código acima fornece resultados imprecisos porque dois threads estão acessando e manipulando o valor de "num" ao mesmo tempo. A declaração "num = num + 1;" é realmente uma combinação de mais de uma declaração; primeiro ele lerá o valor atual de "num", depois adiciona ou subtrai 1 do seu valor atual e o atribuirá a "num".
 
 Imagine se a Main thread leu o valor de num = 6, mas o outro thread leu o valor de num = 3. Quando a Main thread diminui o valor de "num", ela se torna 5. Mas o outro thread já leu o valor de num = 3; quando incrementado, o valor de num torna-se "4", o que é totalmente errado. Isso ocorre porque a operação não é atômica. Consiste em uma leitura e uma gravação que acontecem em momentos diferentes. É por isso que o acesso aos dados com os quais você trabalha precisa ser sincronizado, para que você possa prever com segurança como seus dados são afetados.
 
 As construções de sincronização podem ser divididas em quatro categorias:
-1.	Métodos de bloqueio simples
+1.	**Métodos de bloqueio simples**
 Eles aguardam a conclusão de outro thread ou o período de tempo decorrido. Os métodos são: 
-- Thread.Sleep
-- Thread.Join
-- Task.Wait/WaitAll
-2.	Construções de bloqueio (locks)
+     - **Thread.Sleep**
+     - **Thread.Join**
+     - **Task.Wait/WaitAll**
+2.	**Construções de bloqueio (locks)**
 Isso limita o número de threads que podem executar alguma atividade ou executar uma seção de código por vez. Construções de bloqueio exclusivas são as mais comuns - elas permitem apenas um thread de cada vez e permitem que os threads concorrentes acessem dados comuns sem interferir entre si. As construções de bloqueio exclusivas padrão são:
-- Palavra-chave lock 
-- Monitor (Enter/Exit)
-- Mutex 
-- SpinLock
+     - **Palavra-chave lock**
+     - **Monitor (Enter/Exit)**
+     - **Mutex**
+     - **SpinLock**
 As construções de bloqueio não-exclusivas são: 
-- Semaphore/SemaphoreSlim (introduced in Framework 4.0)
-- ReaderWriterLockSlim 
-3.	Construções de sinalização
+     - **Semaphore/SemaphoreSlim (introduced in Framework 4.0)**
+     - **ReaderWriterLockSlim**
+3.	**Construções de sinalização**
 Isso permite que um thread pause até receber uma notificação de outro thread, evitando a necessidade de pesquisas ineficientes. Existem dois dispositivos de sinalização comumente usados: 
-- EventWaitHandle (AutoResetEvent, ManualResetEvent)
-- Monitor (métodos Wait/Pulse/PulseAll) 
+     - **EventWaitHandle (AutoResetEvent, ManualResetEvent)**
+     - **Monitor (métodos Wait/Pulse/PulseAll)** 
 No Framework 4.0 apresenta as classes:
-- CountdownEvent 
-- Barrier
-4.	Construções de sincronização sem bloqueio
+     - **CountdownEvent** 
+     - **Barrier**
+4.	**Construções de sincronização sem bloqueio**
 Eles protegem o acesso a um campo comum, chamando as primitivas do processador. O CLR e o C# fornecem as seguintes construções sem bloqueio: 
-- Thread.MemoryBarrier, 
-- Thread.VolatileRead, 
-- Thread.VolatileWrite
-- Palavra-chave Volatile 
-- Interlock
+     - **Thread.MemoryBarrier**
+     - **Thread.VolatileRead**
+     - **Thread.VolatileWrite**
+     - **Palavra-chave Volatile**
+     - **Interlock**
 
-Dead Lock
+### Dead Lock
 
 Em um ambiente multithread, quando ocorre um deadlock pode ocorrer; ele congela o aplicativo porque duas ou mais atividades aguardam a conclusão uma da outra, fazendo com que nenhum deles seja concluído.
 
+```csharp
 //used as lock objects
 object thislockA = new object();
 object thislockB = new object();
@@ -2962,6 +2998,8 @@ Task tsk2 = Task.Run(() =>
 Task[] allTasks = { tsk1, tsk2 };
 Task.WaitAll(allTasks); // Wait for all tasks
 Console.WriteLine("Program executed succussfully");
+```
+
 
 Aqui está como o aplicativo ficou congelado.
 1.	Tsk1 adquire o bloqueio "thislockA".
@@ -2973,12 +3011,14 @@ Para impedir que um aplicativo congele, é importante usar uma declaração de l
 
 Abaixo iremos examinar brevemente as maneiras comuns de lidar com variáveis de sincronização em um ambiente multithread.
 
-MÉTODOS DE BLOQUEIO SIMPLES
+### MÉTODOS DE BLOQUEIO SIMPLES
 
-Join and Sleep
+### Join and Sleep
 
 Você pode esperar que outro thread termine chamando seu método Join. Por exemplo:
 
+
+```csharp
 static void Main(string[] args)
 {
     Thread t = new Thread(Go);
@@ -2991,13 +3031,19 @@ static void Go()
 {
     for (int i = 0; i < 1000; i++) Console.Write("y");
 }
+```
+
 
 Isso imprime "y" 1.000 vezes, seguido de "O tópico t terminou!" imediatamente depois. Você pode incluir um tempo limite ao chamar Join, em milissegundos ou como TimeSpan. Em seguida, retorna true se o thread terminou ou false se o tempo limite expirou.
 
+
+```csharp
 Thread.Sleep pausa o thread atual por um período especificado:
 
 Thread.Sleep(TimeSpan.FromHours(1));  // sleep for 1 hour
 Thread.Sleep(500);                     // sleep for 500 milliseconds
+```
+
 
 Enquanto aguarda um Sleep ou Join, um thread é bloqueado e, portanto, não consome recursos da CPU.
 
@@ -3005,14 +3051,16 @@ Thread.Sleep (0) renuncia imediatamente ao intervalo de tempo atual do thread, e
 
 O modo de Thread.Sleep(0) ou Thread.Yield() é ocasionalmente útil no código de produção para ajustes avançados de desempenho. Também é uma excelente ferramenta de diagnóstico para ajudar a descobrir problemas de segurança de threads: se inserir Thread.Yield() em qualquer lugar do seu código cria ou interrompe o programa, você quase certamente tem um erro.
 
-CONSTRUÇÕES DE BLOQUEIO
+### CONSTRUÇÕES DE BLOQUEIO
 
-Lock (objeto)
+### Lock (objeto)
 
 O Lock é uma palavra-chave em C#; impede que um thread execute o mesmo bloco de código que outro thread está executando. Esse bloco de código é chamado de código bloqueado. Portanto, se um thread tentar inserir um código bloqueado, ele aguardará até que o objeto seja liberado. A palavra-chave lock chama Enter no início do bloco e Exit no final do bloco. A melhor prática é usar a palavra-chave lock com um objeto particular ou com uma variável de objeto estático particular para proteger dados comuns a todas as instâncias.
 
 Ao aplicar um Lock o compilador traduz em uma chamada para System.Thread.Monitor. O exemplo abaixo mostra o uso do operador de Lock para corrigir o exemplo anterior.
 
+
+```csharp
 int num = 0;
 int length = 500000;
 object _lock = new object();
@@ -3033,15 +3081,17 @@ for (int i = 0; i < length; i++)
 }
 tsk.Wait();
 Console.WriteLine(num); //0
+```
 
-	Onde:
+
+**Onde:**
 - lock (_lock){...}: Impede que outros threads manipulem a memória compartilhada, ou seja, "n". Quando o controle sai do bloco, a memória compartilhada se torna utilizável para qualquer thread.
 - _lock: é a mesma variável usada em vários threads, notificando outros threads se alguém já o usou para bloquear um bloco de código.
 - Portanto, a memória compartilhada se torna segura para threads e o programa fornece um resultado preciso
 
 Após essa alteração, o programa sempre gera 0 porque o acesso à variável n agora está sincronizado. Não há como um thread alterar o valor enquanto o outro thread estiver trabalhando com ele. No entanto, também faz com que os threads sejam bloqueados enquanto eles aguardam um pelo outro. Isso pode causar problemas de desempenho e pode até levar a um impasse (deadlock).
 
-Monitor (métodos Enter/Exit)
+### Monitor (métodos Enter/Exit)
 
 A classe Monitor também garante que nenhum outro thread possa executar a mesma seção de código ou uma memória compartilhada até que seja executado pelo proprietário do bloqueio. Monitores são primitivas de sincronização usadas para sincronizar o acesso a objetos. Eles são implementados no .NET na classe System.Threading.Monitor. A classe Monitor é usada em conjunto com tipos de referência, não tipos de valor, para garantir que apenas um thread possa acessar esse objeto por vez. 
 
@@ -3049,10 +3099,14 @@ A razão para não se adotar objetos de valor é que eles são copiados (boxed) 
 
 A melhor prática para lidar com bloqueios é criando um objeto de referência que é privado para a classe e que será usado apenas para esse fim. Um objeto público pode ser usado por outros threads para adquirir um bloqueio sem que seu código saiba. Se você precisar lidar com código legado ou procurar amostras na Internet, poderá encontrar um código que esteja bloqueado utilzando o “this” como objeto de referência. O código fica assim:
 
+```csharp
 lock (this) { // Code updating some shared data}
+```
+
 
 Embora esse seja um snippet de código C# perfeitamente válido e, de fato, adquire e libera um bloqueio no objeto atual, esse código possui um erro latente que pode se manifestar a qualquer momento. Isso porque a  variável  “this” pode ser usada por outro código para criar um bloqueio, causando conflitos. Veja o seguinte trecho de código:
 
+```csharp
 public class LockThisBadSample
 {
     public void OneMethod()
@@ -3076,6 +3130,8 @@ public class UsingTheLockedObject
     }
 }
 
+```
+
 Como você pode ver, AnotherMethod adquire um bloqueio no lockObject, que é essa referência dentro da chamada OneMethod. Como você não tem controle sobre todo o código que gostaria de adquirir bloqueios nos objetos, isso pode facilmente levar a conflitos. A lição aqui é evitar o lock (this), mesmo que você veja exemplos online usando esse tipo de programação, e o MSDN não é uma exceção.
 
 Pelo mesmo motivo, você não deve bloquear uma string. Devido à internação de seqüências de caracteres (o processo no qual o compilador cria um objeto para várias seqüências de caracteres que possuem o mesmo conteúdo), você pode estar subitamente solicitando um bloqueio em um objeto usado em vários locais.
@@ -3086,14 +3142,17 @@ Em geral, evite bloquear um tipo público ou instâncias fora do controle do seu
 - lock (“myLock”) é um problema porque qualquer outro código no processo que use a mesma sequência compartilhará o mesmo bloqueio.
 
 A classe expõe apenas métodos estáticos que tomam como primeiro parâmetro o objeto no qual você deseja bloquear. A qualquer momento, no máximo, um thread pode colocar um bloqueio (lock) em um objeto chamando o método estático Monitor.Enter. Se outro thread chamar o Monitor.Enter antes do primeiro thread chamado Monitor.Exit, esse segundo thread será bloqueado até o primeiro thread chamar Monitor.Exit. No .NET, todos os objetos têm um campo que contém uma referência ao thread que adquiriu um bloqueio no objeto, uma lista pronta com todos os threads que desejam adquirir o bloqueio e uma lista de espera com todos os threads aguardando o objeto obter uma notificação através dos métodos Pulse ou PulseAll. A classe expõe vários métodos estáticos, alguns dos quais estão listados na tabela abaixo
-Método	Descrição
-Enter	Adquire um bloqueio exclusivo em um objeto especificado. Se o bloqueio já foi adquirido por outro thread, o thread atual será colocado na fila de espera e bloqueará sua execução até que o thread que possui o objeto libere o bloqueio.
-Exit	Libera um bloqueio exclusivo no objeto especificado.
-IsEntered	Retorna true se o thread atual mantém o bloqueio no objeto especificado. Este método foi introduzido no .NET 4.5.
-TryEnter	Tenta adquirir um bloqueio exclusivo no objeto especificado. Este método possui seis sobrecargas, permitindo que você especifique um tempo limite também.
+
+|     Método       |     Descrição                                        |
+|------------------|------------------------------|
+|     Enter        |     Adquire um bloqueio exclusivo em um objeto   especificado. Se o bloqueio já foi adquirido por outro thread, o thread atual   será colocado na fila de espera e bloqueará sua execução até que o thread que   possui o objeto libere o bloqueio.    |
+|     Exit         |     Libera um bloqueio exclusivo no objeto   especificado.                                                                                                                                                                                             |
+|     IsEntered    |     Retorna true se o thread atual mantém o bloqueio   no objeto especificado. Este método foi introduzido no .NET 4.5.                                                                                                                                |
+|     TryEnter     |     Tenta adquirir um bloqueio exclusivo no objeto   especificado. Este método possui seis sobrecargas, permitindo que você   especifique um tempo limite também.                                                                                      |
 
 A linguagem C # fornece uma instrução lock como um atalho para o Monitor. O exemplo anterior poderia ter sido usado o Monitor da seguinte forma:
 
+```csharp
 object _lock = new object();
 
 for (int i = 0; i < length; i++)
@@ -3111,17 +3170,20 @@ for (int i = 0; i < length; i++)
         Monitor.Exit(_lock);
     }
 }
-	Onde:
+```
+
+**Onde**:
 - O método Monitor.Enter ou Monitor.TryEnter é usado para bloquear um bloco de código para outros threads e impedir a execução de outros threads.
 - O método Monitor.Exit é usado para desbloquear o código bloqueado para outro thread e permitir que outros threads o executem.
 - Ao utilizar o try/catch, você garante que, mesmo que o código gere uma exceção, o bloqueio ainda seja liberado, resolvendo prblemas de deadlock. 
 
-Mutex
+### Mutex
 
 As duas principais construções exclusivas de bloqueio são lock/Monitores e Mutex. Dos dois, a construção de lock/Monitores é mais rápida e mais conveniente, mas garantem a segurança apenas dos threads que é gerada por um aplicativo e não tem controle sobre os threads provenientes de fora de um aplicativo. O Mutex, no entanto, tem um nicho em que seu bloqueio pode abranger aplicativos em diferentes processos no computador. Em outras palavras, o Mutex pode ser de todo o computador e de todo o aplicativo. Adquirir e liberar um Mutex sem assistência leva alguns microssegundos - cerca de 50 vezes mais lento que um lock. 
 
 Com uma classe Mutex, você chama o método WaitOne para bloquear e ReleaseMutex para desbloquear. Fechar ou descartar um Mutex o libera automaticamente. Assim como na instrução lock, um Mutex pode ser liberado apenas a partir do mesmo thread que o obteve. Um uso comum para um Mutex entre processos é garantir que apenas uma instância de um programa possa ser executada por vez. Aqui está como é feito:
 
+```csharp
 static Mutex m1 = new Mutex(true, "Questpond");
 
 static void Main(string[] args)
@@ -3147,6 +3209,8 @@ static bool IsInstance()
     else
         return true;
 }
+```
+
 
 No código acima, criamos uma função booleana chamada "IsInstance", que verifica se alguma outra instância está em execução ou não, e que alcançamos o uso da função booleana "WaitOne" que bloqueia a atual unidade de thread que o manipulador recebe o sinal. Aqui em nossa demonstração, o WaitOne espera por 5 segundos para receber o sinal do cabo de espera, se nenhum sinal for recebido até 5 segundos, ele retornará automaticamente falso. Se for um novo thread, ele retornará automaticamente true. Para ver o cenário em tempo real, siga estas etapas.
 1.	Crie o código fonte completo
@@ -3155,9 +3219,14 @@ No código acima, criamos uma função booleana chamada "IsInstance", que verifi
 4.	Não feche o exe anterior e abra mais 2 ou 3 exe.
 
 A primeira linha de comando aberta exibirá a mensagem como: Nova instância criada Todas as outras linhas de comando abertas exibirão mensagens como: Instância já adquirida
- 
 
-Estrutura SpinLock
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.mutex/MCSDcert.png" alt="Image" width="100%" />
+</p>
+
+
+
+### Estrutura SpinLock
 
 A estrutura System.Threading.SpinLock, como Monitor, concede acesso exclusivo a um recurso compartilhado com base na disponibilidade de um bloqueio. Quando SpinLock tenta adquirir um bloqueio que não está disponível, ele aguarda em um loop, verificando repetidamente até o bloqueio ficar disponível.
 
@@ -3168,6 +3237,7 @@ Usar um SpinLock é como usar um lock/Monitor comum, exceto:
 
 Outra diferença é que, quando você chama Enter, deve seguir o padrão robusto de fornecer um argumento gotLock (que quase sempre é feito dentro de um bloco try/finally). Aqui está um exemplo:
 
+```csharp
 SpinLock sl = new SpinLock();
 
 StringBuilder sb = new StringBuilder();
@@ -3201,15 +3271,18 @@ Parallel.Invoke(action, action, action);
 Console.WriteLine("sb.Length = {0} (should be 30000)", sb.Length);
 Console.WriteLine("number of occurrences of '5' in sb: {0} (should be 3000)",
     sb.ToString().Where(c => (c == '5')).Count());
+```
+
 
 Assim como ocorre com um bloqueio comum, o gotLock será falso após chamar Enter se (e somente se) o método Enter lançar uma exceção e o bloqueio não tiver sido realizado. Isso acontece em cenários muito raros (como Abort ser chamado no thread ou saída de OutOfMemoryException) e permite saber com segurança se deve chamar Exit posteriormente. O SpinLock também fornece um método TryEnter que aceita um tempo limite.
 
 Um SpinLock faz mais sentido ao escrever suas próprias construções de sincronização reutilizáveis. Mesmo assim, um spinlock não é tão útil quanto parece. Ainda limita a simultaneidade. E desperdiça tempo de CPU sem fazer nada útil. Freqüentemente, uma escolha melhor é passar parte desse tempo fazendo algo especulativo - com a ajuda do SpinWait.
 
-Estrutura SpinWait
+### Estrutura SpinWait
 
- A estrutura System.Threading.SpinWait oferece suporte para espera baseada em rotação. Você pode usá-la quando um thread tiver de esperar pela sinalização de um evento ou por uma condição específica. No entanto, quando o tempo de espera real for menor do que o tempo necessário, use um identificador de espera ou bloqueie o thread. Usando o SpinWait, você pode especificar um curto período de tempo para girar enquanto espera e, em seguida, gerar (por exemplo, aguardando ou em espera) somente se a condição não for atendida no tempo especificado.
+A estrutura System.Threading.SpinWait oferece suporte para espera baseada em rotação. Você pode usá-la quando um thread tiver de esperar pela sinalização de um evento ou por uma condição específica. No entanto, quando o tempo de espera real for menor do que o tempo necessário, use um identificador de espera ou bloqueie o thread. Usando o SpinWait, você pode especificar um curto período de tempo para girar enquanto espera e, em seguida, gerar (por exemplo, aguardando ou em espera) somente se a condição não for atendida no tempo especificado.
 
+```csharp
 bool someBoolean = false;
 int numYields = 0;
 
@@ -3239,8 +3312,10 @@ Task t2 = Task.Factory.StartNew(() =>
 
 // Wait for tasks to complete
 Task.WaitAll(t1, t2);
+```
 
-Semaphore
+
+### Semaphore
 
 Um semáforo é como uma boate: tem uma certa capacidade, imposta por um segurança. Quando estiver cheio, não haverá mais pessoas entrando e uma fila se acumulará do lado de fora. Em seguida, para cada pessoa que sai, uma pessoa entra no início da fila. O construtor exige um mínimo de dois argumentos: o número de vagas atualmente disponíveis na boate e a capacidade total do clube.
 
@@ -3248,6 +3323,7 @@ Um semáforo com capacidade de um é semelhante a um Mutex ou lock, exceto que o
 
 Um semáforo pode ser chamado de uma versão avançada do Mutex com recursos adicionais. O semáforo também nos ajuda a trabalhar com threads externos e identificar se um aplicativo é adquirido por um thread externo ou não. Mas, diferentemente do Mutex, o Semaphore permite que um ou mais threads entrem para executar sua tarefa com segurança de thread. Melhor característica do semáforo que podemos limitar o número de threads a inserir.
 
+```csharp
 static Semaphore s1 = new Semaphore(2, 2, "SemaphoreQuestpond");
 
 static void Main(string[] args)
@@ -3271,6 +3347,8 @@ static bool IsInstance()
     else
         return true;
 }
+```
+
 
 Como você viu no código acima, criamos um limite de 2 threads para o objeto semáforo "s1" com o nome "SemaphoreQuestpond". Agora examinaremos o exemplo acima se o semáforo nos permite passar dois threads externos ao mesmo tempo, mantendo a segurança do thread.
 1.	Primeiro crie o código fonte completo
@@ -3278,15 +3356,21 @@ Como você viu no código acima, criamos um limite de 2 threads para o objeto se
 3.	Sem fechar o arquivo exe do arquivo de comando, clique no arquivo exe novamente
 
 As duas primeiras linhas de comando abertas exibirão a mensagem como: Nova instância criada Todas as outras linhas de comando abertas exibirão mensagens como: Instância já adquirida.
- 
 
-SemaphoreSlim
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/semaphore.png" alt="Image" width="100%" />
+</p>
+
+
+### SemaphoreSlim
 
 Esta é ujma versão da classe Semaphore (introduzida no Framework 4.0 ) que foi otimizado para atender às demandas de baixa latência da programação paralela. Também é útil no multithreading tradicional, pois permite especificar um token de cancelamento ao aguardar. No entanto, ele não pode ser usado para sinalização interprocessos. O semáforo incorre em aproximadamente 1 microssegundo na chamada WaitOne ou Release; O SemaphoreSlim incorre em cerca de um quarto disso.
 
 SemaphoreSlim é uma versão avançada do Monitor. O SemaphoreSlim garante a segurança do thread com threads internos mas permite-nos passar um ou mais threads para executar sua tarefa. O SemaphoreSlim também fornece um limite avançado, no qual você pode limitar o número de threads para uma execução.
 
 Os semáforos podem ser úteis para limitar a simultaneidade, impedindo que muitos threads executem uma parte específica do código de uma só vez. No exemplo a seguir, cinco threads tentam entrar em uma boate que permite apenas três threads ao mesmo tempo:
+
+```csharp
 
 static SemaphoreSlim _sem = new SemaphoreSlim(3);    // Capacity of 3
 
@@ -3306,10 +3390,12 @@ static void Enter(object id)
     Console.WriteLine(id + " is leaving");       // a time.
     _sem.Release();
 }
+```
+
 
 Se a instrução Sleep estivesse executando E/S de disco intensivas, o SemaphoreSlim melhoraria o desempenho geral, limitando a atividade simultânea excessiva do disco rígido. Um SemaphoreSlim, se nomeado, pode abranger processos da mesma maneira que um Mutex.
 
-Classe ReaderWriterLockSlim
+### Classe ReaderWriterLockSlim
 
 O problema com  a classe efetivamente descontinuada ReaderWriterLock está na sua implementação. Vários especialistas criticaram essa técnica e descobriram que, fora de cenários limitados, na verdade, é muito mais lenta que o método Monitor.Enter usado para obter um bloqueio exclusivo. O ReaderWriterLock dá maior prioridade aos threads do leitor do que os gravadores. Assim em cenários que tiver muitos leitores e apenas alguns escritores faz sentido utilizar o ReaderWriterLock. Mas e se você tiver escritores iguais ou mais, o processo de favorecer os leitores faz com que os threads dos escritores enfileirem e demorem muito tempo para serem concluídos.
 
@@ -3317,6 +3403,7 @@ Para resolver esses problemas relacionados à classe ReaderWriterLock, o .Net Fr
 
 No código a seguir, três threads continuamente enumeram uma lista, enquanto outros dois threads acrescentam um número aleatório à lista a cada segundo. Um bloqueio de leitura protege os leitores da lista e um bloqueio de gravação protege os gravadores da lista:
 
+```csharp
 static ReaderWriterLockSlim rw = new ReaderWriterLockSlim();
 static List<int> items = new List<int>();
 static Random rand = new Random();
@@ -3356,27 +3443,31 @@ static int GetRandNum(int max)
     lock (rand)
         return rand.Next(max);
 }
+```
 
 Quando comparado a um bloqueio comum (Monitor.Enter/Exit), o ReaderWriterLockSlim é duas vezes mais lento.
 
-CONSTRUÇÕES DE SINALIZAÇÃO
+### CONSTRUÇÕES DE SINALIZAÇÃO
 
 Sinalização é quando um thread aguarda até receber notificação de outro. 
 
-Classes EventWaitHandle
+### Classes EventWaitHandle
 
 A classe System.Threading.EventWaitHandle representa um evento de sincronização de thread. Um evento de sincronização pode estar em um estado não sinalizado ou sinalizado. Quando o estado de um evento não é sinalizado, um thread que chama a sobrecarga WaitOne do evento é bloqueado até que um evento seja sinalizado. O método EventWaitHandle.Set define o estado de um evento como sinalizado. EventWaitHandle é definido no namespace System.Threading e a tabela abaixo  lista os métodos mais comuns.
-Método	Descrição
-EventWaitHandle	Construtor. Este método possui quatro sobrecargas diferentes. No mínimo, você precisa especificar se o evento deve ser sinalizado e se o evento deve ser redefinido manual ou automaticamente usando a enumeração EventResetMode.
-Dispose	Este é o método da interface IDisposable. Você precisa chamar esse método para garantir que os recursos do SO sejam liberados quando esse objeto não for mais necessário.
-Reset	Define o estado do evento para um estado sem sinal, causando o bloqueio de threads.
-Set	Define o estado do evento para o estado sinalizado. Um ou mais threads em espera poderão continuar. Se o evento foi criado como redefinição automática, apenas um thread será ativado para chamar WaitOne sem ser bloqueado. Ou se houver threads já bloqueados como resultado de uma chamada para WaitOne, apenas um thread será desbloqueado e o evento será novamente sem sinal até que o método Set seja chamado novamente. Se o evento foi criado como ManualReset, o evento será sinalizado até que Reset seja chamado nesse evento.
-WaitOne	Bloqueia o thread atual se o evento não tiver sinal. Quando esse evento é sinalizado, se ele foi criado como redefinição automática, ele desbloqueia o thread e redefine o evento no estado não sinalizado.
+
+|     Método             |     Descrição                   |
+|------------------------|--------------------------------|
+|     EventWaitHandle    |     Construtor. Este método possui quatro sobrecargas   diferentes. No mínimo, você precisa especificar se o evento deve ser   sinalizado e se o evento deve ser redefinido manual ou automaticamente usando   a enumeração EventResetMode.                |
+|     Dispose            |     Este é o método da interface IDisposable. Você   precisa chamar esse método para garantir que os recursos do SO sejam   liberados quando esse objeto não for mais necessário.                                                             |
+|     Reset              |     Define o estado do evento para um estado sem   sinal, causando o bloqueio de threads.                                     |
+|     Set                |     Define o estado do evento para o estado   sinalizado. Um ou mais threads em espera poderão continuar. Se o evento foi   criado como redefinição automática, apenas um thread será ativado para chamar   WaitOne sem ser bloqueado. Ou se houver threads já bloqueados como resultado   de uma chamada para WaitOne, apenas um thread será desbloqueado e o evento   será novamente sem sinal até que o método Set seja chamado novamente. Se o evento   foi criado como ManualReset, o evento será sinalizado até que Reset seja   chamado nesse evento.    |
+|     WaitOne            |     Bloqueia o thread atual se o evento não tiver   sinal. Quando esse evento é sinalizado, se ele foi criado como redefinição   automática, ele desbloqueia o thread e redefine o evento no estado não   sinalizado.      |
 
 No Windows, você pode usar EventWaitHandle para a sincronização entre processos. Para fazer isso, crie uma instância EventWaitHandle que representa um evento de sincronização do sistema nomeado usando um dos construtores EventWaitHandle que especificam um nome ou o método EventWaitHandle.OpenExisting.
 
 Aqui está um exemplo de uso desta classe. E, para ser mais preciso, é possível ver como corrigir a solução do conjunto de threads para garantir que você não esteja tentando ler o resultado do cálculo antes que o cálculo seja realmente concluído. O método original seria assim:
 
+```csharp
 static double ReadDataFromIO()
 {
     // We are simulating an I/O by putting the current thread to sleep. 
@@ -3410,9 +3501,11 @@ static void RunInThreadPool()
     // Print the result
     Console.WriteLine("The result is {0}", result);
 }
+```
 
 Uma possível solução usando sinalização é semelhante a esta:
 
+```csharp
 static void RunInThreadPoolWithEvents()
 {
     double result = 0d;
@@ -3433,6 +3526,7 @@ static void RunInThreadPoolWithEvents()
     // Print the result
     Console.WriteLine("The result is {0}", result);
 }
+```
 
 O código anterior faz o seguinte:
 1.	O código primeiro cria um objeto EventWaitHandle no estado não sinalizado.
@@ -3441,23 +3535,25 @@ O código anterior faz o seguinte:
 4.	Após o retorno do segundo método, é necessário aguardar o primeiro cálculo, aguardando a sinalização do evento.
 5.	Quando você recebe o sinal, sabe que possui o resultado, para que possa calcular o resultado final e mostrá-lo.
 
-Criando um EventWaitHandle de processo cruzado
+### riando um EventWaitHandle de processo cruzado
 
 O construtor EventWaitHandle permite que um EventWaitHandle "nomeado" seja criado, capaz de operar em vários processos. O nome é simplesmente uma string e pode ser qualquer valor que não entre em conflito acidentalmente com o de outra pessoa! Se o nome já estiver em uso no computador, você obterá uma referência ao mesmo EventWaitHandle subjacente; caso contrário, o sistema operacional cria um novo. Aqui está um exemplo:
 
+```csharp
 EventWaitHandle wh = new EventWaitHandle(false, EventResetMode.AutoReset,"MyCompany.MyApp.SomeName");
+```
 
 Se dois aplicativos executassem esse código, eles poderiam sinalizar um ao outro: o identificador de espera funcionaria em todos os threads nos dois processos.
 
-AutoResetEvent, ManualResetEvent e ManualResetEventSlim
+### AutoResetEvent, ManualResetEvent e ManualResetEventSlim
 
 O .NET fornece duas classes que herdam de EventWaitHandle: AutoResetEvent e ManualResetEvent. Ambas as classes têm apenas um construtor e nenhum método ou propriedade própria definida. Nos dois casos, o construtor utiliza um parâmetro booleano que especifica se o evento é sinalizado inicialmente. O comportamento de um EventWaitHandle que foi assinalado depende de seu modo de redefinição:
-- EventResetMode.AutoReset: com este sinalizador o EventWaitHandle é redefinido, volta automaticamente para sem sinal, após liberar um único thread em espera (ser sinalizado) , exatamente como o método Monitor.Pulse. É como uma roleta/catraca/pedágio que permite que apenas um thread de cada vez seja sinalizado. 
-- EventResetMode.ManualReset: com este sinalizador o EventWaitHandle permanece sinalizado até que seu método Reset seja chamado. É como um portão que é fechado até ser sinalizado e então permanece aberto até que alguém o feche. ManualResetEvent pode ser descrito como uma mangueira de água, uma vez aberta, ela deixa tudo passar até que você a feche.
-- System.Threading.ManualResetEventSlim: é uma alternativa leve para ManualResetEvent.
+- **EventResetMode.AutoReset**: com este sinalizador o EventWaitHandle é redefinido, volta automaticamente para sem sinal, após liberar um único thread em espera (ser sinalizado) , exatamente como o método Monitor.Pulse. É como uma roleta/catraca/pedágio que permite que apenas um thread de cada vez seja sinalizado. 
+- **EventResetMode.ManualReset**: com este sinalizador o EventWaitHandle permanece sinalizado até que seu método Reset seja chamado. É como um portão que é fechado até ser sinalizado e então permanece aberto até que alguém o feche. ManualResetEvent pode ser descrito como uma mangueira de água, uma vez aberta, ela deixa tudo passar até que você a feche.
+- **System.Threading.ManualResetEventSlim**: é uma alternativa leve para ManualResetEvent.
 
 
-AutoResetEvent
+### AutoResetEvent
 
 Um AutoResetEvent é como uma catraca de ticket: a inserção de um ticket permite que exatamente uma pessoa passe. O "Auto" no nome da classe refere-se ao fato de que uma catraca aberta é fechada automaticamente ou "redefinida" depois que alguém avança, um tíquete é inserido chamando o método Set. Quando um thread atinge WaitOne(),bloqueia a catraca, e espera até que outras chamadas de thread sejam definidas(). O AutoResetEvent (catraca) é redefinido automaticamente quando o thread em espera observa que o evento é sinalizado (definido). 
 
@@ -3465,14 +3561,19 @@ Além de conveniente, se você estiver reutilizando o evento várias vezes, ele 
 
 O AutoResetEvent permite que os threads se comuniquem entre si sinalizando. Normalmente, essa comunicação diz respeito a um recurso ao qual os threads precisam de acesso exclusivo. Você pode criar um AutoResetEvent de duas maneiras. O primeiro é via seu construtor:
 
+```csharp
 var auto = new AutoResetEvent(false);
+```
 
 Podemos controlar o estado inicial de um AutoResetEvent inserindo um valor booleano no construtor. Passar true para o construtor é equivalente a chamar imediatamente Set nele. A segunda maneira de criar um AutoResetEvent é a seguinte:
 
+```csharp
 var auto = new EventWaitHandle(false, EventResetMode.AutoReset);
+```
 
 O AutoResetEvent também pode ser usado com o método estático: WaitAll () e WaitAny (). A seguir um aplicativo de console simples para demonstrar esta classe.
 
+```csharp
 public class Process
 {
     AutoResetEvent auto;
@@ -3506,18 +3607,21 @@ public class Process
         }
     }
 }
+```
+
 Se Set for chamado quando nenhum thread estiver aguardando, o identificador permanecerá aberto pelo tempo necessário até que algum thread chame WaitOne. Esse comportamento ajuda a evitar uma condição de corrida entre um cabeçalho da catraca e um thread que insere um ticket. No entanto, chamar Set repetidamente em uma catraca na qual ninguém está esperando não permite que todos possam entrar de uma vez: apenas uma pessoa seguinte é liberada e os ingressos extras são "desperdiçados".
 
 A redefinição de chamada em um AutoResetEvent fecha a catraca (caso esteja aberta) sem esperar ou bloquear.
 
 WaitOne aceita um parâmetro opcional de tempo limite, retornando false se a espera terminar devido a um tempo limite em vez de obter o sinal. Chamar o WaitOne com um tempo limite de 0 testa se um identificador de espera está "aberto", sem bloquear o chamador. Porém, lembre-se de que isso redefine o AutoResetEvent, se estiver aberto.
 
-Sinalização AutoResetEvent bidirecional
+### Sinalização AutoResetEvent bidirecional
 
 Digamos que queremos que o thread principal sinalize um thread de trabalho três vezes seguidas. Se o thread principal simplesmente chamar Conjunto em uma alça de espera várias vezes em rápida sucessão, o segundo ou terceiro sinal poderá se perder, pois o trabalhador pode demorar para processar cada sinal.
 
 A solução é que o thread principal aguarde até que o trabalhador esteja pronto antes de sinalizá-lo. Isso pode ser feito com outro AutoResetEvent, da seguinte maneira:
 
+```csharp
 static EventWaitHandle _ready = new AutoResetEvent(false);
 static EventWaitHandle _go = new AutoResetEvent(false);
 static readonly object _locker = new object();
@@ -3554,10 +3658,12 @@ static void Work()
         }
     }
 }
+```
+
 
 Aqui, estamos usando uma mensagem nula para indicar que o trabalhador deve terminar. Com threads que funcionam indefinidamente, é importante ter uma estratégia de saída!
 
-Fila produtor/consumidor AutoResetEvent
+### Fila produtor/consumidor AutoResetEvent
 
 Uma fila de produtor / consumidor é um requisito comum no thread. Eis como funciona:
 - Uma fila é configurada para descrever itens de trabalho - ou dados nos quais o trabalho é executado.
@@ -3570,6 +3676,7 @@ Uma fila de produtor/consumidor normalmente mantém itens de dados nos quais (a 
 
 No exemplo abaixo, usamos um único AutoResetEvent para sinalizar um trabalhador, que aguarda quando a tarefa fica sem tarefas (em outras palavras, quando a fila está vazia). Encerramos o trabalhador enfileirando uma tarefa nula:
 
+```csharp
 class ProducerConsumerQueue : IDisposable
 {
     EventWaitHandle _wh = new AutoResetEvent(false);
@@ -3616,22 +3723,31 @@ class ProducerConsumerQueue : IDisposable
         }
     }
 }
+```
+
 
 Para garantir a segurança do thread, usamos um bloqueio para proteger o acesso à coleção Fila <string>. Também encerramos explicitamente a alça de espera em nosso método Dispose, pois poderíamos criar e destruir muitas instâncias dessa classe na vida útil do aplicativo. Aqui está um método principal para testar a fila:
 
+```csharp
 using (ProducerConsumerQueue q = new ProducerConsumerQueue())
 {
     q.EnqueueTask("Hello");
     for (int i = 0; i < 10; i++) q.EnqueueTask("Say " + i);
     q.EnqueueTask("Goodbye!");
 }
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/producerconsumerqueue.png" alt="Image" width="100%" />
+</p>
+
  
 
 Depois de terminar com uma WaitHandles, você pode chamar o método Close para liberar o recurso do sistema operacional. Como alternativa, você pode simplesmente eliminar todas as referências à WaitHandles e permitir que o coletor de lixo faça o trabalho para você algum tempo depois (as WaitHandles implementam o padrão de descarte pelo qual o finalizador chama Close). Esse é um dos poucos cenários em que a confiança nesse backup é aceitável, porque os identificadores de espera têm uma carga leve do sistema operacional (delegados assíncronos contam exatamente com esse mecanismo para liberar o identificador de espera do IAsyncResult). Os identificadores de espera são liberados automaticamente quando um domínio de aplicativo é descarregado.
 
 O Framework 4.0 fornece uma nova classe chamada BlockingCollection <T> que implementa a funcionalidade de uma fila de produtores / consumidores. Nossa fila de produtor/consumidor gravada manualmente ainda é valiosa - não apenas para ilustrar o AutoResetEvent e a segurança de threads, mas também como base para estruturas mais sofisticadas. Por exemplo, se desejássemos uma fila de bloqueio limitada (limitando o número de tarefas na fila) e também desejássemos oferecer suporte ao cancelamento (e remoção) de itens de trabalho na fila, nosso código forneceria um excelente ponto de partida. 
 
-ManualResetEvent
+### ManualResetEvent
 
 ManualResetEvent permite que os threads se comuniquem entre si através de sinalização. Normalmente, essa comunicação diz respeito a uma tarefa que um thread deve concluir antes que outros threads possam prosseguir. É como um portão que permite mais de um de cada vez. Quando um thread atinge WaitOne (), ele espera até que outro thread chame Set ().
 
@@ -3641,6 +3757,7 @@ Quando um thread inicia uma atividade que deve ser concluída antes que outros t
 
 Depois de sinalizado, ManualResetEvent permanece sinalizado até que seja redefinido manualmente. Ou seja, as chamadas para WaitOne () retornam imediatamente. Como AutoResetEvent, podemos controlar o estado inicial do ManualResetEvent, inserindo um valor booleano no construtor, true se o estado inicial for sinalizado e false, caso contrário. ManualResetEvent também pode ser usado com os métodos estáticos: WaitAll () e WaitAny (). A seguir um aplicativo de console simples para demonstrar esta classe.
 
+```csharp
 class MyThread
 {
     public Thread th;
@@ -3677,17 +3794,20 @@ myThread = new MyThread("Event Thread 2", evtObj);
 evtObj.WaitOne();
 Console.WriteLine("Main thread received second event.");
 Console.Read();
+```
 
-ManualResetEventSlim
+### ManualResetEventSlim
 
 No Framework 4.0, há outra versão do ManualResetEvent chamada ManualResetEventSlim. O último é otimizado para curtos tempos de espera - com a capacidade de ativar a rotação para um número definido de iterações. Ele também possui uma implementação gerenciada mais eficiente e permite que uma espera seja cancelada por meio de um CancellationToken. No entanto, ele não pode ser usado para sinalização interprocessos. ManualResetEventSlim não inclui a subclasse WaitHandle; no entanto, expõe uma propriedade WaitHandle que retorna um objeto baseado em WaitHandle quando chamado (com o perfil de desempenho de um identificador de espera tradicional).
 
 Aguardar ou sinalizar um AutoResetEvent ou ManualResetEvent leva cerca de um microssegundo (presumindo que não haja bloqueio). ManualResetEventSlim e CountdownEvent podem ser até 50 vezes mais rápidos em cenários de espera curta, devido à sua falta de confiança no sistema operacional e ao uso criterioso de construções giratórias (spinning). Na maioria dos cenários, no entanto, a sobrecarga das próprias classes de sinalização não cria um gargalo e, portanto, raramente é uma consideração.
 
-Wait Handles e o ThreadPool
+
+### Wait Handles e o ThreadPool
 
 Se seu aplicativo tiver muitos threads que passam a maior parte do tempo bloqueados em um identificador de espera, você pode reduzir a carga de recursos chamando ThreadPool.RegisterWaitForSingleObject. Este método aceita um delegado que é executado quando um identificador de espera é sinalizado. Enquanto aguarda, ele não amarra um fio:
 
+```csharp
 static ManualResetEvent _starter = new ManualResetEvent(false);
 static void Main(string[] args)
 {
@@ -3705,6 +3825,8 @@ public static void Go(object data, bool timedOut)
     Console.WriteLine("Started - " + data);
     // Perform task...
 }
+```
+
 
 Quando o identificador de espera é sinalizado (ou o tempo limite se esgota), o delegado é executado em um thread em pool.
 
@@ -3712,14 +3834,18 @@ Além do identificador de espera e do delegado, o RegisterWaitForSingleObject ac
 
 O RegisterWaitForSingleObject é particularmente valioso em um servidor de aplicativos que deve lidar com muitas solicitações simultâneas. Suponha que você precise bloquear um ManualResetEvent e simplesmente chamar WaitOne:
 
+```csharp
 void AppServerMethod()
 {
     _starter.WaitOne();
     // ... continue execution
 }
+```
+
 
 Se 100 clientes chamarem esse método, 100 threads do servidor serão vinculados pela duração do bloqueio. Substituir _wh.WaitOne por RegisterWaitForSingleObject permite que o método retorne imediatamente, sem desperdiçar threads:
 
+```csharp
 void AppServerMethod2()
 {
     RegisteredWaitHandle reg = ThreadPool.RegisterWaitForSingleObject
@@ -3730,21 +3856,26 @@ static void Resume(object data, bool timedOut)
 {
     // ... continue execution
 }
+```
+
 
 O objeto de dados passado para Continuar permite a continuidade de qualquer dado temporário.
 
-Monitor (métodos Wait/Pulse/PulseAll) 
+### Monitor (métodos Wait/Pulse/PulseAll) 
 
 A classe de monitor possui dois métodos estáticos Wait and Pulse que fornecem um mecanismo de sinalização simples, resumidamente o Wait bloqueia até receber notificação de outro thread; Pulse fornece essa notificação. 
-Método	Descrição
-Pulse	Notifica o thread na fila de espera que o estado do objeto bloqueado foi alterado, movendo o thread da fila de espera para a fila de pronta.
-PulseAll	Notifica todos os threads em espera que o estado do objeto bloqueado foi alterado, movendo todos os threads da fila de espera para a fila de pronta.
-Wait	Libera o bloqueio exclusivo no objeto e bloqueia o thread atual até recuperar o bloqueio. O thread atual será colocado na fila de espera e ficará em estado de espera até outro thread chamar Pulse ou PulseAll para que possa retomar sua execução
+
+|     Método      |     Descrição                         |
+|-----------------|--------------------------------------------------|
+|     Pulse       |     Notifica o thread na fila de espera que o estado   do objeto bloqueado foi alterado, movendo o thread da fila de espera para a   fila de pronta.                              |
+|     PulseAll    |     Notifica todos os threads em espera que o estado   do objeto bloqueado foi alterado, movendo todos os threads da fila de espera   para a fila de pronta.                   |
+|     Wait        |     Libera o bloqueio exclusivo no objeto e bloqueia   o thread atual até recuperar o bloqueio. O thread atual será colocado na fila   de espera e ficará em estado de espera até outro thread chamar Pulse ou   PulseAll para que possa retomar sua execução    |
 
 A Wait deve ser executada antes do Pulse para que o sinal funcione. Se o Pulse for executado primeiro, seu pulso será perdido e o Wait deverá aguardar um novo Pulse ou permanecer bloqueado para sempre. Isso difere do comportamento de um AutoResetEvent, em que seu método Set tem um efeito de "travamento" e, portanto, é eficaz se chamado antes do WaitOne. São as construções mais versáteis, mas são mais difíceis de usar corretamente do que outras primitivas de sincronização como AutoResetEvent. 
 
 É necessário especificar um objeto de sincronização, uma instrução lock, ao chamar Wait ou Pulse. Se dois threads usarem o mesmo objeto, eles poderão sinalizar um ao outro. Se eles forem chamados enquanto não estiverem bloqueado antes de chamar Wait ou Pulse, eles lançarão a SynchronizationLockException. Por exemplo:
 
+```csharp
 readonly object key = new object();
 
 // thread A
@@ -3752,17 +3883,27 @@ lock (key) Monitor.Wait(key);
 
 // thread B
 lock (key) Monitor.Pulse(key);
+```
+
 
 Quando um thread é temporariamente impedido de executar, ele chama Wait() Isso faz com que o thread entre em suspensão e o bloqueio desse objeto seja liberado, permitindo que outro thread use o objeto. Em um momento posterior, o thread adormecido é despertado quando outro thread entra no mesmo bloqueio e chama Pulse() ou PulseAll(). Uma chamada para Pulse() retoma o primeiro thread na fila de threads aguardando pelo bloqueio. Uma chamada para PulseAll sinaliza a liberação do bloqueio para todos os threads em espera.
 
 Você pode ter notado um pequeno problema com o código acima. Se o thread A mantém a lock no objeto key, por que a thread B não é bloqueada quando tenta obter a lock? Obviamente, isso é tratado adequadamente. A chamada Wait no thread A libera o lock antes de aguardar. Isso permite que o thread B adquira o lock e a chamada Pulse. O thread A é retomado, mas precisa aguardar até o thread B liberar o lock, para que ele possa recuperá-lo e concluir a chamada Wait. Observe que Pulse nunca bloqueia.
- 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/lockowner.png" alt="Image" width="100%" />
+</p>
+
 
 A ready queue é a coleção de threads que aguardam um lock  específico. Os métodos Monitor.Wait introduzem outra fila: waiting queue. Isso é necessário, pois esperar por um Pulse é diferente de esperar para adquirir um lock. Como a fila pronta, a fila de espera é FIFO.
- 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/readyqueue.png" alt="Image" width="100%" />
+</p>
 
 Essas filas podem levar a um comportamento inesperado. Quando Pulse ocorre, o cabeçalho da fila de espera é liberado e adicionado à fila de espera. No entanto, se houver outros threads na fila pronta, eles adquirirão o bloqueio antes do thread lançado. Isso é um problema, porque a linha que adquire o bloqueio pode alterar o estado em que a thread pulsada depende. A solução é usar uma condição while dentro da lockinstrução:
 
+```csharp
 readonly object key = new object();
 bool block = true;
 
@@ -3780,6 +3921,8 @@ lock (key)
     block = false;
     Monitor.Pulse(key);
 }
+```
+
 
 O código acima é realmente uma implementação de um AutoResetEvent. Se você omitir a instrução  block = true no thread A, seria a ManualResetEvent. Se você usar um int vez de bool para a condição, seria um Semaphore. Isso mostra o quão versátil é esse padrão, pois mostra o motivo da regra na qual os bloqueios devem ser usados: eles protegem a variável de condição do acesso simultâneo. Bloqueios também são barreiras (barriers) de memória, portanto, você não precisa declarar as variáveis de condição como volatile. 
 Você tem controle total sobre quais condições usar no loop while, ele resolve os problemas: 
@@ -3796,6 +3939,7 @@ Abaixo está um exemplo com o código fonte completo que demonstra a versatilida
 
 Este é um conjunto bastante complexo de condições. Você pode implementar isso usando uma combinação de construções de nível superior, mas seria mais difícil. O padrão torna essa implementação relativamente trivial.
 
+```csharp
 class BlockingQueue<T>
 {
     readonly int _Size = 0;
@@ -3885,24 +4029,30 @@ internal static void Test()
 
     q.Quit();
 }
+```
 
-Classe CountdownEvent
+
+### Classe CountdownEvent
 
 O .NET 4 introduziu uma nova classe chamada CoundownEvent, definida no namespace System.Threading. O cenário de uso é direto: você precisa aguardar um número predefinido de threads para concluir seu trabalho. Antes do .NET 4, isso era implementado usando vários objetos EventWaitHandle e chamando o método WaitHandle.WaitAll. Como esse é um cenário comum, a Microsoft decidiu implementar essa funcionalidade no .NET. As tabelas abaixo listam os métodos e propriedades mais comuns de CoundownEvent.
-Método	Descrição
-CountdownEvent	Construtor que aceita como parâmetro um valor inteiro chamado count, representando o número de sinais que precisa receber antes de ser sinalizado.
-AddCount	Duas sobrecargas. Aumenta a contagem atual do CountdownEvent em um, ou por um valor especificado. Se o objeto CountdownEvent já estiver definido, esse método poderá gerar uma InvalidOperationException.
-Dispose	Este é o método da interface IDisposable. Você deve chamar esse método para garantir que os recursos do SO sejam liberados quando esse objeto não for mais necessário.
-Reset	Duas sobrecargas. Redefine o CurrentCount para o valor de InitialCount ou para um valor especificado.
-Signal	Duas sobrecargas. Registra um sinal com o CountdownEvent, diminuindo o valor de CurrentCount por um ou por um valor especificado.
-TryAddCount	Duas sobrecargas. Tenta incrementar CurrentCount por um ou por um valor especificado. Este método não gera uma exceção, como AddCount. Retorna verdadeiro ou falso para indicar o sucesso ou falha da operação.
-Wait	Seis sobrecargas. Bloqueia o thread atual até que o CountdownEvent seja definido. As sobrecargas são usadas para chamar o método com um token de cancelamento e/ou com um tempo limite.
 
-Propriedade	Descrição
-CurrentCount	Propriedade somente leitura que retorna o número de sinais restantes necessários para definir o evento.
-InitialCount	Propriedade somente leitura que retorna o número de sinais inicialmente necessários para definir o evento.
-IsSet	Propriedade somente leitura que retorna true se o evento estiver definido.
-WaitHandle	Propriedade somente leitura que retorna um WaitHandle usado para aguardar a configuração do evento.
+|     Método            |     Descrição                                  |
+|-----------------------|---------------------------------------------------|
+|     CountdownEvent    |     Construtor que aceita como parâmetro um valor   inteiro chamado count, representando o número de sinais que precisa receber   antes de ser sinalizado.                            |
+|     AddCount          |     Duas sobrecargas. Aumenta a contagem atual do   CountdownEvent em um, ou por um valor especificado. Se o objeto   CountdownEvent já estiver definido, esse método poderá gerar uma   InvalidOperationException.          |
+|     Dispose           |     Este é o método da interface IDisposable. Você   deve chamar esse método para garantir que os recursos do SO sejam liberados quando   esse objeto não for mais necessário.                    |
+|     Reset             |     Duas sobrecargas. Redefine o CurrentCount para o   valor de InitialCount ou para um valor especificado.                                        |
+|     Signal            |     Duas sobrecargas. Registra um sinal com o   CountdownEvent, diminuindo o valor de CurrentCount por um ou por um valor   especificado.                                                  |
+|     TryAddCount       |     Duas sobrecargas. Tenta incrementar CurrentCount   por um ou por um valor especificado. Este método não gera uma exceção, como   AddCount. Retorna verdadeiro ou falso para indicar o sucesso ou falha da   operação.    |
+|     Wait              |     Seis sobrecargas. Bloqueia o thread atual até que   o CountdownEvent seja definido. As sobrecargas são usadas para chamar o   método com um token de cancelamento e/ou com um tempo limite.                              |
+
+|     Propriedade     |     Descrição                           |
+|---------------------|----------------------------------------------|
+|     CurrentCount    |     Propriedade somente leitura que retorna o número   de sinais restantes necessários para definir o evento.       |
+|     InitialCount    |     Propriedade somente leitura que retorna o número   de sinais inicialmente necessários para definir o evento.    |
+|     IsSet           |     Propriedade somente leitura que retorna true se o   evento estiver definido.                                    |
+|     WaitHandle      |     Propriedade somente leitura que retorna um   WaitHandle usado para aguardar a configuração do evento.           |
+
 
 A classe System.Threading.CountdownEvent representa um evento definido quando a contagem é zero. Embora CountdownEvent.CurrentCount seja maior que zero, um thread que chama CountdownEvent.Wait é bloqueado. Chame CountdownEvent.Signal para diminuir a contagem de um evento.
 
@@ -3910,10 +4060,14 @@ Em contraste com ManualResetEvent ou ManualResetEventSlim, que você pode usar p
 
 Para usar CountdownEvent, instancie a classe com o número de threads ou "contagens" nas quais você deseja esperar:
 
+```csharp
 var countdown  = novo CountdownEvent (3); // Inicialize com "count" de 3.
+```
+
 
 O sinal de chamada diminui a "contagem"; chamada Espera bloqueia até que a contagem desça para zero. Por exemplo:
 
+```csharp
 static CountdownEvent _countdown = new CountdownEvent(3);
 
 static void Main(string[] args)
@@ -3932,6 +4086,8 @@ static void SaySomething(object thing)
     Console.WriteLine(thing);
     _countdown.Signal();
 }
+```
+
 
 Às vezes, os problemas para os quais o CountdownEvent é eficaz podem ser resolvidos mais facilmente usando as construções de paralelismo estruturado (PLINQ e a classe Parallel).
 
@@ -3939,7 +4095,7 @@ Você pode recriar a contagem de um CountdownEvent ligando para AddCount. No ent
 
 Como ManualResetEventSlim, CountdownEvent expõe uma propriedade WaitHandle para cenários em que alguma outra classe ou método espera um objeto com base em WaitHandle.
 
-Classe Barrier
+### Classe Barrier
 
 Em um cenário multithread, há situações em que você gera vários threads e deseja garantir que eles cheguem todos em um determinado ponto antes que você possa continuar a execução do seu código. Um exemplo comum para esse cenário é o seguinte: Um grupo de amigos decide viajar de carro do ponto A ao ponto C, via ponto B. Eles querem começar a viajar juntos do ponto A e parar no ponto B; eles planejam começar juntos novamente para viajar e se encontrar no ponto final C. Alguns deles podem até decidir que não querem mais ir e voltar para casa.
 
@@ -3947,25 +4103,28 @@ A classe System.Threading.Barrier representa uma barreira de execução do threa
 
 Antes de analisar uma possível implementação, você precisa examinar o que o .NET pode oferecer para resolver esse tipo de problema. Uma maneira seria usar o evento Countdown, mas na verdade não está modelando o que você precisa! O .NET 4 introduziu uma nova classe chamada System.Threading.Barrier que lida com exatamente essas situações. As tabelas abixo listam alguns dos métodos e propriedades da classe.
 
-Método	Descrição
-Barrier Constructor	Inicializa uma nova instância da classe Barrier. Este método possui duas sobrecargas, ambas tomando como parâmetro o número de participantes.
-A segunda sobrecarga usa como parâmetro extra uma Ação que será executada após todos os participantes terem chegado à barreira em uma fase.
-AddParticipant	Envie uma notificação para a Barreira de que haverá mais um participante.
-AddParticipants	Envie uma notificação para a Barreira de que haverá vários outros participantes.
-Dispose	Este é o método da interface IDisposable. Você deve chamar esse método para garantir que os recursos do SO sejam liberados quando esse objeto não for mais necessário.
-RemoveParticipant	Envia uma notificação para a Barreira de que haverá menos um participante.
-RemoveParticipants	Envia uma notificação para a Barreira de que haverá menos participantes.
-SignalAndWait	Seis sobrecargas. Sinais de que um participante alcançou a barreira e espera que todos os outros participantes também atinjam a barreira. As sobrecargas são usadas para chamar o método com um token de cancelamento e / ou com um tempo limite.
+|     Método                 |     Descrição                         |
+|----------------------------|-----------------------------------------|
+|     Barrier Constructor    |     Inicializa uma nova instância da classe Barrier.   Este método possui duas sobrecargas, ambas tomando como parâmetro o número de   participantes.     A segunda sobrecarga usa como parâmetro extra uma   Ação que será executada após todos os participantes terem chegado à barreira   em uma fase.    |
+|     AddParticipant         |     Envie uma notificação para a Barreira de que   haverá mais um participante.                           |
+|     AddParticipants        |     Envie uma notificação para a Barreira de que   haverá vários outros participantes.                        |
+|     Dispose                |     Este é o método da interface IDisposable. Você   deve chamar esse método para garantir que os recursos do SO sejam liberados   quando esse objeto não for mais necessário.                    |
+|     RemoveParticipant      |     Envia uma notificação para a Barreira de que   haverá menos um participante.                                        |
+|     RemoveParticipants     |     Envia uma notificação para a Barreira de que   haverá menos participantes.                          |
+|     SignalAndWait          |     Seis sobrecargas. Sinais de que um participante   alcançou a barreira e espera que todos os outros participantes também atinjam   a barreira. As sobrecargas são usadas para chamar o método com um token de   cancelamento e / ou com um tempo limite.                                                  |
+
 
 Propriedades de System.Threading.Barrier
 
-Propriedade	Descrição
-CurrentPhaseNumber	Propriedade somente leitura que retorna o número da fase atual da barreira.
-ParticipantCount	Propriedade somente leitura que retorna o número total de participantes na barreira.
-ParticipantsRemaining	Propriedade somente leitura que retorna o número de participantes na barreira que ainda não chegou.
+|     Propriedade              |     Descrição                   |
+|------------------------------|--------------------------------|
+|     CurrentPhaseNumber       |     Propriedade somente leitura que retorna o número   da fase atual da barreira.                            |
+|     ParticipantCount         |     Propriedade somente leitura que retorna o número   total de participantes na barreira.                   |
+|     ParticipantsRemaining    |     Propriedade somente leitura que retorna o número   de participantes na barreira que ainda não chegou.    |
 
 Considere o seguinte snippet de código que usa a classe Barrier:
 
+```csharp
 var participants = 5;
 Barrier barrier = new Barrier(participants + 1,
 // We add one for the main thread.
@@ -4004,12 +4163,14 @@ barrier.ParticipantCount - 1);
 barrier.SignalAndWait(); // Waiting at the first phase
 barrier.SignalAndWait(); // Waiting at the second phase
 Console.WriteLine("Main thread is done!");
+```
+
 
 Nesta amostra, você cria uma barreira para acompanhar os participantes que chegaram aos pontos de reunião. Você precisa inicializar a barreira com o número de participantes mais um. O participante extra é usado pelo thread principal.
 
 Então você cria uma tarefa por participante. A instrução var localCopy = i captura o valor do iterador, para evitar problemas que possam aparecer. Apenas para tornar o cenário mais interessante, todas as outras tarefas “mudarão de idéia” e voltarão, mas não antes de informar as outras. O thread principal está chamando de barreira.SignalAndWait duas vezes, uma vez para cada fase.
 
-CONSTRUÇÕES DE SINCRONIZAÇÃO SEM BLOQUEIO
+### CONSTRUÇÕES DE SINCRONIZAÇÃO SEM BLOQUEIO
 
 Anteriormente, dissemos que a necessidade de sincronização surge mesmo no simples caso de atribuir ou incrementar um campo. Embora o bloqueio sempre possa satisfazer essa necessidade, um bloqueio contido significa que um thread deve bloquear, sofrendo a sobrecarga de uma alternância de contexto e a latência de ser programado, o que pode ser indesejável em cenários altamente simultâneos e críticos para o desempenho. As construções de sincronização sem bloqueio do .NET Framework podem executar operações simples sem nunca bloquear, pausar ou aguardar.
 
@@ -4017,6 +4178,7 @@ Escrever código multithread nonblocking ou lock-free corretamente é complicado
 
 As abordagens nonblocking também funcionam em vários processos. Um exemplo de onde isso pode ser útil está na leitura e gravação de memória compartilhada do processo.
 
+```csharp
 class Foo
 {
     public int _answer;
@@ -4033,6 +4195,8 @@ class Foo
         if (_complete) Console.WriteLine(_answer);
     }
 }
+```
+
 
 Se os métodos A e B forem executados simultaneamente em diferentes threads, será possível que B escreva “0”? A resposta é sim - pelos seguintes motivos:
 - O compilador, CLR ou CPU pode reordenar as instruções do seu programa para melhorar a eficiência.
@@ -4040,6 +4204,7 @@ Se os métodos A e B forem executados simultaneamente em diferentes threads, ser
 
 Trabalhar com campos graváveis compartilhados sem bloqueios ou cercas está pedindo por problemas. Há muitas informações enganosas sobre esse tópico - incluindo a documentação do MSDN, que afirma que o MemoryBarrier é necessário apenas em sistemas multiprocessadores com pouca memória, como um sistema que utiliza vários processadores Itanium. Podemos demonstrar que as barreiras de memória são importantes nos processadores Intel Core-2 e Pentium comuns com o seguinte programa curto. Você precisará executá-lo com as otimizações ativadas e sem um depurador (no Visual Studio, selecione Release Mode no gerenciador de configuração da solução e inicie sem depuração):
 
+```csharp
 bool complete = false;
 var t = new Thread(() =>
 {
@@ -4054,17 +4219,20 @@ t.Start();
 Thread.Sleep(1000);
 complete = true;
 t.Join();        // Blocks indefinitely
+```
+
 
 Este programa nunca termina porque a variável complete é armazenada em cache em um registro da CPU. Inserir uma chamada para Thread.MemoryBarrier dentro do loop while (ou travar a leitura concluída) corrige o erro.
 
 Uma boa abordagem é começar colocando barreiras de memória antes e depois de cada instrução que lê ou grava um campo compartilhado e depois retira os que você não precisa. Se você não tiver certeza, deixe-o dentro. Ou melhor: volte a usar bloqueios!
 
-Thread.MemoryBarrier 
+### Thread.MemoryBarrier 
 
 O C# e o tempo de execução são muito cuidadosos para garantir que essas otimizações não quebrem o código comum de thread único - ou o código multithread que faz uso adequado dos bloqueios. Fora desses cenários, você deve derrotar explicitamente essas otimizações criando barreiras de memória (também chamadas cercas de memória) para limitar os efeitos do reordenamento de instruções e do cache de leitura / gravação.
 
 O tipo mais simples de barreira de memória é uma barreira de memória completa (full fence) que impede qualquer tipo de instrução reordenar ou armazenar em cache em torno dessa barreira. Chamar Thread.MemoryBarrier gera uma cerca completa; podemos corrigir nosso exemplo aplicando quatro cercas completas da seguinte maneira:
 
+```csharp
 public void MemoryBarrier_A()
 {
     _answer = 123;
@@ -4082,6 +4250,8 @@ public void MemoryBarrier_B()
         Console.WriteLine(_answer);
     }
 }
+```
+
 
 As barreiras 1 e 4 impedem que este exemplo escreva "0". As barreiras 2 e 3 fornecem uma garantia de atualização: elas garantem que se B for executado após A, a leitura de _complete será avaliada como verdadeira.
 
@@ -4090,13 +4260,18 @@ Uma cerca completa (full fence) leva cerca de dez nanossegundos em um desktop. O
 - Todos os métodos da classe Interlocked 
 - Retornos de chamada assíncronos que usam o conjunto de threads - incluem delegados assíncronos, retornos de chamada APM e continuações de tarefas
 - Qualquer coisa que dependa de sinalização, como iniciar ou aguardar uma tarefa. Em virtude desse último ponto, o seguinte é seguro para threads:
+
+```csharp
 int x = 0;
 Task t = Task.Factory.StartNew (() => x++);
 t.Wait();
 Console.WriteLine (x);    // 1
+```
+
 
 Você não precisa necessariamente de uma cerca completa com cada leitura ou gravação individual. Se tivéssemos três campos de resposta, nosso exemplo ainda precisaria de apenas quatro cercas:
 
+```csharp
 class Foo_Partial
 {
     int _answer1, _answer2, _answer3;
@@ -4120,22 +4295,30 @@ class Foo_Partial
         }
     }
 }
+```
 
-Classe Volatile
+
+### Palavra-chave Volatile
 
 Outra maneira (mais avançada) de resolver esse problema apresentado anteriormente relacionado ao campo _complete é utilizando outra classe no .NET Framework: System.Threading.Volatile. Essa classe possui um método especial de gravação e leitura, e esses métodos desabilitam as otimizações do compilador para que você possa forçar a ordem correta no seu código. O uso desses métodos na ordem correta pode ser bastante complexo, portanto, o .NET oferece a palavra-chave volátil que você pode aplicar a um campo. Você então alteraria a declaração do seu campo para isto:
 
+```csharp
 volatile bool _complete;
+```
 
 A palavra-chave volátil instrui o compilador a gerar uma cerca de aquisição em todas as leituras desse campo e uma cerca de liberação em todas as gravações nesse campo. Uma cerca de aquisição impede que outras leituras/gravações sejam movidas antes da cerca; uma barreira de liberação impede que outras leituras/gravações sejam movidas após a barreira. Essas “meias cercas” são mais rápidas que as cercas completas, porque dão ao tempo de execução e ao hardware mais espaço para otimização. O efeito da aplicação de voláteis a campos pode ser resumido da seguinte forma:
-First instruction	Second instruction	Can they be swapped?
-Read	Read	No
-Read	Write	No
-Write	Write	No (The CLR ensures that write-write operations are never swapped, even without the volatile keyword)
-Write	Read	Yes!
+
+|     First   instruction    |     Second   instruction    |     Can   they be swapped?                 |
+|----------------------------|-----------------------------|---------------|
+|     Read                   |     Read                    |     No          |
+|     Read                   |     Write                   |     No          |
+|     Write                  |     Write                   |     No (The CLR ensures that write-write operations are never swapped,   even without the volatile keyword)    |
+|     Write                  |     Read                    |     Yes!       |
 
 Observe que a aplicação de volátil não impede que uma gravação seguida de uma leitura seja trocada, e isso pode criar quebra-cabeças. Joe Duffy ilustra bem o problema com o seguinte exemplo: se Test1 e Test2 forem executados simultaneamente em threads diferentes, é possível que a e b terminem com o valor 0 (apesar do uso de voláteis em x e y):
 
+
+```csharp
 class IfYouThinkYouUnderstandVolatile
 {
     volatile int x, y;
@@ -4152,8 +4335,10 @@ class IfYouThinkYouUnderstandVolatile
         int b = x;        // Volatile read (acquire-fence)
     }
 }
-
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/volatile.png" alt="Image" width="100%" />
+</p>
 
 Isso representa um forte argumento para evitar a volatilidade: mesmo se você entender a sutileza neste exemplo, outros desenvolvedores trabalhando no seu código também a entenderão? Uma cerca completa entre cada uma das duas atribuições no Teste1 e Teste2 (ou uma trava) resolve o problema.
 
@@ -4161,37 +4346,47 @@ Isso representa um forte argumento para evitar a volatilidade: mesmo se você en
 
 A palavra-chave volátil não é suportada com argumentos de passagem por referência ou variáveis locais capturadas: nesses casos, você deve usar os métodos VolatileRead e VolatileWrite.
 
-VolatileRead e VolatileWrite
+### VolatileRead e VolatileWrite
 
 Os métodos estáticos VolatileRead e VolatileWrite na classe Thread leem/gravam uma variável enquanto aplicam (tecnicamente, um superconjunto) as garantias feitas pela palavra-chave volátil. Suas implementações são relativamente ineficientes, pois geram cercas completas. 
 
 
-Interlocked
+### Interlocked
 
 Tornar as operações atômicas é o trabalho da classe Interlocked que pode ser encontrada no namespace System.Threading. A classe Interlocked é usada para sincronizar o acesso de objetos de memória compartilhada entre vários threads. A classe intertravada fornece a seguinte operação útil na memória compartilhada:
-Método	Descrição
-Add	Adiciona dois inteiros de 32 ou 64 bits e substitui o primeiro inteiro pela soma, como uma operação atômica.
-CompareExchange	Compara o primeiro e o terceiro parâmetros de igualdade e, se forem iguais, substitui o valor do primeiro parâmetro pelo segundo parâmetro.
-Decrement	Decrementa uma variável especi ﬁ cada e armazena o resultado, como uma operação atômica.
-Exchange	Define um objeto para um valor especificado e retorna uma referência ao objeto original, como uma operação atômica.
-Increment	Incrementa uma variável especi ﬁ cada e armazena o resultado, como uma operação atômica.
-Read	Carrega um valor de 64 bits como uma operação atômica e o retorna ao chamador. Isso é necessário apenas em plataformas de 32 bits
+
+|     Método             |     Descrição                            |
+|------------------------|------------------------------------------|
+|     Add                |     Adiciona dois inteiros de 32 ou 64 bits e   substitui o primeiro inteiro pela soma, como uma operação atômica.          |
+|     CompareExchange    |     Compara o primeiro e o terceiro parâmetros de   igualdade e, se forem iguais, substitui o valor do primeiro parâmetro pelo   segundo parâmetro.    |
+|     Decrement          |     Decrementa uma variável especi ﬁ cada e armazena   o resultado, como uma operação atômica.             |
+|     Exchange           |     Define um objeto para um valor especificado e   retorna uma referência ao objeto original, como uma operação atômica.         |
+|     Increment          |     Incrementa uma variável especi ﬁ cada e armazena   o resultado, como uma operação atômica.                  |
+|     Read               |     Carrega um valor de 64 bits como uma operação   atômica e o retorna ao chamador. Isso é necessário apenas em plataformas de   32 bits              |
 
 No exemplo anterior, o problema essencial era que as operações de adição(n = n + 1 ou n++) e subtração (num = num – 1 ou n--) não eram atômicas tanto para leitura quanto para gravação. Ao utilizar o Interlocked ficaria o seguinte:
 
+
+```csharp
 for (int i = 0; i < length; i++)
 {
     Interlocked.Decrement(ref num); //Ou Interlocked.Increment(ref num);
 }
+```
+
 
 O Interlocked garante que as operações de incremento e decremento sejam executadas atomicamente. Nenhum outro thread verá resultados intermediários. Obviamente, adicionar e subtrair é uma operação simples. Se você tiver operações mais complexas, ainda precisará usar um lock.
 
 O Interlocked também oferece suporte à alternância de valores usando o método Exchange. Você usa esse método da seguinte maneira:
 
+```csharp
 if (Interlocked.Exchange(ref n, 1) == 0) { }
+```
+
 
 Esse código recupera o valor atual e o define imediatamente para o novo valor na mesma operação. Retorna o valor anterior antes de alterá-lo. A seguir um exemplo de uso de Interlocked.Exchange:
 
+```csharp
 //0 for false, 1 for true.
 private static int usingResource = 0;
 private const int numThreadIterations = 5;
@@ -4251,9 +4446,12 @@ static bool UseResource()
         return false;
     }
 }
+```
+
 
 As operações matemáticas do Interlocked estão restritas a Incremento, Decremento e Adição. Se você deseja multiplicar - ou executar qualquer outro cálculo - você pode fazê-lo no estilo livre de bloqueio, usando o método CompareExchange (normalmente em conjunto com a espera em rotação). Este método primeiro verifica se o valor esperado está lá; se for, substitui-o por outro valor. O exmplo abaixo mostra o que pode dar errado ao comparar e trocar um valor em uma operação não atômica.
 
+```csharp
 int value = 1;
 Task t1 = Task.Run(() =>
 {
@@ -4270,9 +4468,13 @@ Task t2 = Task.Run(() =>
 });
 Task.WaitAll(t1, t2);
 Console.WriteLine(value); // Displays 2
+```
+
 
 A tarefa t1 começa a executar e vê que o valor é igual a 1. Ao mesmo tempo, t2 altera o valor para 3 e, em seguida, t1 o altera de volta para 2. Para evitar isso, você pode usar bloqueios:
 
+
+```csharp
 object _lock = new object();
 Task t1 = Task.Run(() =>
 {
@@ -4293,9 +4495,12 @@ Task t2 = Task.Run(() =>
         value = 3;
     }
 });
+```
+
 
 Ou com a seguinte instrução Interlocked:
 
+```csharp
 Interlocked.CompareExchange (ref value, newValue, compareTo);
 
 	Que basicamente faz isso:
@@ -4308,43 +4513,45 @@ Task t1 = Task.Run(() =>
 {
     Interlocked.CompareExchange(ref value, 2, 1);
 });
+```
+
 
 Isso garante que comparar o valor e trocá-lo por um novo seja uma operação atômica. Dessa forma, nenhum outro thread pode alterar o valor entre compará-lo e trocá-lo. Interlocked.CompareExchange atualiza um campo com um valor especificado se o valor atual do campo corresponder ao terceiro argumento. Em seguida, ele retorna o valor antigo do campo, para que você possa testar se ele foi bem-sucedido comparando-o com o instantâneo original. Se os valores diferirem, isso significa que outro thread o antecipou; nesse caso, você gira e tenta novamente.
 
 Todos os métodos da Interlocked geram uma barreira completa. Portanto, os campos que você acessa via Interlocked não precisam de cercas adicionais, a menos que sejam acessados em outros lugares do programa sem o Interlocked ou um bloqueio. Os métodos de intertravamento têm uma sobrecarga típica de 10 ns - metade da de um bloqueio não controlado. Além disso, eles nunca podem sofrer o custo adicional da alternância de contexto devido ao bloqueio. O outro lado é que usar o Interlocked dentro de um loop com muitas iterações pode ser menos eficiente do que obter um único bloqueio ao redor do loop (embora o Interlocked permita maior simultaneidade).
 
-System.Threading.CancellationTokenSource
+### System.Threading.CancellationTokenSource
 
 A classe Task da suporte a cancelamento cooperativo e é totalmente integrado com a classe System.Threading.CancellationTokenSource e com a classe System.Threading.CancellationToken, que são novos no Framework 4. NET. Muitos dos construtores da classe System.Threading.Tasks.Task tem um CancellationToken como parâmetro de entrada. Muitas das sobrecargas StartNew e Run também possuem um CancellationToken.
 
-Cancelando Tasks
+### Cancelando Tasks
 
 A partir do .NET Framework 4, o .NET Framework usa um modelo unificado para cancelamento cooperativo de operações assíncronas ou síncronas de longa execução. Este modelo é baseado em um objeto leve chamado token de cancelamento. Antes do .NET 4, as formas de cancelar uma operação em andamento eram inseguras. Eles incluíam abortar e interromper threads ou até abandonar operações nas quais você não estava mais interessado. Embora isso funcionasse na maioria das vezes, os cancelamentos foram a fonte de muitos erros.
 
 Os cancelamentos fornecidos no .NET são cancelamentos cooperativos, o que significa que você pode enviar uma solicitação de cancelamento para outro thread, ou tarefa, mas é sua escolha atender à solicitação. Os recursos de cancelamento são implementados usando uma classe, CancellationTokenSource e uma estrutura, CancellationToken.  O objeto solicitante invoca uma ou mais operações canceláveis, por exemplo criando novos threads, itens de trabalho do ThreadPool ou tarefas, passa o token para cada operação. As operações individuais podem, por sua vez, passar cópias do token para outras operações. Posteriormente, o objeto solicitante que criou o token pode usá-lo para solicitar que as operações parem o que estão fazendo. Somente o objeto solicitante pode emitir a solicitação de cancelamento, e cada ouvinte é responsável por perceber a solicitação e respondê-la de forma apropriada e oportuna.
 
 A estrutura de cancelamento é implementada como um conjunto de tipos relacionados, que estão listados na tabela a seguir.
-Nome de tipo	Descrição
-CancellationTokenSource
-O objeto que cria um token de cancelamento, e também emite o pedido de cancelamento para todas as cópias desse token.
-CancellationToken
-O tipo de valor leve passado a um ou mais ouvintes, normalmente como um parâmetro de método. Os ouvintes monitoram o valor da propriedade IsCancellationRequested do token por sondagem, retorno de chamada ou identificador de espera.
-OperationCanceledException
-As sobrecargas do construtor desta exceção aceitam CancellationToken como um parâmetro. Os ouvintes podem, opcionalmente, lançar essa exceção para verificar a origem do cancelamento e notificar aos outros que ela respondeu a uma solicitação de cancelamento.
+
+|     Nome   de tipo                |     Descrição                      |
+|-----------------------------------|-------------------|
+|     CancellationTokenSource       |     O objeto que cria um token de cancelamento, e também emite o pedido   de cancelamento para todas as cópias desse token.                                                               |
+|     CancellationToken             |     O tipo de valor leve passado a um ou mais ouvintes, normalmente como   um parâmetro de método. Os ouvintes monitoram o valor da propriedade IsCancellationRequested   do token por sondagem, retorno de chamada ou identificador de espera.          |
+|     OperationCanceledException    |     As sobrecargas do construtor desta exceção aceitam CancellationToken   como um parâmetro. Os ouvintes podem, opcionalmente, lançar essa exceção para   verificar a origem do cancelamento e notificar aos outros que ela respondeu a   uma solicitação de cancelamento.    |
 
 O cancelamento ocorre ao solicitar um código que chama o método CancellationTokenSource.Cancel e o delegado do usuário finaliza a operação. No entanto, uma operação pode ser finalizada:
 1.	Simplesmente retornando do delegado;
 2.	Chamando o método CancellationTokenSource.Cancel.
 
 A seguir, são etapas gerais para implementar o modelo de cancelamento:
-1.	Instancie um CancellationTokenSource, se um thread deseja ter a capacidade de cancelar operações subseqüentes precisa de um objeto CancellationTokenSource, que gerencia e envia uma notificação de cancelamento para os tokens de cancelamento individuais.
-2.	Obtenha um CancellationToken da propriedade CancellationTokenSource.Token.
-3.	Passe o CancellationToken para cada tarefa ou thread que escuta o cancelamento.
+1.	**Instancie um CancellationTokenSource**, se um thread deseja ter a capacidade de cancelar operações subseqüentes precisa de um objeto CancellationTokenSource, que gerencia e envia uma notificação de cancelamento para os tokens de cancelamento individuais.
+2.	**Obtenha um CancellationToken** da propriedade CancellationTokenSource.Token.
+3.	**Passe o CancellationToken para cada tarefa ou thread** que escuta o cancelamento.
 4.	Forneça um mecanismo para cada tarefa ou thread para responder ao cancelamento. Operação assíncrona cancelável significa uma operação que oferece suporte para cancelamentos ou um novo thread que será criada pelo thread atual. Isso normalmente é expresso na forma de um ou vários métodos sobrecarregados que aceitam um CancellationToken .
-5.	Chame o método CancellationTokenSource.Cancel para fornecer uma notificação de cancelamento que cancela as operações canceláveis em andamento. Todas as operações em andamento podem usar o CancelationToken enviado como parâmetro para verificar se um cancelamento está pendente e responder de acordo ou ignorar a solicitação.
+5.	**Chame o método CancellationTokenSource.Cancel** para fornecer uma notificação de cancelamento que cancela as operações canceláveis em andamento. Todas as operações em andamento podem usar o CancelationToken enviado como parâmetro para verificar se um cancelamento está pendente e responder de acordo ou ignorar a solicitação.
 
 A classe CancellationTokenSource implementa a interface IDisposable. Certifique-se de chamar o método CancellationTokenSource.Dispose quando terminar de usar a fonte de token de cancelamento para liberar todos os recursos não gerenciados detidos.
 
+```csharp
 //1 - Instantiate a cancellation token source
 using (CancellationTokenSource cts = new CancellationTokenSource())
 {
@@ -4369,10 +4576,16 @@ using (CancellationTokenSource cts = new CancellationTokenSource())
 }
 
 Console.WriteLine("Press enter to end the application");
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/cancellationtoken.png" alt="Image" width="100%" />
+</p>
  
 
 O CancellationToken é usado na tarefa assíncrona. O CancellationTokenSource é usado para sinalizar que a tarefa deve se cancelar. Nesse caso, a operação terminará quando o cancelamento for solicitado. Usuários externos da tarefa não verão nada diferente, pois a tarefa terá apenas um estado RanToCompletion. Se você deseja sinalizar para usuários externos que sua tarefa foi cancelada, você pode fazer isso lançando uma OperationCanceledException. O exemplo abaixo mostra como fazer isso.
 
+```csharp
 using (CancellationTokenSource cts = new CancellationTokenSource())
 {
     CancellationToken token = cts.Token;
@@ -4403,11 +4616,16 @@ using (CancellationTokenSource cts = new CancellationTokenSource())
 };
 
 Console.WriteLine("Press enter to end the application");
- 
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/taskcancel.png" alt="Image" width="100%" />
+</p>
 
 
 Em vez de capturar a exceção, você também pode adicionar uma tarefa de continuação que é executada apenas quando a tarefa é cancelada. Nesta tarefa, você tem acesso à exceção lançada e pode resolvê-la, se apropriado. O exemplo a seguir mostra como seria uma tarefa de continuação.
 
+```csharp
 //3 - Pass token to Task
 Task task = Task.Run(() =>
 {
@@ -4427,10 +4645,15 @@ Console.ReadLine();
 //5 - notify for cancellation
 cts.Cancel();
 
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/endapp.png" alt="Image" width="100%" />
+</p>
 
+ 
 Observe que, embora .Cancel() tenha sido chamado, o task.Status da continuação é RanToCompletion. Observe também que nenhuma AggregationException é lançada. Isso mostra que apenas chamar .Cancel() da fonte do token não define o status da tarefa como Cancelado. Para o tratamento com o ContinueWith seja utilizado com um tratamento TaskContinuationOptions.OnlyOnCanceled
 
+```csharp
 Task task = Task.Run(() =>
         {
             //4 - Mecanismo para cada tarefa ou thread para responder ao cancel
@@ -4453,17 +4676,22 @@ Console.WriteLine("Press enter to stop the task");
 Console.ReadLine();
 //5 - notify for cancellation
 cts.Cancel();
+```
 
 Se você deseja cancelar uma tarefa após um certo período de tempo, pode usar uma sobrecarga de Task.WaitAny que leva um tempo limite.
 
+```csharp
 //5 - notify for cancellation
 cts.CancelAfter(5000);
 Thread.Sleep(5000);
 Console.WriteLine();
 Console.WriteLine("Task timed out after 5s: " + task.Status);
+```
+
 
 Vimos que Barriers podem ser usadas para coordenar a chegada de vários threads no mesmo ponto. Mas o que acontece se você quiser cancelar o rocedimento? O próximo exemplo de código faz exatamente isso.
 
+```csharp
 var participants = 5;
 // We create a CancellationTokenSource to be able to initiate the cancellation
 var tokenSource = new CancellationTokenSource();
@@ -4513,75 +4741,86 @@ else
     Console.WriteLine("Too late to cancel!");
 }
 Console.WriteLine("Main thread is done!");
+```
 
-Implementar fluxo de programa 
-- Iterar em itens de coleção e de matriz; programar decisões usando instruções switch, se/então e operadores; avaliar expressões
+## Implementar fluxo de programa 
+- **Iterar em itens de coleção e de matriz; programar decisões usando instruções switch, se/então e operadores; avaliar expressões**
 
 Você pode entender como controlar o fluxo do programa usando estruturas de decisão e repetição. Esses são os principais componentes de um aplicativo escrito em C. O C# oferece algumas instruções que podem ser usadas quando você precisa tomar uma decisão em seu aplicativo, incluindo verificar se o usuário digitou a senha correta, garantir que um determinado valor esteja dentro do alcance ou uma das inúmeras outras possibilidades. 
 
 Além de tomar decisões, outra tarefa comum é trabalhar com coleções. O C# possui recursos que ajudam a trabalhar com coleções, permitindo que você itere sobre coleções e acesse itens individuais.
 
 Em qualquer linguagem de programação, declarações são as construções de código que fazem com que o aplicativo execute uma ação. Em C# divide as declarações em dois tipos básicos:. 
-1.	Instruções simples: são aquelas que terminam com ponto-e-vírgula (;) e são normalmente usadas para ações do programa, como as seguintes:
+1.	**Instruções simples**: são aquelas que terminam com ponto-e-vírgula (;) e são normalmente usadas para ações do programa, como as seguintes:
 a.	Declarando variáveis (declarações)
 b.	Atribuindo valores a variáveis (instruções de atribuição)
 c.	Chamando o método no seu código
 d.	Instruções de ramificação que alteram o fluxo do programa
-2.	Instruções complexas: são aquelas que podem ou incluirão uma ou mais instruções simples em um bloco de código cercado por chaves: {}. Instruções complexas típicas são aquelas que são loops e estruturas de decisão abordadas a seguir como foreach (), if (), switch, do () e assim por diante.
+2.	**Instruções complexas**: são aquelas que podem ou incluirão uma ou mais instruções simples em um bloco de código cercado por chaves: {}. Instruções complexas típicas são aquelas que são loops e estruturas de decisão abordadas a seguir como foreach (), if (), switch, do () e assim por diante.
 
 O C# oferece várias instruções de controle de fluxo que ajudam a determinar o caminho que seu aplicativo segue. Normalmente, todas as instruções de um programa são executadas a partir de de cima para baixo. O fluxo de controle ajuda nosso programa a executar ou pular um bloco de código, ajuda a repetir um código até que uma condição seja satisfeita e ajuda nosso controle a saltar para qualquer lugar do código. Mas em um aplicativo real, controlamos o fluxo de execução, apresentando:
-Estrutura	Instruções
-Decisão/Condição	If else	switch	coalescência nula (??)	condicional ternário (? :)
-Repetição	for	foreach	while	do while
-Jump	break	goto	continue	
+
+|     Estrutura           |         |         Instruções       |       |         |
+|-------------------------|-------------------|----------------|------------------|----|
+|     Decisão/Condição    |     If   else     |     switch     |     coalescência   nula (??)    |     condicional   ternário (? :)    |
+|     Repetição           |     for           |     foreach    |     while        |     do   while       |
+|     Jump                |     break         |     goto       |     continue                    |         |
 
 Usando essas construções, você pode criar aplicativos flexíveis que permitem executar comportamentos diferentes, dependendo das circunstâncias
 
-ESTRUTURA DECISÃO/CONDIÇÃO
+### ESTRUTURA DECISÃO/CONDIÇÃO
 
 Instruções condicionais em C # são aquelas que avaliam uma condição e, em seguida, executam uma ação, não executam nenhuma ação ou escolhem entre as ações disponíveis para execução. Para avaliar condições, o C # fornece o seguinte: 
-- Operadores relacionais
-- Expressions Expressões booleanas
-- Operadores lógicos
-- Operator Um operador condicional (operador ternário)
+- **Operadores relacionais**
+- **Expressions Expressões booleanas**
+- **Operadores lógicos**
+- **Operator Um operador condicional (operador ternário)**
 
 As condições no seu programa C# permitem comparar valores, normalmente mantidos em variáveis, mas também constantes e literais. Uma variável é um local nomeado na memória que permite armazenar um valor para uso posterior. Isso é chamado de variável porque você pode alterar o conteúdo sempre que quiser. Uma constante é como uma variável, pois é um local de memória nomeado usado para armazenar um valor, mas você não pode alterar o valor à vontade. Ele aceita um valor quando você o declara e mantém esse valor durante toda a vida útil do tempo de execução do seu programa. Literais são valores que, literalmente, são o que são. Exemplos de literais são 1, 25, 'c' e "strings". Você não pode e não atribui outros itens a literais; você pode atribuir literais apenas a variáveis de constantes.
 
 A execução do seu programa pode ser controlada com base nessas comparações. Para usar efetivamente esses conceitos em seus programas, você precisa entender os operadores lógicos de comparação disponíveis (os operadores executam uma operação com valores). A tabela a seguir  mostra os operadores relacionais e de igualdade em C#.
-Operator	Descrição	Example
-<	Menor que	x < 42;
->	Maior que	x > 42;
-<=	Menos que ou igual a	x <= 42;
->=	Melhor que ou igual a	x >= 42;
-==	Igual a	x == 42;
-!=	Diferente de	x != 42;
+
+|     Operator    |     Descrição                |     Example     |
+|-----------------|------------------------------|-----------------|
+|     <           |     Menor que                |     x < 42;     |
+|     >           |     Maior que                |     x > 42;     |
+|     <=          |     Menos que ou igual a     |     x <= 42;    |
+|     >=          |     Melhor que ou igual a    |     x >= 42;    |
+|     ==          |     Igual a                  |     x == 42;    |
+|     !=          |     Diferente de             |     x != 42;    |
 
 Sempre que vir o operador = em C#, lembre-se de que ele é um operador de atribuição e não um operador de comparação. O C# usa dois sinais = juntos (==) para denotar igualdade. Portanto, 2 = 2 não é o mesmo que 2 == 2. O primeiro não é realmente aceito em C# porque tenta atribuir um literal a um literal, o que não é possível. Um literal em C # é um valor real em oposição a uma variável. No entanto, 2 == 2 é válido em C# e está avaliando se o literal 2 é igual ao literal 2. Nesse caso, é e o resultado é um valor true para a comparação. O operador relacional final é o operador!=, O que significa que não é igual. A expressão 2 != 42 retornaria true porque o valor literal 2 não é igual ao valor literal 42.
 
-Expressões Booleanas
+### Expressões Booleanas
 
 Ao trabalhar com instruções de controle de fluxo, você trabalhará automaticamente com expressões booleanas. Uma expressão booleana sempre deve produzir verdadeiro ou falso como resultado final, mas, ao fazer isso, pode ser bastante complexa usando operadores diferentes.
-Operator	Descrição	Example
-&	Variante unária retorna o endereço de seu operando. A variante binária é o AND bit a bit de dois operandos.	& expr1 
-		expr1 & expr2
-|	O operador OR binário. Verdadeiro se um ou ambos os operandos forem verdadeiros, falso se os dois operandos forem falsos.	expr1 | expr2
-^	O OR bit a bit exclusivo. Retorna true se, e somente se, um dos operandos for verdadeiro.	expr1 ^ expr2
-!	Operador de negação lógica unário. Retorna false se o operando for verdadeiro ou vice-versa.	!expr
-~	O operador de complemento bit a bit.	~expr
-&&	Condicional AND que executa uma operação lógica nos operandos booleanos. Capaz de lógica de curto-circuito, em que o segundo operando é avaliado apenas se necessário	expr && expr2
-||	Condicional  OR que executa um OR lógico nos operandos booleanos. Avalia apenas o segundo operando, se necessário.	expr1 || expr2
-true	Usado como um operador bool para indicar a verdade em uma expressão.	bool success = true;
-false	sado como um operador bool para indicar mentira em uma expressão.	bool success = false;
+
+|     Operator    |     Descrição                    |     Example                  |
+|-----------------|----------------------------------|------------------------------|
+|     &           |     Variante unária retorna o endereço de seu operando. A variante binária   é o AND bit a bit de dois operandos.            |     & expr1   <br>    expr1 & expr2            |
+|     \|          |     O operador OR binário. Verdadeiro se um ou ambos os operandos forem   verdadeiros, falso se os dois operandos forem falsos.        |  expr1 \| expr2             |
+|     ^           |     O OR bit a bit exclusivo. Retorna true se, e somente se, um dos   operandos for verdadeiro.               |     expr1 ^ expr2            |
+|     !           |     Operador de negação lógica unário. Retorna false se o operando for   verdadeiro ou vice-versa.            |     !expr                    |
+|     ~           |     O operador de complemento bit a bit.             |     ~expr                    |
+|     &&          |     Condicional AND que executa uma operação lógica nos operandos   booleanos. Capaz de lógica de curto-circuito, em que o segundo operando é   avaliado apenas se necessário    |     expr && expr2            |
+|     \|\|        |     Condicional  OR que executa um   OR lógico nos operandos booleanos. Avalia apenas o segundo operando, se   necessário.           |     expr1 \|\| expr2         |
+|     true        |     Usado como um operador bool para indicar a verdade em uma expressão.                       |     bool success = true;     |
+|     false       |     sado como um operador bool para indicar mentira em uma expressão.     |     bool success = false;    |
+
 
 Você pode combinar esses operadores usando os operadores OR (||), AND (&&) e OR exclusivo (^). Esses operadores usam um operando esquerdo e um direito, significando a parte esquerda e direita da expressão. O operador OR retorna true quando um dos dois operandos for true. Se ambos forem falsos, retornará falso. Se ambos forem verdadeiros, ele retornará verdadeiro. O código abaixo mostra um exemplo.
 
+```csharp
 bool x2 = true;
 bool y2 = false;
 bool result = x2 || y2;
 Console.WriteLine(result); // Displays True
+```
+
 
 Se o tempo de execução perceber que a parte esquerda da sua operação OR é verdadeira, não será necessário avaliar a parte direita da sua expressão. Isso é chamado de curto-circuito. O exemplo abaixo mostra um exemplo.
 
+```csharp
 public static void OrShortCircuit()
 {
     bool x = true;
@@ -4592,26 +4831,35 @@ private static bool GetY()
     Console.WriteLine("This method doesn’t get called");
     return true;
 }
+```
 
 Nesse caso, o método GetY nunca é chamado e a linha não é gravada no console. O operador AND pode ser usado quando as duas partes de uma expressão precisam ser verdadeiras. Se um dos operandos for falso, a expressão inteira será avaliada como falsa. O código a seguir usa o operador AND para verificar se um valor está dentro de um determinado intervalo.
 
+```csharp
 int value = 42;
 bool result2 = (0 < value) && (value < 100);
+```
+
 
 Nesse caso, não é necessário adicionar parênteses extras ao redor do operando esquerdo e direito, mas isso aumenta a legibilidade do seu código. Assim como no operador OR, o tempo de execução aplica curto-circuito. Além de ser uma otimização de desempenho, você também pode usá-la em seu benefício ao trabalhar com valores nulos. O próximo exemplo, usa o operador AND para verificar se o argumento de entrada não é nulo e para executar um método nele. Se um curto-circuito não fosse usado nessa situação, o código lançaria uma exceção sempre que o parâmetro de entrada fosse nulo.
 
+```csharp
 public void Process(string input)
 {
     bool result = (input != null) && (input.StartsWith(“v”));
     // Do something with the result
 }
+```
+
 
 O operador OR exclusivo (XOR) retorna verdadeiro somente quando exatamente um dos operandos é verdadeiro. Como o operador XOR precisa verificar se exatamente um dos operandos é verdadeiro, ele não aplica curto-circuito. A tabela abaixo fornece as possibilidades para o operador XOR.
-Left operand	Right operand	Result	a = true E b = false
-True	True	False	a ^ a = False
-True	False	True	a ^ b = True
-False	True	True	b ^ a = True
-False	False	False	b ^ b = False
+
+|     Left operand    |     Right operand    |     Result    |     a = true E b = false    |
+|---------------------|----------------------|---------------|-----------------------------|
+|     True            |     True             |     False     |     a ^ a =   False         |
+|     True            |     False            |     True      |     a ^ b = True            |
+|     False           |     True             |     True      |     b ^ a = True            |
+|     False           |     False            |     False     |     b ^ b =   False         |
 
 Para entender o porquê, é necessário que você saiba como o computador faz comparações. Para cada comparação feita, a CPU deve fazer o seguinte:
 1.	Busque a instrução e carregue-a na memória.
@@ -4625,32 +4873,37 @@ Para entender o porquê, é necessário que você saiba como o computador faz co
 
 Para os computadores de hoje com CPUs rápidas, memória rápida, várias técnicas de cache e otimização de hardware, essas pequenas coisas podem parecer irrelevantes, mas um número suficiente delas combinadas pode ajudar a tornar seus programas mais eficientes.
 
-Tomando decisões
+### Tomando decisões
 
 Seu código pode executar tarefas simples sem a necessidade de decisões, mas em algum momento, seu código precisa avaliar uma condição e tomar uma ação apropriada com base no resultado dessa condição. Pode ser o resultado da entrada do usuário. Pode resultar do fato de um disco não estar na unidade ao ler ou gravar arquivos. Pode ser necessário verificar a presença de uma conexão de rede antes de enviar solicitações para um servidor. 
 
 À medida que você segue esses diferentes tipos de decisão a seguir, assegure-se de não apenas entender a sintaxe e como usá-las, mas também de entender por que um seria usado em detrimento de outro. O exame testa seu conhecimento de como implementá-los, mas a compreensão de quando usar uma estrutura de decisão específica pode ser útil em sua carreira como programador.
 
-A declaração if
+### A declaração if
 
 A declaração de controle de fluxo mais usada é a declaração if. A instrução if permite executar um trecho de código, dependendo de uma condição específica. A instrução a ser executada é executada apenas se a expressão booleana for avaliada como verdadeira. . O código abaixo mostra um exemplo de uso de if.
-
+```csharp
 bool b = true;
 if (b) Console.WriteLine(b);
+```
+
 
 Nesse caso, o aplicativo gera "True" porque a condição para a instrução if é verdadeira. Se b for falso, a instrução Console.WriteLine não será executada. É claro que passar um valor codificado para a instrução if não é muito útil. Normalmente, você usaria a instrução if com um valor mais dinâmico que pode mudar durante a execução do aplicativo. Ao trabalhar com instruções de fluxo de programa, é importante conhecer o conceito de um bloco de código, que permite escrever várias instruções em um contexto em que apenas uma única instrução é permitida. Todo o código no bloco é executado com base no resultado da instrução if. Você pode ver um exemplo disso abaixo.
-
+```csharp
 bool b = true;
 if (b)
 {
     int r = 42;
     b = false;
 }
+```
+
 
 As variáveis definidas em um bloco de código são acessíveis apenas dentro do bloco de código e ficam fora do escopo no final do bloco. Isso significa que você pode declarar variáveis dentro de um bloco e usá-las dentro do bloco, mas não fora dele. No exempo acima, a variável b é declarada fora do bloco e pode ser acessada no bloco externo e na instrução if. A variável r, no entanto, pode ser acessada apenas na instrução if.
 
 Você também pode executar algum código quando a instrução if for avaliada como falsa. Você pode fazer isso usando um bloco else. A sintaxe geral é assim:
 
+```csharp
 bool c = true;
 if (b)
     b = true;
@@ -4658,17 +4911,23 @@ else if (c)
     c = true;
 else
     b = c = false;
+```
+
 
 Você também pode aninhar instruções if e else. Para facilitar a leitura, é bom delinear seu código corretamente. O código a seguir é perfeitamente legal, mas, à primeira vista, é difícil ver o que o código realmente faz:
 
+```csharp
 if (b) b = true; else if (c) c = true; else b = c = false;
+```
+
 
 O compilador otimiza seu código e remove quaisquer chaves e declarações desnecessárias. Em circunstâncias normais, você deve se preocupar mais com a legibilidade do que com o número de linhas que você produz. Os membros da equipe agradecem especialmente quando você escreve um código que não apenas é correto, mas também mais fácil de manter.
 
-A instrução switch
+### A instrução switch
 
 Você pode usar a instrução switch para simplificar instruções if complexas. Uma instrução switch verifica o valor de seu argumento e, em seguida, procura um rótulo correspondente. O exmplo abaixo mostra o código de uma instrução switch. A condição em uma instrução switch em idiomas anteriores, como C, tinha que ser do tipo int. C# permite comparar qualquer tipo de dados simples, como int, string, float e até mesmo enumerações.
 
+```csharp
 void CheckWithSwitch(char input)
 {
     switch (input)
@@ -4694,9 +4953,12 @@ void CheckWithSwitch(char input)
             }
     }
 }
+```
+
 
 Um switch pode usar uma ou várias seções de switch  que podem conter um ou mais rótulos de switch, mas lembre-se de que nenhuma declaração de dois casos pode incluir o mesmo valor. Se desejar, também é possível adicionar um rótulo padrão usado quando nenhum dos outros rótulos corresponde. O ponto final de uma instrução switch não deve ser alcançável. Você precisa ter uma declaração, como break ou return, que sai explicitamente da instrução switch, ou precisa lançar uma exceção. Isso evita o comportamento fall-through que o C++ possui. Isso possibilita que as seções da opção apareçam em qualquer ordem sem afetar o comportamento. Em vez de cair implicitamente em outro rótulo, você pode usar a instrução goto.
 
+```csharp
 int i = 1;
 switch (i)
 {
@@ -4711,48 +4973,64 @@ switch (i)
             break;
         }
 }
+```
 
-O operador de coalescência nula
+
+### O operador de coalescência nula
 
 O ?? O operador é chamado de operador de coalescência nula. Você pode usá-lo para fornecer um valor padrão para tipos de valor anuláveis ou para tipos de referência. O operador retornará o valor do lado esquerdo se não for nulo; caso contrário, o operando do lado direito. . O código abaixo mostra um exemplo de uso do operador.
 
+```csharp
 int? x = null;
 int? z = null;
 int y = x ?? z ?? -1;
+```
+
 
 Obviamente, você pode conseguir o mesmo com uma instrução if, mas o operador de coalescência nula pode encurtar seu código e melhorar sua legibilidade.
 
-O operador condicional ternário
+### O operador condicional ternário
 
 O operador condicional (? :) retorna um dos dois valores, dependendo de uma expressão booleana. Se a expressão for verdadeira, o primeiro valor será retornado; caso contrário, o segundo. O código abaixo mostra um exemplo de como o operador pode ser usado para simplificar algum código. Nesse caso, a instrução if pode ser substituída pelo operador condicional.
 
+```csharp
 int? valor = null;
 if (true)
     valor = 1;
 else
     valor = 0;
 valor = p ? 1 : 0;
+```
 
-ESTRUTURA REPETIÇÂO/LOOPS
+
+### ESTRUTURA REPETIÇÂO/LOOPS
 
 Outro assunto que tem a ver com o fluxo do seu programa é a iteração entre as coleções. As coleções são amplamente usadas em C#, e o idioma oferece construções que você pode usar com elas:
-- for
-- foreach
-- while
-- do while
+- **for**
+- **foreach**
+- **while**
+- **do while**
 
-O loop for
+### O loop for
 
 Você pode usar um loop for quando precisar percorrer uma coleção até que uma condição específica seja atingida (por exemplo, você atingiu o final de uma coleção). O exmplo abaixo mostra um exemplo no qual você percorre todos os itens em uma matriz.
 
+```csharp
 int[] values = { 1, 2, 3, 4, 5, 6 };
 for (int index = 0; index < values.Length; index++)
 {
     Console.Write(values[index]);
 }
 
+```
+
 Como você pode ver, o loop for consiste em três partes diferentes:
+
+```csharp
 for (inicial; condição; loop)
+```
+
+
 1.	A parte inicial é executada antes da primeira iteração e declara e inicializa as variáveis do loop.
 2.	A condição é avaliada em cada iteração. Quando a condição é igual a false, o loop é encerrado.
 3.	A seção de loop é executada durante todas as iterações e normalmente é usada para alterar o contador usado para fazer loop na coleção.
@@ -4765,6 +5043,7 @@ Você pode usar qualquer nome de variável para inicializar um loop for, mas lem
 
 Nenhuma dessas peças é necessária. Você pode usar for (;;) {} como um loop for perfeitamente legal que nunca terminaria. Você também pode usar várias instruções em cada parte do loop for.
 
+```csharp
 for (int x = 0, y = values.Length - 1;
 ((x < values.Length) && (y >= 0));
 x++, y--)
@@ -4772,58 +5051,76 @@ x++, y--)
     Console.Write(values[x]);
     Console.Write(values[y]);
 }
+```
+
 
 Também não é necessário permitir que o valor do loop aumente ou diminua com 1. Por exemplo, você pode aumentar o índice com 2 para exibir apenas os números ímpares, como mostra abaixo.
 
+```csharp
 for (int index = 0; index < values.Length; index += 2)
 {
     Console.Write(values[index]);
 }
+```
+
 
 Normalmente, o loop for termina quando a condição se torna falsa, mas você também pode decidir sair manualmente do loop. Você pode fazer isso usando a instrução break ou return quando desejar sair completamente do método. A seguir é mostrado um exemplo da instrução break.
-
+```csharp
 for (int index = 0; index < values.Length; index++)
 {
     if (values[index] == 4) break;
     Console.Write(values[index]);
 }
 
-Além de interromper completamente o loop, você também pode instruir o loop for a continuar para o próximo item usando a instrução continue. O exemplo a seguir mostra que o número 4 é ignorado no loop.
+```
 
+Além de interromper completamente o loop, você também pode instruir o loop for a continuar para o próximo item usando a instrução continue. O exemplo a seguir mostra que o número 4 é ignorado no loop.
+```csharp
 for (int index = 0; index < values.Length; index++)
 {
     if (values[index] == 4) continue;
     Console.Write(values[index]);
 }
+```
+
 
 Até agora, você viu apenas o iterador de loop for como contagem. Você pode usar qualquer um dos operadores de incremento C # nesta parte do loop for, o que significa que você pode aumentar ou diminuir (para diminuir em um determinado valor). Os seguintes operadores são aceitos para uso na seção do iterador de loop for:
-Operador	Descrição
-++	Operador de incremento em que os valores são incrementados em um.
---	Operador de decremento em que os valores são decrementados por um.
-+=	Operador que pode ser usado com literais para alterar a etapa, como += 2, que aumenta por um valor de 2 cada vez.
--=	Operador decremento do operador acima.
-*=	Operador incremento por um fator de multiplicação.
-/=	Operador decréscimo por um fator de divisão.
+
+|     Operador    |     Descrição                     |
+|-----------------|-----------------------------------|
+|     ++          |     Operador de incremento   em que os valores são incrementados em um.                      |
+|     --          |     Operador de decremento   em que os valores são decrementados por um.                        |
+|     +=          |     Operador que pode ser   usado com literais para alterar a etapa, como += 2, que aumenta por um valor   de 2 cada vez.    |
+|     -=          |     Operador decremento do   operador acima.                                              |
+|     *=          |     Operador incremento   por um fator de multiplicação.                                       |
+|     /=          |     Operador decréscimo   por um fator de divisão.                                       |
 
 Uma consideração ao criar loops é que seu loop não precisa fazer nada. Um bloco de instruções vazio significa que nenhum código é executado durante o loop. O loop simplesmente itera até que a condição seja verdadeira:
 
+```csharp
 // empty for loop
 for (int counter = 0; counter >= 10; counter++)
 {
     ;
 }
+```
+
 O C# permite criar também um loop infinito, simplesmente criando o loop for sem nenhum dos valores entre parênteses. Você pode optar por usar um loop infinito em aplicativos em tempo real em que deseja uma pesquisa contínua de entradas ou talvez queira aplicar um teste de estresse a um aplicativo ou servidor. Apenas garanta que você é um meio de sair do loop, que às vezes é simplesmente fechar o aplicativo. Um loop sem escopo de saída, pode bloquear rapidamente um computador consumindo recursos de memória e CPU. Aqui está um exemplo em que não há inicializador, condição ou incremento:
 
+```csharp
 // infinite for loop in C#
 for (; ; )
 {
     ;
 }
+```
 
-O loop while e do-while
+
+### O loop while e do-while
 
 Outra construção de loop é o loop while. Um loop for nada mais é do que uma maneira conveniente de escrever um loop while que faz a verificação e o incremento do contador. O código abaixo mostra um exemplo. Observe os parênteses extras para restringir o escopo da variável de loop.
 
+```csharp
 int[] values = { 1, 2, 3, 4, 5, 6 };
 int index = 0;
 while (index < values.Length)
@@ -4831,38 +5128,50 @@ while (index < values.Length)
     Console.Write(values[index]);
     index++;
 }
+```
+
 
 Como você pode ver, um loop while verifica uma expressão e é executada enquanto essa expressão for verdadeira. Você deve usar um loop for quando souber o número de iterações com antecedência. Um loop while pode ser usado quando você não sabe o número de iterações.
 
 Se a condição do loop while for falsa, ele não executará o código dentro do loop. Isso é diferente ao usar um loop do-while. Um loop do-while executa pelo menos uma vez, mesmo se a expressão for falsa. O código abaixo mostra um exemplo de uso de um loop do-while.
 
+```csharp
 do
 {
     Console.WriteLine("Executed once!");
 }
 while (false);
+```
+
 
 Dentro de um loop while ou do-while, você pode usar as instruções continue e break, assim como no loop for. Pode haver muitos motivos para escolher um do-while over invés do while, mas um cenário típico é quando você espera a entrada do usuário e precisa garantir que a entrada seja recebida no loop em vez de fora do loop. Um exemplo ajuda a demonstrar:
 
+```csharp
 char someValue;
 do
 {
     someValue = (char)Console.Read();
     Console.WriteLine(someValue);
 } while (someValue != 'q');
+```
 
-O loop foreach
+
+### O loop foreach
 
 O loop foreach é usado para iterar sobre uma coleção e automaticamente armazena o item atual em uma variável de loop. O loop foreach monitora onde está a coleção e protege você contra a iteração após o final da coleção.  O C# fornece a instrução foreach para iterar com coleções de itens em que a quantidade não é conhecida no tempo de execução, como alocações dinâmicas com base na entrada do usuário. Por exemplo, você pode criar uma matriz de caracteres a partir dos caracteres individuais de uma sequência de texto inserida por um usuário em tempo de execução. Outras possibilidades podem ser um conjunto de dados criado após o acesso a um banco de dados. Nos dois casos, você não saberá o número de valores no momento em que escreve o código. O código abaico mostra um exemplo de como usar o loop foreach.
 
+```csharp
 int[] values = { 1, 2, 3, 4, 5, 6 };
 foreach (int i in values)
 {
     Console.Write(i);
 }
+```
+
 
 Como você pode ver, o loop foreach armazena automaticamente o item atual em uma variável fortemente tipada. Você pode usar as instruções continue e interromper para influenciar o funcionamento do loop foreach. Coleções são tipicamente matrizes, mas também outros objetos .NET que implementaram as interfaces IEnumerable. A variável de loop não pode ser modificada. Você pode fazer modificações no objeto para o qual a variável aponta, mas não pode atribuir um novo valor a ele. O código a seguir mostra essas diferenças.
 
+```csharp
 class Person
 {
     public string FirstName { get; set; }
@@ -4882,9 +5191,12 @@ static void CannotChangeForeachIterationVariable()
         //p = new Person(); // This gives a compile error
     }
 }
+```
+
 
 Você pode entender esse comportamento quando souber como o foreach realmente funciona. Quando o compilador encontra uma instrução foreach, ele gera algum código em seu nome; foreach é um açúcar sintático que permite escrever um código de maneira agradável. O exemplo abaixo mostra o que está acontecendo.
 
+```csharp
 var people = new List<Person>{
             new Person() { FirstName ="John", LastName ="Doe"},
             new Person() { FirstName ="Jane", LastName = "Doe"}};
@@ -4903,35 +5215,41 @@ finally
     System.IDisposable d = e as System.IDisposable;
     if (d != null) d.Dispose();
 }
+```
+
 
 Se você alterar o valor de e.Current para outra coisa, o padrão do iterador não pode determinar o que fazer quando o e.MoveNext é chamado. É por isso que não é permitido alterar o valor da variável de iteração em uma instrução foreach.
 
-ESTRUTURA SALTOS/JUMPS
+### ESTRUTURA SALTOS/JUMPS
 
 Outro tipo de declaração que pode ser usada para influenciar o fluxo do programa é uma declaração jump. As instruções de salto permitem que os controles do programa se movam de um ponto para outro em qualquer local específico durante a execução de um programa. Abaixo estão as instruções de salto que podemos usar em C#:
-- Goto
-- Break
-- Continue
-- Return
-- Throw
+- **Goto**
+- **Break**
+- **Continue**
+- **Return**
+- **Throw**
 
-Instrução Goto
+### Instrução Goto
 
 Uma instrução goto é uma instrução jump que transfere seus controles para uma instrução rotulada. A instrução goto requer que o rótulo identifique o local para onde o controle irá. Um rótulo é qualquer identificador válido e deve ser seguido por dois pontos. O rótulo é colocado antes da declaração para onde o controle deve ser transferido. Se o rótulo não puder ser encontrado ou não estiver dentro do escopo da instrução goto, ocorrerá um erro do compilador. O código a seguir mostra um exemplo de uso de goto e um rótulo.
 
+```csharp
 int x = 3;
 if (x == 3) goto customLabel;
 x++;
 customLabel:
 Console.WriteLine();
 Console.WriteLine(x);
+```
+
 
 Você não pode pular para um rótulo que não está no escopo. Isso significa que você não pode transferir o controle para outro bloco de código que está fora do seu bloco atual. O compilador também garante que quaisquer blocos finally que intervenham sejam executados.
 
-Instrução Break
+### Instrução Break
 
 Break é uma palavra-chave que também é uma instrução de salto, que finaliza o fluxo do programa em loop ou na instrução switch (ou seja, ignora o bloco atual e passa para o bloco ou código externo, se houver).
 
+```csharp
 int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 for (int i = 0; i < 10; i++)
 {
@@ -4944,12 +5262,15 @@ for (int i = 0; i < 10; i++)
 Console.WriteLine("End of Loop");
 Console.ReadLine();
 
+```
+
 Quando o snippet de código acima for executado, a saída será "End of Loop". Vamos entender como. Quando uma condição if escrita dentro do loop for satisfeita, a palavra-chave break será executada. Ele finaliza a iteração restante do loop e pula o controle para fora do loop e começará a executar o código gravado fora do loop, ou seja, "Console.WriteLine (" End of Loop ");"
 
-Instrução Continue
+### Instrução Continue
 
 A instrução Continue também é uma instrução de salto, que ignora a iteração atual e move o controle para a próxima iteração do loop. Continuar é uma palavra-chave, o mesmo que quebra, mas com o comportamento acima mencionado
 
+```csharp
 int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 for (int i = 0; i < 10; i++)
 {
@@ -4960,13 +5281,16 @@ for (int i = 0; i < 10; i++)
     Console.Write(numbers[i]);
 }
 Console.WriteLine("End of Loop");
+```
+
 
 Neste exemplo, o loop for funcionará normalmente como funciona, mas quando os números de valor [i] se tornarem 5, ele ignorará a iteração, o que significa que interromperá a execução da iteração atual e passará para a próxima iteração.
 
-Instrução Return 
+### Instrução Return 
 
 Return também é uma instrução de salto, que retorna o controle do programa para o método de chamada. Ele retorna um valor ou nada, dependendo da natureza do método (ou seja, tipo de retorno do método). Return também é uma palavra-chave com o comportamento acima mencionado.
 
+```csharp
 static int getAge()
 {
     return 20;
@@ -4975,9 +5299,12 @@ static int getAge()
 Console.WriteLine("Welcome to Exam 70-483 Certification");
 int age = getAge();
 Console.WriteLine("Age is: " + age);
+```
+
 
 Neste exemplo, o método getAge () é um tipo de int, portanto, o método retorna o valor do tipo int e o controle automaticamente vai para onde está chamando, ou seja, int age = getAge () no método principal. Portanto, o valor retornado pelo método getAge é armazenado na variável "age".
 
+```csharp
 static void Main(string[] args)
 {
     Console.WriteLine("Welcome to Exam 70-483 Certification");
@@ -4985,6 +5312,8 @@ static void Main(string[] args)
     Console.WriteLine("This Statement will never executed!");
     Console.ReadLine();
 }
+```
+
 
 No segundo exemplo acima, o método retornou o tipo void, o que não significa nada, portanto, não é necessário retornar valor. Nesse caso, usamos a instrução "return" sem um valor, o que ajuda a pular as instruções restantes do método e saltar o controle de volta para onde o método foi chamado.
 
@@ -4992,7 +5321,7 @@ Se a instrução return for usada no bloco try/catch e este try/catch finalmente
 
 As instruções jump, como break e continue, podem ser usadas em algumas situações. Se possível, você deve evitá-los. Ao refatorar seu código, você pode removê-lo a maior parte do tempo e isso melhora a legibilidade do seu código. A declaração goto é ainda pior. É considerado uma má prática. Embora o C# restrinja a maneira como o operador goto se comporta, como uma diretriz, você deve evitar o uso de goto. Uma área em que o goto é usado está no código gerado, como o código que o compilador gera quando você usa o novo recurso de async/await no C# 5.
 
-Sumário
+**Sumário**
 - Expressões booleanas podem usar vários operadores: ==,! =, <,>, <=,> =,!. Esses operadores podem ser combinados usando AND (&&), OR (||) e XOR (^).
 - Você pode usar a instrução if-else para executar o código, dependendo de uma condição específica.
 - A instrução switch pode ser usada ao combinar um valor com algumas opções.
@@ -5001,24 +5330,26 @@ Sumário
 - o foreach pode ser usado para iterar sobre coleções.
 - Instruções jump como break, goto e continue podem ser usadas para transferir o controle para outra linha do programa.
 
-Criar e implementar eventos e retornos de chamada 
-- Criar EventHandlers; assinar e cancelar assinatura de eventos (+= e =+); usar tipos delegados integrados (Func e Action) para criar eventos; criar delegados; expressões lambda (=>); métodos anônimos (delegate...)
+## Criar e implementar eventos e retornos de chamada 
+- **Criar EventHandlers; assinar e cancelar assinatura de eventos (+= e =+); usar tipos delegados integrados (Func e Action) para criar eventos; criar delegados; expressões lambda (=>); métodos anônimos (delegate...)**
 
 Em qualquer linguagem moderna, o desenvolvimento orientado a eventos é usado para estruturar um programa em torno de vários eventos. Esses eventos executam uma certa funcionalidade quando uma determinada condição satisfaz, por exemplo, feche o aplicativo quando um usuário clicar no botão "Sair". Ou desligue o sistema quando a temperatura do calor aumentar, etc. 
 
 Um evento pode ser usado para fornecer notificações. Você pode se inscrever em um evento se estiver interessado nessas notificações. Você também pode criar seus próprios eventos e aumentá-los para fornecer notificações quando algo interessante acontecer. O .NET Framework oferece tipos internos que você pode usar para criar eventos. Usando delegados, expressões lambda e métodos anônimos, você pode criar e usar eventos de maneira confortável.
 
-DELEGATES
+### DELEGATES
 
 Um delegate é um tipo que representa referências aos métodos com lista de parâmetros e tipo de retorno específicos. Um delegate é um tipo que encapsula com segurança um método, semelhante a um ponteiro de função em C e C++. No entanto, ao contrário dos ponteiros de função de C, delegates são orientados a objeto, fortemente tipados e seguros. Ao instanciar um delegate, você pode associar sua instância a qualquer método com assinatura e tipo de retorno compatíveis. Você pode invocar (ou chamar) o método através da instância do delegate.
 
 Delegates são usados para passar métodos como argumentos a outros métodos. Os manipuladores de eventos nada mais são do que métodos chamados por meio de delegates. Ao criar um método personalizado, uma classe como um controle do Windows poderá chamá-lo quando um determinado evento ocorrer. 
-Versão	Sintaxe
-C# 1.0	Introdução dos delegates
-C# 2.0	Oferece uma maneira mais simples
-C# 2.0 e versões posteriores	Declarados e instanciados com método anônimo
-C# 3.0 e versões posteriores	Declarados e instanciados com expressão lambda
+|     Versão             |     Sintaxe          |
+|-------------|----------------|
+|     C# 1.0          |     Introdução dos   delegates       |
+|     C# 2.0     |     Oferece uma   maneira mais simple   |
+|     C# 2.0 e versões   posteriores    |     Declarados e   instanciados com método anônimo      |
+|     C# 3.0 e versões   posteriores    |     Declarados e   instanciados com expressão lambda    |
 
+```csharp
 static void Notify(string name)
 {
     Console.WriteLine($"Notification received for: {name}");
@@ -5044,6 +5375,8 @@ static void Main(string[] args)
     _delegado del4 = name =>  { Console.WriteLine($"Notification received for: {name}"); };
 }
 
+```
+
 Qualquer método de qualquer classe ou struct acessível que corresponda ao tipo delegate pode ser atribuído ao delegate. O método pode ser estático ou de instância. Isso possibilita alterar via programação chamadas de método e também conectar novo código a classes existentes.
 
 Os delegates possuem as seguintes propriedades:
@@ -5057,6 +5390,7 @@ Os delegates possuem as seguintes propriedades:
 
 Um objeto delegate é normalmente construído fornecendo-se o nome do método que o delegate encapsulará ou como uma função anônima. Quando um delegado é instanciado, uma chamada de método feita ao delegate será passada pelo delegate para esse método. Os parâmetros passados para o delegate pelo chamador são passados para o método e o valor de retorno, se houver, do método é retornado ao chamador pelo delegate. Isso é conhecido como invocar o delegate. Um delegate instanciado pode ser invocado como se fosse o método encapsulado em si. Por exemplo:
 
+```csharp
 delegate void del_invoca(string str);
 
 static void Main(string[] args)
@@ -5073,17 +5407,25 @@ public static void DelegateMethod(string message)
 {
     Console.WriteLine(message);
 }
+```
+
 
 O delegado também pode ser chamado usando o método .invoke. Veja o seguinte trecho de código.
 
+```csharp
 handler.Invoke("Ali Asad");
+```
+
 
 Tipos de delegate são derivados da classe Delegate do .NET Framework. Tipos de delegate são lacrados – não podem ser derivados de – e não é possível derivar classes personalizadas de Delegate. Você pode armazenar valores delegados em variáveis, assim como qualquer outro tipo de valor. A única questão confusa é que os valores sendo manipuladas são referências a métodos, e não a algum tipo de dado mais concreto, como um int ou string. Por exemplo, você pode declarar que uma única variável é do tipo delegado; você pode criar uma estrutura que possua propriedades ou campos de um tipo de delegado; e você pode criar uma matriz de variáveis de um tipo de delegado. Você pode até criar uma lista de valores do tipo. Por exemplo, o código a seguir cria uma lista que pode conter referências a métodos que correspondem ao tipo FunctionDelegate.
 
+```csharp
 public delegate int del_Calculate(int x, int y);
 List<del_Calculate> function = new List<del_Calculate>();
+```
 
-Delegate as a Callback
+
+### Delegate as a Callback
 
 Como o delegate instanciado é um objeto, ele pode ser passado como um parâmetro ou atribuído a uma propriedade. Isso permite que um método aceite um delegate como um parâmetro e chame o delegate posteriormente. Isso é conhecido como um retorno de chamada assíncrono (Callback) e é um método comum de notificação de um chamador quando um processo longo for concluído. 
 
@@ -5091,6 +5433,7 @@ Quando um delegate é usado dessa maneira, o código que usa o delegate não pre
 
 Outro uso comum de chamadas de retorno é definir um método de comparação personalizada e passar esse delegate para um método de classificação. Ele permite que o código do chamador se torne parte do algoritmo de classificação. O método de exemplo a seguir usa um delegate como um parâmetro:	
 
+```csharp
 public delegate void del_invoca(string message);
 
 // Create a method for a delegate. 
@@ -5103,23 +5446,29 @@ static public void MethodWithCallback(int param1, int param2, del_invoca callbac
 {
     callback("The number is: " + (param1 + param2).ToString());
 }
+```
+
 
 Em seguida, você pode passar o delegado criado acima para esse método e receber a seguinte saída para o console:
-	
+
+```csharp
 static void Main(string[] args)
 {
     del_invoca handler = DelegateMethod;
     MethodWithCallback(1, 2, handler); //The number is: 3
 }
+```
+
 
 Usando o delegate como uma abstração, MethodWithCallback não precisa chamar o console diretamente — ele não precisa ser criado com um console em mente. O que MethodWithCallback faz é simplesmente preparar uma cadeia de caracteres e passá-la para outro método. Isso é especialmente poderoso, uma vez que um método delegado pode usar qualquer número de parâmetros.
 
-Multicast('+' || '-='ou'-' || '-=').
+### Multicast('+' || '-='ou'-' || '-=').
 
 Quando um delegate é construído para encapsular um método de instância, o delegate faz referência à instância e ao método. Um delegate não tem conhecimento do tipo de instância além do método que ele encapsula, de modo que um delegate pode se referir a qualquer tipo de objeto desde que haja um método nesse objeto que corresponda à assinatura do delegate. 
 
 Quando um delegate é construído para encapsular um método estático, ele só faz referência ao método. Considere as seguintes classe MethodInstance:
 
+```csharp
 public class MethodInstance
 {
     public void Method_01(string message)
@@ -5131,8 +5480,12 @@ public class MethodInstance
         Console.WriteLine("Instance Método 02: " + message);
     }
 }
+```
+
 
 Com o método estático StaticMethod mostrado abaixo, temos três métodos diferentes que podem ser encapsulados por uma mesma instância delegate del_assign.
+
+```csharp
 delegate void del_assign(string str);
 
 static void Main(string[] args)
@@ -5159,15 +5512,25 @@ public static void StaticMethod(string message)
 {
     Console.WriteLine("Método estático: " + message);
 }
+```
+
 
 Um delegate pode chamar mais de um método quando invocado. Isso é chamado de multicast. Para adicionar um método extra à lista de métodos do delegate basta adicionar os operadores de adição (+) ou de atribuição de adição (+=). Nesse ponto, allMethodsDelegate contém três métodos em sua lista de invocação — Method_01, Method_02 e StaticMethod. Os três delegates originais, del_01, del_02 e del_03, permanecem inalterados. Quando allMethodsDelegate é invocado, os três métodos são chamados na ordem. Se o delegate usar parâmetros de referência, a referência será passada em sequência para cada um dos três métodos por vez, e quaisquer alterações em um método serão visíveis no próximo método. 
 
-allMethodsDelegate("MultiCast");
 
- 
+```csharp
+allMethodsDelegate("MultiCast");
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/multicast.png" alt="Image" width="100%" />
+</p>
+
+
 
 Se o delegate tiver um valor de retorno e/ou parâmetros de saída, ele retornará o valor de retorno e os parâmetros do último método invocado.
 
+```csharp
 public static int SubtractRetorno(int a, int b)
 {
     var subtrai = a - b;
@@ -5190,9 +5553,12 @@ static void Main(string[] args)
 
     Console.ReadKey();
 }
+```
+
 
 Se você definir uma variável delegate igual a um método estático, ficará claro o que acontece quando você invoca o método da variável. Há apenas um método compartilhado por todas as instâncias da classe que a define, portanto esse é o método chamado. Se você definir uma variável delegate igual a um método de instância, os resultados serão um pouco mais confusos. Quando você invoca o método da variável, ele é executado na instância em que você usou para definir o valor da variável. Como no exemplo abaixo:
 
+```csharp
 public class MethodInstance
 {
     public delegate void GetStringDelegate();
@@ -5226,35 +5592,51 @@ bob.PrintMethods += bob.InstanceMethod;
 
 bob.PrintMethods();
  
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/printmethods.png" alt="Image" width="100%" />
+</p>
+
 
 Esse código cria dois objetos chamados alice e bob. A variável InstanceMethod do objeto bob se refere à método InstanceMethod  da instância de Alice, portanto também retorna "Alice".
 
 Quando algum dos métodos gerar uma exceção que não foi detectada dentro do método, essa exceção será passada ao chamador do delegate e nenhum método subsequente na lista de invocação será chamado. Para remover um método da lista de invocação, use os operadores de atribuição de subtração ou subtração (- ou -=). Por exemplo:
 
+```csharp
 allMethodsDelegate += del_04;
 //remove Method1
 allMethodsDelegate -= del_04;
 
 // copy AllMethodsDelegate while removing d2
 del_assign oneMethodDelegate = allMethodsDelegate - del_04;
+```
+
 
 Como os tipos de delegates são derivados de System.Delegate, os métodos e as propriedades definidos por essa classe podem ser chamados no delegate. Por exemplo, para localizar o número de métodos na lista de invocação do delegado, é possível escrever:
 
+```csharp
 int allinvocationCount = allMethodsDelegate.GetInvocationList().GetLength(0);
 Console.WriteLine("Métodos em allinvocationCount: " + allinvocationCount);
 
+```
+
 Delegates com mais de um método em sua lista de invocação derivam de MulticastDelegate, que é uma subclasse de System.Delegate. O código acima funciona em ambos os casos, pois as classes oferecem suporte à GetInvocationList. É possível também fazer um loop sobre cada método usando o método GetInvocationList.
 
+```csharp
 foreach (delegateName item in del.GetInvocationList())
 {
     //invoke each method, and display return value
     Console.WriteLine(item());
 }
+```
+
 
 Delegates multicast são amplamente usados na manipulação de eventos. Objetos de origem do evento enviam notificações de eventos aos objetos de destinatário que se registraram para receber esse evento. Para se registrar para um evento, o destinatário cria um método projetado para lidar com o evento, em seguida, cria um delegate para esse método e passa o delegate para a origem do evento. A origem chama o delegate quando o evento ocorre. O delegate chama então o método de manipulação de eventos no destinatário, fornecendo os dados do evento. O tipo de delegate de um determinado evento é definido pela origem do evento. 
 
 A comparação de delegates de dois tipos diferentes atribuídos no tempo de compilação resultará em um erro de compilação. Se as instâncias de delegate forem estaticamente do tipo System.Delegate, então a comparação será permitida, mas retornará false no tempo de execução. Por exemplo:
 
+```csharp
 delegate void Delegate1();
 delegate void Delegate2();
 
@@ -5271,16 +5653,21 @@ static void CompareDelegates(Delegate1 d, Delegate2 e, System.Delegate f)
 Delegate1 del01 = StaticMethod;
 Delegate2 del02 = StaticMethod;
 CompareDelegates(del01, del02, del02);
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/comparedelegates.png" alt="Image" width="100%" />
+</p>
 
-Covariância e contravariância
+
+### Covariância e contravariância
 
 Com variância nos delegates, o método não precisa corresponder ao tipo de delegado. Como a variância fornece um grau de flexibilidade ao combinar um tipo de delegado com a assinatura do método, podemos usar a variância das duas maneiras a seguir.
-1.	Covariância: A covariância é aplicada no tipo de retorno de um método. A covariância torna possível que um método tenha um tipo de retorno mais derivado do que o definido no delegado
-2.	Contravariância: A contravariância é aplicada ao tipo de parâmetro de um método. A contravariância permite um método que possui tipos de parâmetros menos derivados do que aqueles no tipo de delegado.
+1.	**Covariância**: A covariância é aplicada no tipo de retorno de um método. A covariância torna possível que um método tenha um tipo de retorno mais derivado do que o definido no delegado
+2.	**Contravariância**: A contravariância é aplicada ao tipo de parâmetro de um método. A contravariância permite um método que possui tipos de parâmetros menos derivados do que aqueles no tipo de delegado.
 
 No C#, a covariância e a contravariância habilitam a conversão de referência implícita para tipos de matriz, tipos de delegados e argumentos de tipo genérico. A covariância preserva a compatibilidade de atribuição, e a contravariância reverte. O código a seguir demonstra a compatibilidade da atribuição entre tipos:
 
+```csharp
 string str = "teste";
 object obj = str;
 Console.WriteLine("obj=" + obj); //obj = teste
@@ -5292,9 +5679,12 @@ IEnumerable<object> objetos = strings;
 Console.WriteLine("strings=" + strings.GetType());
 // objetos = System.Collections.Generic.List`1[System.String].
 Console.WriteLine("objetos=" + objetos.GetType());
+```
+
 
 Um objeto de um tipo mais derivado (string) é atribuído a um objeto de um tipo menos derivado (object). A compatibilidade da atribuição é preservada. Um exemplo de contravariância pode ser visto abaixo.
 
+```csharp
 static void SetObject(object obj) { }
 
 Action<object> actObject = SetObject;
@@ -5303,16 +5693,28 @@ Action<string> actString = actObject;
 Console.WriteLine("actObject=" + actObject.GetType()); 
 // actString = System.Action`1[System.Object]
 Console.WriteLine("actString=" + actString.GetType()); 
+```
+
 
 Aqui, um objeto que é instanciado com um argumento de tipo menos derivado é atribuído a um objeto instanciado com um argumento de tipo mais derivado. A compatibilidade da atribuição é revertida
 
 A covariância para matrizes permite a conversão implícita de uma matriz de um tipo mais derivado para uma matriz de um tipo menos derivado. Mas essa operação não é fortemente tipada, conforme mostrado no exemplo de código a seguir.
+
+```csharp
 object[] array = new String[10];
 // The following statement produces a run-time exception.  
 array[0] = 10;
- 
-	O exemplo de covariança abaixo mostra a utlização de classes do System.IO e uso de um delegate não genéricos.
+```
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/followingstatement.png" alt="Image" width="100%" />
+</p>
+
+
+ 
+O exemplo de covariança abaixo mostra a utlização de classes do System.IO e uso de um delegate não genéricos.
+
+```csharp
 public delegate TextWriter CovarianceDel();
 
 static void Main(string[] args)
@@ -5324,9 +5726,12 @@ static void Main(string[] args)
 
 public static StreamWriter MethodStream() { return null; }
 public static StringWriter MethodString() { return null; }
+```
+
 
 Como o StreamWriter e o StringWriter herdam do TextWriter, você pode usar o delegate CovarianceDel com os dois métodos. Um exemplo de contravariância pode ser visto abaixo.
 
+```csharp
 public delegate void ContravarianceDel(StreamWriter tw);
 
 static void Main(string[] args)
@@ -5335,9 +5740,13 @@ static void Main(string[] args)
 }
 
 static void  DoSomething(TextWriter tw) { }
+```
+
 
 Como o método DoSomething pode funcionar com um TextWriter, certamente também pode funcionar com um StreamWriter. Por causa da contravariância, você pode chamar o delegado e passar uma instância do StreamWriter para o método DoSomething. A seguir um exemplo de covariância e contravariância para um hierarquia de classes e delegados não genéricos.
 
+
+```csharp
 class Parent { }
 class Child : Parent { }
 delegate Parent CovarianceHandle();
@@ -5366,11 +5775,15 @@ static void ContravarianceMethod(Parent p)
     Child ch = p as Child;
     Console.WriteLine("Contravariance Method");
 }
+```
+
 
 No .NET Framework 4 ou mais recente, o C# dá suporte à covariância e á contravariância em interfaces e delegados genéricos e permite a conversão implícita de parâmetros de tipo genérico. Uma interface ou delegado genérico será chamado variante se seus parâmetros genéricos forem declarados covariantes ou contravariantes. O C# permite que você crie suas próprias interfaces variantes e delegados. 
 
-O exemplo a seguir ilustra os benefícios do suporte à covariância nos delegados genéricos Func. O método FindByTitle assume um parâmetro do tipo String e retorna um objeto do tipo Employee. No entanto, você pode atribuir esse método ao delegado Func<String, Person> porque Employee herda Person.
+O exemplo a seguir ilustra os benefícios do suporte à covariância nos delegados genéricos Func. O método FindByTitle assume um parâmetro do tipo String e retorna um objeto do tipo Employee. No entanto, você pode atribuir esse método ao delegado ```Func<String, Person>``` porque Employee herda Person.
 
+
+```csharp
 // Hierarquia simples de classes.
 public class Person { }
 public class Employee : Person { }
@@ -5395,9 +5808,13 @@ static void Func_Covarianca()
     // para um delegado que retorna um tipo menos derivado.
     findPerson = findEmployee;
 }
+```
 
-O exemplo a seguir ilustra os benefícios do suporte à contravariância nos delegados genéricos Action. O método AddToContacts assume um parâmetro do tipo Person. No entanto, você pode atribuir esse método ao delegado Action<Employee> porque Employee herda Person.
 
+O exemplo a seguir ilustra os benefícios do suporte à contravariância nos delegados genéricos Action. O método AddToContacts assume um parâmetro do tipo Person. No entanto, você pode atribuir esse método ao delegado ```Action<Employee>``` porque Employee herda Person.
+
+
+```csharp
 // Hierarquia simples de classes.
 public class Person { }
 public class Employee : Person { }
@@ -5424,11 +5841,16 @@ static void Action_Contravarianca()
     // que aceita um parâmetro mais derivado.
     addEmployeeToContacts = addPersonToContacts;
 }
+```
 
-Método Anônimo
+
+
+### Método Anônimo
 
 Um método anônimo é um método sem nome. Estes são métodos que são definidos com uma palavra-chave delegate. Um método anônimo não possui um tipo de retorno em sua assinatura. Seu tipo de retorno depende do tipo de variável delegate que mantém sua referência.
 
+
+```csharp
 //Anonymous method that doesn't return value
 Action act = delegate ()
 {
@@ -5443,8 +5865,12 @@ Func<int, int> func = delegate (int num)
 act();
 Console.WriteLine(func(4)); // Inside Func: 8
 
-	Abaixo um exemplo de como passar um método anônimo como argumento de método. 
+```
 
+Abaixo um exemplo de como passar um método anônimo como argumento de método. 
+
+
+```csharp
 static void Main(string[] args)
 {
     TestAnonymous(delegate () 
@@ -5458,17 +5884,25 @@ public static void TestAnonymous(Action act)
     act();
 }
 
+```
+
 O código a seguir armazena um método anônimo em uma variável de um tipo de delegado.
 
+
+```csharp
 private static Func<float, float> Function = delegate (float x) { return x * x; };
 
 var resultado = Function(Convert.ToSingle(4.3));
 Console.WriteLine("Quadrado:" + resultado ); // Quadrado:18,49
 
+```
+
 Esse código declara uma variável denominada Function do tipo definido pelo delegado interno do Func que usa float como parâmetro e retorna um float. Ele define a variável Function igual a um método que retorna seu parâmetro ao quadrado. O programa não pode se referir a esse método pelo nome porque é anônimo, mas pode usar a variável Function para invocar o método
 
 A linha de código anterior mostra como você pode fazer uma variável delegada se referir a um método anônimo. Dois outros lugares em que os programadores costumam usar métodos anônimos estão definindo manipuladores de eventos simples e executando tarefas simples em threads separados. O código a seguir adiciona um manipulador de eventos ao evento Paint de um formulário
 
+
+```csharp
 public Form1()
 {
     InitializeComponent();
@@ -5478,9 +5912,12 @@ public Form1()
         args.Graphics.DrawEllipse(Pens.Red, 10, 10, 200, 100);
     };
 }
+```
+
 
 Quando o formulário recebe um evento Paint, o método anônimo desenha uma elipse vermelha. O código a seguir executa um método anônimo em um thread separado:
 
+```csharp
 Thread thread = new Thread(delegate ()
 {
     Console.WriteLine("Hello World");
@@ -5488,15 +5925,18 @@ Thread thread = new Thread(delegate ()
 
 Thread.Sleep(3000);
 thread.Start();
+```
+
 
 Esse código cria um novo objeto Thread, passando uma referência ao método anônimo. Quando o Thread é iniciado, ele executa esse método, neste caso exibindo uma mensagem.
 
-Expressão Lambda
+### Expressão Lambda
 
 A expressão lambda é uma versão melhor da implementação do método anônimo. Para criar uma expressão lambda, especificamos parâmetros de entrada (se houver) no lado esquerdo do operador lambda => e colocamos o bloco de expressão ou instrução no outro lado.
 
 Os exemplos aqui armazenam expressões lambda em variáveis delegadas porque são fáceis de descrever dessa maneira. Em muitos aplicativos, as expressões lambda são adicionadas à lista de manipuladores de eventos, passadas para métodos que tomam delegados como parâmetros ou são usados em expressões LINQ. 
 
+```csharp
 //Lambda Expression that doesn't return value
 Action act = () =>
 {
@@ -5510,18 +5950,26 @@ Func<int, int> func = (int num) =>
 };
 act();
 Console.WriteLine(func(4)); // Inside Func: 8
+```
+
 
 Se o corpo de um método anônimo contiver apenas uma única declaração, mencione os chavetas "{}" e uma palavra-chave de retorno com o valor retornado é opcional. Veja o seguinte snippet de código
 
+
+```csharp
 //Lambda Expression that doesn't return value
 Action actinline = () => Console.WriteLine("Hello World");
 //Lambda Expression that does have return value
 Func<int, int> funcinline = (int num) => num * 2;
 actinline();
 Console.WriteLine(funcinline(4));
+```
+
 
 A expressão lambda também oferece a capacidade de não especificar um tipo de parâmetro. Seu tipo de parâmetro dependerá do tipo de parâmetro do tipo delegado que mantém sua referência. Veja o seguinte trecho de código.
 
+
+```csharp
 //type of name will be string
 Action<string> actName = (name) => Console.WriteLine(name);
 //for single parameter, we can neglect () paranthese
@@ -5530,9 +5978,13 @@ Func<int, int> mul = x => x * 2;
 actName("Hello");
 actName2("World");
 Console.WriteLine(mul(4)); // 8
+```
+
 
 Passar expressão lambda em um parâmetro de método
 
+
+```csharp
 static void TestLambda(Action act)
 {
     Console.WriteLine("Test Lambda Method");
@@ -5540,9 +5992,13 @@ static void TestLambda(Action act)
 }
 
 TestLambda(() => Console.WriteLine("Inside Lambda"));
+```
+
 
 Basicamente, você pode usar a palavra-chave async para indicar que um método pode ser executado de forma assíncrona. Você pode usar a palavra-chave wait para fazer com que um trecho de código chame um método assíncrono e aguarde o retorno. Geralmente, um método assíncrono é nomeado, mas você pode usar a palavra-chave async para tornar as expressões lambda assíncronas também.
 
+
+```csharp
 private int Trials = 0;
 
 public Form1()
@@ -5564,15 +6020,19 @@ async Task DoSomethingAsync()
     // In this example, just waste some time. 
     await Task.Delay(5000);
 }
+```
 
-DELEGATES GENÉRICOS INTERNOS
+
+### DELEGATES GENÉRICOS INTERNOS
 
 O C# 3.0 inclui Func, Action e Predicate, que são delegates genéricos internos no namespace System. Esses tipos internos fornecem uma notação abreviada que praticamente elimina a necessidade de declarar a todo momento um delegate
 
-Func
+### Func
 
 O Func possui de zero a 16 parâmetros de entrada e um parâmetro de saída. O último parâmetro é considerado como um parâmetro de saída.Um delegate Func com dois parâmetros de entrada e um parâmetro de saída será representado como abaixo.
 
+
+```csharp
 // Hierarquia simples de classes.
 public class Person { }
 public class Employee : Person { }
@@ -5582,13 +6042,14 @@ public delegate TResult del_func<in T1, in T2, out TResult>(T1 arg1, T2 arg2);
 private static int PersonParameter2(Employee employ, Person person) { return 10; }
 
 del_func<Employee, Person, int> del_03 = PersonParameter2;
+```
 - Func é um delegate interno no namespace System.
 - O Func deve retornar um valor. = delegate
 - O Func pode ter de zero a 16 parâmetros de entrada.
 - O Func não permite parâmetros ref e out.
 - O Func pode ser usado com um método anônimo ou expressão lambda.
 
-
+```csharp
 static void Main(string[] args)
 {
     Func<int, int, int> subtrai_func = SubtraiNumbers;
@@ -5602,9 +6063,12 @@ public static int SubtraiNumbers(int a, int b)
     var subtrai = a - b;
     return subtrai;
 }
+```
 
 O delegate Func deve incluir um parâmetro out para resultado. Por exemplo, o seguinte método anônimo ao delegate Func não possui nenhum parâmetro de entrada, ele inclui apenas um parâmetro de saída.
 
+
+```csharp
 Func<int> getRandomNumber = delegate ()
 {
     Random rnd = new Random();
@@ -5613,25 +6077,33 @@ Func<int> getRandomNumber = delegate ()
 };                            };
 
 Console.WriteLine("Func Anonima Random de 100: " + getRandomNumber());
+```
 
 O delegate Func também pode ser usado com uma expressão lambda, como mostrado abaixo:
 
+```csharp
 getRandomNumber = () => new Random().Next(1, 100);
 Func<int, int, int> Sum = (x, y) => x + y;
 
 Console.WriteLine("Func Lambda Random de 100: " + getRandomNumber());
 Console.WriteLine("Func Lambda Soma: " + Sum(5, 300));
+```
 
-	Exemplos de declaração de um delegado Func:
+Exemplos de declaração de um delegado Func:
 
+
+```csharp
 public Func<string, bool> OnChangeFunc;
 public Func<string, bool> OnChangeFunc2 { get; set; }
 public Func<string, bool> OnChangeFunc = delegate (string str) { return true; };
+```
 
-Action
 
-	O delegado Action genérico representa um método que retorna nulo. Versões diferentes do Action levam entre 0 e 18 parâmetros de entrada. O código a seguir mostra a definição do delegado Action que usa dois parâmetros:
+### Action
 
+O delegado Action genérico representa um método que retorna nulo. Versões diferentes do Action levam entre 0 e 18 parâmetros de entrada. O código a seguir mostra a definição do delegado Action que usa dois parâmetros:
+
+```csharp
 // Hierarquia simples de classes.
 public class Person { }
 public class Employee : Person { }
@@ -5641,14 +6113,19 @@ public delegate void del_action<in T1, in T2>(T1 arg1, T2 arg2);
 private static void PersonParameter2(Employee employ, Person person) { }
 
 del_action<Employee, Person> del_03 = PersonParameter2;
+```
 
-	A palavra-chave “in” da lista de parâmetros genéricos indica que os parâmetros dos tipos T1 e T2 são contravariantes. A menos que você precise definir um delegado com mais de 18 parâmetros, você pode usar Action em vez de criar seus próprios delegados. Por exemplo, o código abaixo que define um tipo EmployeeParameterDelegate que usa um objeto Employee como parâmetro e retorna nulo. 
+A palavra-chave “in” da lista de parâmetros genéricos indica que os parâmetros dos tipos T1 e T2 são contravariantes. A menos que você precise definir um delegado com mais de 18 parâmetros, você pode usar Action em vez de criar seus próprios delegados. Por exemplo, o código abaixo que define um tipo EmployeeParameterDelegate que usa um objeto Employee como parâmetro e retorna nulo. 
 
+```csharp
 private delegate void EmployeeParameterDelegate(Employee employee);
 private static EmployeeParameterDelegate EmployeeParameterMethod;
+```
 
-	A primeira instrução deste código define o delegado EmployeeParameterDelegate. A declaração seguinte declara uma variável desse tipo. Estas intruções poderiam ser resumidas em uma linha declara uma variável comparável do tipo Action<Employee>.
 
+A primeira instrução deste código define o delegado EmployeeParameterDelegate. A declaração seguinte declara uma variável desse tipo. Estas intruções poderiam ser resumidas em uma linha declara uma variável comparável do tipo ```Action<Employee>```.
+
+```csharp
 private static Action<Employee> EmployeeParameterMethod2;
 
 // A method that takes a Person as a parameter.
@@ -5657,12 +6134,15 @@ private static void PersonParameter(Person person) { }
 // Use contravariance to set EmployeeParameterMethod = PersonParameter. 
 EmployeeParameterMethod = PersonParameter;
 EmployeeParameterMethod2 = PersonParameter;
+```
 
-	Um Action delegate é igual ao delegate Func, exceto que o Action delegate não retorna um valor. Em outras palavras, um Action delegate pode ser usado com um método que possui um tipo de retorno nulo.
+Um Action delegate é igual ao delegate Func, exceto que o Action delegate não retorna um valor. Em outras palavras, um Action delegate pode ser usado com um método que possui um tipo de retorno nulo.
 - No Action o tipo de retorno deve ser nulo.
 - O Action pode ter de 0 a 16 parâmetros de entrada.
 - O Action pode ser usado com métodos anônimos ou expressões lambda.
 
+
+```csharp
 public static void AddNumbers(string funcao, int a, int b)
 {
     var soma = a + b;
@@ -5674,14 +6154,22 @@ static void Main(string[] args)
     Action<string, int, int> soma_action = AddNumbers;
     soma_action("Action", 100, 5);
 }
+```
+
 
 Você pode inicializar um delegado Action usando a palavra-chave new ou atribuindo diretamente um método:
 
+
+```csharp
 Action<string, int, int> soma_action = AddNumbers;
 Action<string, int, int> soma_action2 = new Action<string, int, int>(AddNumbers);
+```
+
 
 Um método anônimo também um expressão Lambda pode ser atribuído a um Action delegate, por exemplo:
 
+
+```csharp
 Action<int> AnonimaActionDel = delegate (int i)
 {
     Console.WriteLine("Action Anonima Numero: " + i);
@@ -5690,22 +6178,28 @@ AnonimaActionDel(10);
 
 Action<int> LambdaActionDel = i => Console.WriteLine("Action Lambda Numero: " + i);
 LambdaActionDel(10);
+```
 
 
-	Exemplos de declaração de um delegado Action:
+Exemplos de declaração de um delegado Action:
 
+
+```csharp
 public Action OnChange { get; set; }
 public Action<string> OnChangeParam;
 public event Action OnChange = delegate { };
 public Action<string> OnChangeParam = delegate (string str) { };
+```
 
-Predicate
+
+### Predicate
 
 Um predicado também é um delegate, como os delegates Func e Action. Representa um método que contém um conjunto de critérios e verifica se o parâmetro passado atende a esses critérios ou não(retornar um booleano - verdadeiro ou falso).
 - No Predicate o tipo de retorno deve ser um booleano.
 - O Predicate pode ter de 0 a 16 parâmetros de entrada.
 - O Predicate pode ser usado com métodos anônimos ou expressões lambda.
 
+```csharp
 public static bool IsUpperCase(string str)
 {
     return str.Equals(str.ToUpper());
@@ -5719,8 +6213,12 @@ Console.WriteLine("Predicate: " + result); // Predicate: False
 result = Predicate_isUpper("HELLO!");
 Console.WriteLine("Predicate: " + result); // Predicate: True
 
+```
+
 Um método anônimo e expressão lambda também pode ser atribuído a um tipo de delegate do Predicate, como mostrado abaixo.
 
+
+```csharp
 Predicate<string> AnonimaPredicate = delegate (string s) { return s.Equals(s.ToUpper()); };
 // Anonima Predicate: False
 Console.WriteLine("Anonima Predicate: " + AnonimaPredicate("olá mundo !!"));
@@ -5728,17 +6226,21 @@ Console.WriteLine("Anonima Predicate: " + AnonimaPredicate("olá mundo !!"));
 Predicate<string> LambdaPredicate = s => s.Equals(s.ToUpper());
 // Lambda Predicate: False
 Console.WriteLine("Lambda Predicate: " + LambdaPredicate("olá mundo !!"));
+```
 
-Converter
+### Converter
 
 Representa um método que converte um objeto de um tipo para outro tipo.
 
+```csharp
 public delegate TOutput del_converter<in TInput, out TOutput>(TInput input);
+```
 
-- TInput>> O tipo de objeto que deve ser convertido. Este parâmetro de tipo é contravariante. Ou seja, você pode usar o tipo que você especificou ou qualquer tipo que seja menos derivado. 
-- TOutput>> O tipo para o qual o objeto de entrada deve ser convertido. Este parâmetro de tipo é covariante. Ou seja, você pode usar o tipo especificado ou qualquer tipo mais derivado. 
-- TInput input>> método que realiza a conversão.
+- **TInput**: O tipo de objeto que deve ser convertido. Este parâmetro de tipo é contravariante. Ou seja, você pode usar o tipo que você especificou ou qualquer tipo que seja menos derivado. 
+- **TOutput**: O tipo para o qual o objeto de entrada deve ser convertido. Este parâmetro de tipo é covariante. Ou seja, você pode usar o tipo especificado ou qualquer tipo mais derivado. 
+- **TInput input**: método que realiza a conversão.
 
+```csharp
 public static string ConvertUsuario_ToString(Usuario user)
 {
     return user.Nome;
@@ -5749,9 +6251,12 @@ del_converter<Usuario, string> del_03 = ConvertUsuario_ToString;
 var romeu = new Usuario("Romeu", 10);
 var nome = del_03(romeu);
 Console.WriteLine(nome);
+```
 
-A seguir dois exemplos de código. O primeiro demonstra o delegado Converter <TInput, TOutput> com o método ConvertAll da classe Array e o segundo demonstra o delegado com o método ConvertAll da classe genérica List <T> .
 
+A seguir dois exemplos de código. O primeiro demonstra o delegado ```Converter<TInput, TOutput>``` com o método ConvertAll da classe Array e o segundo demonstra o delegado com o método ConvertAll da classe genérica List <T> .
+
+```csharp
 public class Usuario
 {
     public string Nome { get; set; }
@@ -5823,17 +6328,22 @@ class Program
         return user.Nome;
     }
 }
+```
 
-Comparison<T> Delegate 
+### Comparison<T> Delegate 
 
 Esse tipo permite a classificação personalizada.É frequentemente usado com Array.Sort ou List.Sort. Implementamos Comparison (T) usando seu construtor. Ele é um método que recebe 2 parâmetros e retorna um int. 
 
+```csharp
 public delegate int del_comparison<in T>(T x, T y);
+```
 
-- T >> O tipo dos objetos a serem comparados.Este parâmetro de tipo é contravariante. Ou seja, você pode usar o tipo que você especificou ou qualquer tipo que seja menos derivado.
-- X >> O primeiro objeto a comparar.
-- Y >> O segundo objeto para comparar.
 
+- **T**: O tipo dos objetos a serem comparados.Este parâmetro de tipo é contravariante. Ou seja, você pode usar o tipo que você especificou ou qualquer tipo que seja menos derivado.
+- **X**: O primeiro objeto a comparar.
+- **Y**: O segundo objeto para comparar.
+
+```csharp
 private static int CompareUsuarios(Usuario e1, Usuario e2)
 {
     var comparar = e1.Nome.Length.CompareTo(e2.Nome.Length);
@@ -5847,13 +6357,16 @@ var romeu = new Usuario("Romeu", 10);
 var julieta = new Usuario("Julieta", 90);
 var nome = del_03(romeu, julieta);
 Console.WriteLine(nome);
+```
 
 Valor de retorno é um número inteiro(Int32) que indica os valores relativos de x e y , conforme mostrado na tabela a seguir.
-Valor	Significado
-Menos que 0	x é menor que y .
-0 0	x é igual a y .
-Maior que 0	x é maior que y .
+|     Valor          |     Significado            |
+|--------------------|----------------------------|
+|     Menos que 0    |     x   é menor que y .    |
+|     0 0            |     x   é igual a y .      |
+|     Maior que 0    |     x   é maior que y .    |
 
+```csharp
 public class Usuario
 {
     public string Nome { get; set; }
@@ -5935,12 +6448,14 @@ class Program
         return comparar;
     }
 }
+```
 
-Problemas com Delegate
+### Problemas com Delegate
 
 Os delegates têm alguns problemas que podem ser resolvidos com os eventos. Esses problemas são:
 1.	Qualquer um pode usar um operador de atribuição que pode sobrescrever as referências de métodos.
 
+```csharp
 static void Main(string[] args)
 {
     //1.	Qualquer um pode usar um operador de atribuição 
@@ -5972,10 +6487,15 @@ static void Show()
     Console.WriteLine("Show");
 }
 
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/delegadoproblem.png" alt="Image" width="100%" />
+</p>
+
 
 2.	O delegado pode ser chamado em qualquer lugar do código, o que pode violar a regra do encapsulamento.
 
+```csharp
 private class Room
 {
     public Action<int> OnHeatAlert;
@@ -6019,10 +6539,15 @@ static void Alarm(int temp)
 {
     Console.WriteLine("Turn On AC, Its hot. Room temp is {0}", temp);
 }
+```
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/delegadoencapsula.png" alt="Image" width="100%" />
+</p>
 
-Sumário
+
+
+**Sumário**
 - Delegates são ponteiros de função. Eles armazenam a referência de método (s) dentro de um delegate.
 - Delegate pode ser chamado em qualquer lugar do código para chamar o (s) método (s).
 - A covariância no delegate é aplicada no tipo de retorno de um método.
@@ -6032,16 +6557,22 @@ Sumário
 - O Predicate delegate armazena a referência de um método que usa um parâmetro de entrada e retorna um valor bool.
 - A expressão Lambda é usada para criar um método anônimo.
 
-EVENTS
+### EVENTS
 
 Eventos permitem que uma classe ou objeto notifique outras classes ou objetos quando ocorrer algo de interesse.Evento é uma ação que é executada quando uma condição especificada é satisfeita. Notifica todos os seus assinantes sobre a ação que será executada. Por exemplo, quando um evento do Windows 10 foi lançado, a Microsoft notificou todos os clientes para atualizar seu SO gratuitamente. Portanto, neste caso, a Microsoft é uma publicadora que lançou (levantou) um evento do Windows 10 e notificou os clientes sobre o assunto, e os clientes são os assinantes do evento e participaram do evento.
 
 Da mesma forma, o evento C# é usado na classe para fornecer notificações aos clientes dessa classe quando algo acontece com seu objeto. Eventos são declarados usando delegates. Portanto, uma classe que contém a definição de um evento e seu representante é chamada Publisher. Por outro lado, uma classe que aceita o evento e fornece um manipulador de eventos é chamada Subscriber.
 - A classe que envia (ou chamam) o evento é chamado de Publisher
 - As classes que recebem (ou manipulam) os eventos são chamadas de Subscribers
- 
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/publisher.png" alt="Image" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribers.png" alt="Image" width="100%" />
+</p>
+
 
 Um padrão Publisher-Subscriber no desenvolvimento de aplicativos é bastante popular, pois é uma solução reutilizável para um problema recorrente. Você pode ser Subscriber de um evento e ser notificado quando o Publisher gerar um novo evento. Isso é usado para estabelecer um acoplamento loose entre os componentes de um aplicativo. Os eventos têm as seguintes características ...
 - O publisher determina quando um evento é gerado
@@ -6054,6 +6585,7 @@ Um padrão Publisher-Subscriber no desenvolvimento de aplicativos é bastante po
 
 Delegados formam a base para o sistema de eventos em C#. O exemplo abaixo mostra uma abordagem incorreta  de uma classe expondo e delegate público invés de evento.
 
+```csharp
 public class Publisher
 {
     public Action<string> OnChangeParam;
@@ -6092,8 +6624,7 @@ public static void CreateAndRaise()
 
     publisher.Raise("CreateAndRaise");
 }
- 
-
+```
 
 Ao chamar CreateAndRaise, seu código cria uma nova instância do Publisher, assina o evento com dois métodos diferentes e, em seguida, gera o evento chamando publisher.Raise. A classe Publisher não tem conhecimento de nenhum assinante. Isso apenas levanta o evento. Se não houvesse assinantes para um evento, a propriedade OnChangeParam seria nula. É por isso que o método Raise verifica se o OnChangeParam não é nulo.
 
@@ -6101,14 +6632,15 @@ Embora esse sistema funcione, existem algumas fraquezas, pois nada impede que us
 
 Vantagens dos Eventos em relação aos delegates:
 1.	Event encapsula um delegate; evita a substituição de uma referência de método restringindo o uso de atribuição do operador =.
-- O evento sempre é inscrito usando += (Ex.: object.EventName + = OnMethodName);
-- O evento é cancelado com o uso de -= (Ex.: object.EventName -= OnMethodName);
-- Não pode object.EventName = OnMethodName
+    - O evento sempre é inscrito usando += (Ex.: object.EventName + = OnMethodName);
+    - O evento é cancelado com o uso de -= (Ex.: object.EventName -= OnMethodName);
+    - Não pode object.EventName = OnMethodName
 
 2.	Ao contrário do delegate, o evento não pode ser chamado fora da classe, o que garante que o evento será chamado apenas quando uma determinada codificação estiver em conformidade.
 
 É uma boa convenção de nomenclatura postfixar um nome de delegado personalizado com “EventHandler” somente quando for usado com o evento. Assim como prefixar o nome de métodos com On somente quando for usado com eventos, por exemplo, OnAlert. A exemplo abaixo mostra um exemplo modificado da classe Publisher que usa a sintaxe do evento.
 
+```csharp
 public class Publisher_Event
 {
     public event Action<string> ActionParEventHandler;
@@ -6148,6 +6680,11 @@ public static void CreateAndRaise_Event()
 
     publisher.Raise("CreateAndRaise_Event");
 }
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/createandraise.png" alt="Image" width="100%" />
+</p>
+
  
 
 Usando a sintaxe do evento, há algumas mudanças interessantes. Primeiro, você não está mais usando uma propriedade pública, mas um campo público. Normalmente, isso seria um passo para trás. No entanto, com a sintaxe do evento, o compilador protege seu campo de acesso indesejado.
@@ -6156,32 +6693,37 @@ Um evento não pode ser atribuído diretamente ao operador (com o = em vez de + 
 Outra mudança é que nenhum usuário externo pode promover seu evento. Ele pode ser gerado apenas pelo código que faz parte da classe que definiu o evento.
 
 O C# fornece alguns delegates internos importantes para implementar eventos:
-- EventHandler
-- PropertyChangedEventHandler
+- **EventHandler**
+- **PropertyChangedEventHandler**
 
 Se não tivessevemos atribuído um valor ao declarar o delegado, assim:
 
+```csharp
 public event Action<string> ActionParEventHandler;
+```
 
 Teríamos problema ao chamar o método de não tivéssemos atribuído nenhum assinante ao publicador:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/nenhumassinante.png" alt="Image" width="100%" />
+</p>
  
 
 Utilizando a sintaxe especial EventHandler ou EventHandler<T> para inicializar o evento em um delegate não atribuído valor, você pode remover a verificação nula em torno do aumento do evento, pois pode ter certeza de que o evento nunca é nulo. Usuários externos da sua classe não podem definir o evento como nulo; somente membros da sua classe podem. Desde que nenhum dos outros membros da classe defina o evento como nulo, você pode assumir com segurança que ele sempre terá um valor.
 
-EventHandler
+### EventHandler
 
 Como o manipulador de eventos agora usa dois parâmetros, é necessário revisar a declaração do evento, para que o delegado que ele usa reflete esses parâmetros. Você pode criar um novo delegado, mas o .NET Framework define um delegado genérico do EventHandler que facilita isso. Basta usar o tipo EventHandler e incluir o tipo de dados do segundo parâmetro, OverdrawnEventArgs neste exemplo, como o parâmetro de tipo do delegado genérico.
-
-
 
 A Microsoft recomenda que todos os eventos forneçam dois parâmetros. O .NET Framework possui uma maneira padrão de manipular eventos que usa dois parâmetros: o EventHandler. O EventHandler é um evento definido no namespace System que é pré-conectado a um delegado que define um método do tipo de retorno nulo.
 
 public delegate void EventHandler(object sender, EventArgs e);
 
 Por padrão, é necessário um objeto sender e alguns argumentos de evento.
-- sender>> primeiro parâmetro é de um tipo System.Object que se refere à instância (onde o evento foi definido) que gera o evento, ou nulo, se for proveniente de um método estático.
-- EventArgs>> contém dados do evento. Se o evento não tiver dados para passar, o segundo parâmetro é simplesmente o valor do campo EventArgs.Empty. No entanto, se ele tiver um valor para passar, será encapsulado em um tipo derivado de EventArgs. Usando EventHandler <T>, você pode especificar o tipo de argumento do evento que deseja usar.
+- **sender**: primeiro parâmetro é de um tipo System.Object que se refere à instância (onde o evento foi definido) que gera o evento, ou nulo, se for proveniente de um método estático.
+- **EventArgs**: contém dados do evento. Se o evento não tiver dados para passar, o segundo parâmetro é simplesmente o valor do campo EventArgs.Empty. No entanto, se ele tiver um valor para passar, será encapsulado em um tipo derivado de EventArgs. Usando EventHandler <T>, você pode especificar o tipo de argumento do evento que deseja usar.
 
+```csharp
 public class MyArgs : EventArgs
 {
     public MyArgs(int value)
@@ -6215,9 +6757,13 @@ class Program
         p.Raise();
     }
 }
+```
 
-A classe Publisher usa um EventHandler <MyArgs>, que especifica o tipo dos argumentos do evento. Ao gerar esse evento, você deve passar uma instância do MyArgs. Os assinantes do evento podem acessar os argumentos e usá-los. Embora a implementação do evento use um campo público, você ainda pode personalizar a adição e remoção de assinantes. Isso é chamado de “custom event accessor”. O exemplo abaixo mostra um exemplo de criação de um acessador de evento personalizado para um evento.
 
+A classe Publisher usa um ```EventHandler<MyArgs>```, que especifica o tipo dos argumentos do evento. Ao gerar esse evento, você deve passar uma instância do MyArgs. Os assinantes do evento podem acessar os argumentos e usá-los. Embora a implementação do evento use um campo público, você ainda pode personalizar a adição e remoção de assinantes. Isso é chamado de “custom event accessor”. O exemplo abaixo mostra um exemplo de criação de um acessador de evento personalizado para um evento.
+
+
+```csharp
 public class Publisher_Lock
 {
     private event EventHandler<MyArgs> _onChange = delegate { };
@@ -6243,6 +6789,8 @@ public class Publisher_Lock
         _onChange(this, new MyArgs(42));
     }
 }
+```
+
 
 Um acessador de evento personalizado se parece muito com uma propriedade com um acessador get e set. Em vez de obter e definir, você usa adicionar e remover. É importante bloquear e adicionar e remover assinantes para garantir que a operação seja segura para threads.
 
@@ -6250,6 +6798,8 @@ Se você usar a sintaxe regular de eventos, o compilador gerará o acessador par
 
 Uma coisa que é resultado direto da ordem seqüencial é como lidar com exceções. O exemplo abaixo mostra um exemplo em que um dos assinantes de eventos gera um erro.
 
+
+```csharp
 public static void CreateAndRaiseError()
 {
     Publisher p = new Publisher();
@@ -6258,10 +6808,16 @@ public static void CreateAndRaiseError()
     p.ChangeEventHandler += (sender, e) => Console.WriteLine("Subscriber 3 called");
     p.Raise();
 }
- 
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/raiseerror.png" alt="Image" width="100%" />
+</p>
 
 Como você pode ver, o primeiro assinante é executado com êxito, o segundo gera uma exceção e o terceiro nunca é chamado. Se esse não é o comportamento que você deseja, é necessário aumentar manualmente os eventos e lidar com as exceções que ocorrerem. Você pode fazer isso usando o método GetInvocationList declarado na classe base System.Delegate. O exemplo abaixo mostra um exemplo de recuperação de assinantes e enumeração manual deles.
 
+
+```csharp
 public class Publisher
 {
     public event EventHandler<MyArgs> ChangeEventHandler = delegate { };
@@ -6302,16 +6858,23 @@ public static void CreateAndRaiseError()
         Console.WriteLine(ex.InnerExceptions.Count);
     }
 }
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/subscribercalled.png" alt="Image" width="100%" />
+</p>
 
-PropertyChangedEventHandler
+
+### PropertyChangedEventHandler
 
 PropertyChangedEventHandler é um delegate definido no namespace System.ComponentModel. É usado com evento para referir um método que será chamado sempre que uma Propriedade for alterada em um componente.
 
+```csharp
 public delegate void PropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
+```
 
 O evento PropertyChanged usa um delegado PropertyChangedEventHandler na interface INotifyPropertyChanged. A classe, que implementa a interface INotifyPropertyChanged, deve definir a definição de evento PropertyChanged.
 
+```csharp
 public class Person : INotifyPropertyChanged
 {
     private string name;
@@ -6358,18 +6921,18 @@ class Program
         e.PropertyName, person.PersonName);
     }
 }
- 
+```
 
-1.	Implementar manipulação de exceções 
-o	Manipular tipos de exceções, incluindo exceções SQL(SQLException), exceções de rede (NetworkException/TransactionException) , exceções de comunicação(CommunicationException) , exceções de tempo limite de rede (TimeoutException); usar declarações de captura; usar uma classe base de uma exceção; implementar blocos try-catch-finally; lançar exceções; relançar uma exceção; criar exceções personalizadas; manipular exceções internas (InnerException); manipular exceções agregadas (AggregateException)
+## Implementar manipulação de exceções 
+- **Manipular tipos de exceções, incluindo exceções SQL(SQLException), exceções de rede (NetworkException/TransactionException) , exceções de comunicação(CommunicationException) , exceções de tempo limite de rede (TimeoutException); usar declarações de captura; usar uma classe base de uma exceção; implementar blocos try-catch-finally; lançar exceções; relançar uma exceção; criar exceções personalizadas; manipular exceções internas (InnerException); manipular exceções agregadas (AggregateException)**
 
-MANIPULAÇÃO DE EXCEÇÃO
+### MANIPULAÇÃO DE EXCEÇÃO
 
 Não importa quão bem você projete um aplicativo, os problemas ainda são inevitáveis. Os usuários inserem valores inválidos, os arquivos indispensáveis serão excluídos, talvez você queira gravar um arquivo no disco e o disco esteja cheio, conexões críticas de rede falharão, você tenta se conectar a um banco de dados, mas o servidor de banco de dados não está disponível ou existe outra condição inesperada. Para evitar e se recuperar desses tipos de problemas, um programa deve executar:
-- Verificação de erros
-- Tratamento de exceções. 
+- **Verificação de erros**
+- **Tratamento de exceções.**
 
-VERIFICAÇÃO DE ERROS (veja mais detalhes no arquivo 4-Depurar >> Validando entradas)
+### VERIFICAÇÃO DE ERROS (veja mais detalhes no arquivo 4-Depurar >> Validando entradas)
 
 A verificação de erros é o processo de antecipar erros, verificar se eles ocorrerão e contorná-los. Por exemplo, se o usuário precisar inserir um número inteiro em uma caixa de texto, eventualmente alguém inserirá um valor não numérico. Se o programa tentar analisar o valor como se fosse um número inteiro, ele falhará. Em vez de travar, o programa deve validar o texto para ver se faz sentido antes de tentar analisá-lo. O método int.TryParse faz as duas coisas, tentando analisar um valor de texto e retornando um indicador de erro se ele falhar. 
 
@@ -6377,7 +6940,7 @@ Se você puder, geralmente é melhor procurar proativamente problemas antes que 
 
 Da mesma forma, antes de abrir um arquivo ou fazer o download de um arquivo em uma rede, o programa pode verificar se o arquivo existe e se a conexão de rede está presente. Se o programa detectar esse tipo de erro, poderá informar ao usuário e cancelar qualquer operação que esteja tentando, em vez de apenas tentar abri-lo e manipular um erro se o arquivo não estiver lá.
 
-TRATAMENTO DE EXCEÇÕES
+### TRATAMENTO DE EXCEÇÕES
 
 Ao contrário da verificação de erros, o tratamento de exceções é o processo de proteger o aplicativo quando ocorre um erro inesperado. Mesmo que você valide a entrada do usuário, procure os arquivos e conexões de rede necessários e verifique todos os outros erros que puder imaginar, o programa ainda poderá encontrar situações inesperadas. Um arquivo pode ficar corrompido; uma conexão de rede que estava presente pode falhar; o sistema pode ficar sem memória; ou uma biblioteca de códigos que você está usando e sobre a qual você não tem controle pode lançar uma exceção.
 
@@ -6385,10 +6948,14 @@ Em vez de trabalhar com códigos de erro, o .NET Framework usa exceções para s
 
 É importante saber como trabalhar com exceções para que você possa implementar uma estratégia bem projetada para lidar ou gerar erros. A geração de informações de exceção também adiciona uma sobrecarga extra ao programa; portanto, você geralmente obtém melhor desempenho se antecipar erros antes que eles aconteçam.
 
-Manipulando exceções
+### Manipulando exceções
 
 Quando ocorre um erro em algum lugar de um aplicativo, uma exceção é gerada. As exceções têm algumas vantagens em comparação com os códigos de erro. Uma exceção é um objeto em si que contém dados sobre o erro que ocorreu. Ele não apenas possui uma mensagem amigável, mas também contém o local em que o erro ocorreu e pode até armazenar dados extras, como um endereço em uma página que oferece alguma ajuda. Se uma exceção não for tratada, fará com que o processo atual seja encerrado. Como o exemplo abaixo onde o aplicativo gera um erro e é encerrado.
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/formatexception.png" alt="Image" width="100%" />
+</p>
+
+
 
 O método int.Parse lança uma exceção do tipo FormatException quando a sequência não é um número válido. Lançar uma exceção interrompe a execução do seu aplicativo. Em vez de continuar na linha a seguir, o tempo de execução percorre através da pilha de chamadas, procurando pelo código que captura e manipula a exceção. Se esse local não puder ser encontrado, a exceção não será tratada e encerrará o aplicativo. 
 
@@ -6397,21 +6964,22 @@ Você não deve lançar exceções ao lidar com as situações esperadas. Você 
 O uso de exceções também gera um leve impacto no desempenho. Como o tempo de execução precisa pesquisar todos os blocos externos de captura até encontrar um bloco correspondente e, quando não for, deve procurar se um depurador está conectado, leva um pouco mais de tempo para manipular. Quando ocorrer uma situação real inesperada que encerre o aplicativo, isso não será um problema. Mas para o fluxo regular do programa, isso deve ser evitado. Em vez disso, você deve ter a validação adequada e não confiar apenas em exceções.
 
 Quando você precisa lançar uma exceção, é importante saber quais exceções já estão definidas no .NET Framework. Como os desenvolvedores estão familiarizados com essas exceções, eles devem ser usados sempre que possível. Algumas exceções são lançadas apenas pelo tempo de execução. Você não deve usar essas exceções em seu próprio código. A tabela abaixo lista essas exceções.
-Nome	Descrição
-ArithmeticException	Uma classe base para outras exceções que ocorrem durante operações aritméticas.
-ArrayTypeMismatchException	Lançado quando você deseja armazenar um elemento incompatível dentro de uma matriz.
-DivideByZeroException	Lançado quando você tenta dividir um valor por zero.
-IndexOutOfRangeException	Lançado quando você tenta acessar uma matriz com um índice menor que zero ou maior que o tamanho da matriz.
-InvalidCastException	Lançado quando você tenta converter um elemento em um tipo incompatível.
-NullReferenceException	Lançado quando você tenta fazer referência a um elemento que é nulo.
-OutOfMemoryException	Lançado ao criar um novo objeto falha porque o CLR não possui memória suficiente disponível.
-OverflowException	Lançada quando uma operação aritmética transborda em um contexto verificado.
-StackOverflowException	Lançado quando a pilha de execução está cheia. Isso pode acontecer em uma operação recursiva que não sai.
-TypeInitializationException	Lançado quando um construtor estático lança uma exceção que não é tratada.
+|     Nome           |     Descrição               |
+|------------------|----------------------|
+|     ArithmeticException      |     Uma classe base para   outras exceções que ocorrem durante operações aritméticas.    |
+|     ArrayTypeMismatchException     |     Lançado quando você   deseja armazenar um elemento incompatível dentro de uma matriz.    |
+|     DivideByZeroException          |     Lançado quando você   tenta dividir um valor por zero.            |
+|     IndexOutOfRangeException       |     Lançado quando você   tenta acessar uma matriz com um índice menor que zero ou maior que o tamanho   da matriz.    |
+|     InvalidCastException   |     Lançado quando você   tenta converter um elemento em um tipo incompatível.       |
+|     NullReferenceException         |     Lançado quando você   tenta fazer referência a um elemento que é nulo.     |
+|     OutOfMemoryException     |     Lançado ao criar um   novo objeto falha porque o CLR não possui memória suficiente disponível.    |
+|     OverflowException     |     Lançada quando uma   operação aritmética transborda em um contexto verificado.     |
+|     StackOverflowException         |     Lançado quando a   pilha de execução está cheia. Isso pode acontecer em uma operação recursiva   que não sai.      |
+|     TypeInitializationException   |    Lançado quando um   construtor estático lança uma exceção que não é tratada.      |
 
 Para lidar com uma exceção, você pode usar uma instrução try/catch/finally. 
 
-Blocos try-catch-finally
+### Blocos try-catch-finally
 
 O bloco try-catch- finally permite que um programa capture erros inesperados e lide com eles. Na verdade, esse bloco consiste em três seções: uma seção try, uma ou mais seções de catch e uma seção finally. 
 - Deve ser usado em torno de declarações que possam causar exceção
@@ -6422,6 +6990,7 @@ A seção try é necessária e você deve incluir o código que pode gerar uma e
 
 Você não precisa incluir catch ou finally e não precisa incluir nenhum código na seção catch ou finally. No C# 1, você também pode usar um bloco de captura sem um tipo de exceção. Isso pode ser usado para capturar exceções lançadas de outros idiomas, como C++, que não herdam de System.Exception (em C++, você pode lançar exceções de qualquer tipo). Atualmente, cada exceção que não herda de System.Exception é agrupada automaticamente em um System.Runtime.CompilerServices.RuntimeWrappedException. Como essa exceção herda de System.Exception, não é mais necessário o bloco catch vazio. É importante garantir que seu aplicativo esteja no estado correto quando o bloco catch terminar. Isso pode significar que você precisa reverter as alterações feitas pelo seu bloco try antes da exceção ser lançada.
 
+```csharp
 string s = null;
 try
 {
@@ -6431,23 +7000,27 @@ catch
 {
     Console.WriteLine("The quantity must be an integer.");
 }
+```
+
 
 Este código tenta analisar o valor da variável, se o valor não for um número inteiro, a instrução int.Parse emitirá uma exceção e a seção catch exibirá uma mensagem. Nesse caso, apenas uma mensagem é apropriada, independentemente da exceção lançada. Após a instrução try, você pode adicionar vários blocos de catch diferentes.
 
 Você deve evitar usar diretamente a classe base Exception ao capturar e lançar exceções. Em vez disso, você deve tentar usar a exceção mais específica disponível. A tabela abaixo mostra exceções populares no .NET Framework que você pode usar em seus próprios aplicativos.
-Nome	Descrição
-Exception	A classe base para todas as exceções. Tente evitar lançar e capturar essa exceção porque é muito genérica.
-ArgumentException	Lance essa exceção quando um argumento para o seu método for inválido.
-ArgumentNullException	Uma forma especializada de ArgumentException que você pode lançar quando um de seus argumentos for nulo e isso não for permitido.
-ArgumentOutOfRangeException	Uma forma especializada de ArgumentException que você pode lançar quando um argumento estiver fora do intervalo permitido de valores.
-FormatException	Lance essa exceção quando um argumento não tiver um formato válido.
-InvalidOperationException	Lance essa exceção quando um método for chamado inválido para o estado atual do objeto.
-NotImplementedException	Essa exceção é frequentemente usada no código gerado, em que um método ainda não foi implementado.
-NotSupportedException	Lance essa exceção quando um método for invocado que você não oferece suporte.
-ObjectDisposedException	Lance quando um usuário da sua classe tenta acessar métodos quando Dispose já foi chamado.
+|     Nome                           |     Descrição         |
+|------------------------------------|------------------|
+|     Exception                      |     A classe base para   todas as exceções. Tente evitar lançar e capturar essa exceção porque é muito   genérica.     |
+|     ArgumentException              |     Lance essa exceção   quando um argumento para o seu método for inválido.       |
+|     ArgumentNullException          |     Uma forma   especializada de ArgumentException que você pode lançar quando um de seus   argumentos for nulo e isso não for permitido.  |
+|     ArgumentOutOfRangeException    |     Uma forma   especializada de ArgumentException que você pode lançar quando um argumento   estiver fora do intervalo permitido de valores.    |
+|     FormatException    |     Lance essa exceção   quando um argumento não tiver um formato válido.      |
+|     InvalidOperationException      |     Lance essa exceção   quando um método for chamado inválido para o estado atual do objeto.               |
+|     NotImplementedException        |     Essa exceção é   frequentemente usada no código gerado, em que um método ainda não foi   implementado.           |
+|     NotSupportedException          |     Lance essa exceção quando   um método for invocado que você não oferece suporte.       |
+|     ObjectDisposedException        |     Lance quando um   usuário da sua classe tenta acessar métodos quando Dispose já foi chamado.           |
 
 O exemplo abaixo mostra um exemplo de captura de FormatException.
 
+```csharp
 string s = "NaN";
 
 try
@@ -6458,21 +7031,24 @@ catch (FormatException)
 {
     Console.WriteLine("{0} is not a valid number. Please try again", s);
 }
+```
+
 
 Se você incluir o ExceptionType, a variável é uma variável da classe ExceptionType que fornece informações sobre a exceção. Todas as classes de exceção fornecem uma propriedade Message que fornece informações textuais sobre a exceção. Às vezes, você pode exibir essa mensagem para o usuário, mas geralmente a mensagem é técnica o suficiente para ser confusa para os usuários. A tabela abaixo lista as propriedades da classe base System.Exception.
-Propriedade	Descrição
-StackTrace	Uma sequência que descreve todos os métodos atualmente em execução. Isso fornece uma maneira de rastrear qual método gerou a exceção e como esse método foi alcançado.
-InnerException	Quando uma nova exceção é lançada porque ocorreu outra exceção, as duas são vinculadas à propriedade InnerException.
-Message	Uma mensagem (esperançosamente) amigável para humanos que descreve a exceção.
-HelpLink	Um nome de recurso uniforme (URN) ou localizador de recurso uniforme (URL) que aponta para um arquivo de ajuda.
-HResult	Um valor de 32 bits que descreve a gravidade de um erro, a área na qual a exceção ocorreu e um número exclusivo para a exceção Esse valor é usado apenas ao cruzar limites gerenciados e nativos.
-Source	O nome do aplicativo que causou o erro. Se a Origem não estiver definida explicitamente, o nome do assembly será usado.
-TargetSite	Contém o nome do método que causou a exceção. Se esses dados não estiverem disponíveis, a propriedade será nula.
-Data	Um dicionário de pares de chave/valor que você pode usar para armazenar dados extras para sua exceção. Esses dados podem ser lidos por outros blocos de captura e podem ser usados para controlar o processamento da exceção.
-
+|     Propriedade       |     Descrição         |
+|-----------------------|--------------------------|
+|     StackTrace        |     Uma sequência que   descreve todos os métodos atualmente em execução. Isso fornece uma maneira de   rastrear qual método gerou a exceção e como esse método foi alcançado.     |
+|     InnerException    |     Quando uma nova   exceção é lançada porque ocorreu outra exceção, as duas são vinculadas à   propriedade InnerException.                       |
+|     Message           |     Uma mensagem   (esperançosamente) amigável para humanos que descreve a exceção.                  |
+|     HelpLink          |     Um nome de recurso   uniforme (URN) ou localizador de recurso uniforme (URL) que aponta para um   arquivo de ajuda.                                    |
+|     HResult           |     Um valor de 32 bits   que descreve a gravidade de um erro, a área na qual a exceção ocorreu e um   número exclusivo para a exceção Esse valor é usado apenas ao cruzar limites   gerenciados e nativos.                                |
+|     Source            |     O nome do aplicativo   que causou o erro. Se a Origem não estiver definida explicitamente, o nome do   assembly será usado.               |
+|     TargetSite        |     Contém o nome do   método que causou a exceção. Se esses dados não estiverem disponíveis, a   propriedade será nula.                                 |
+|     Data              |     Um dicionário de   pares de chave/valor que você pode usar para armazenar dados extras para sua   exceção. Esses dados podem ser lidos por outros blocos de captura e podem ser   usados para controlar o processamento da exceção.    |
 
 Ao usar um bloco catch, você pode usar um tipo de exceção e um identificador nomeado. Dessa forma, você efetivamente cria uma variável que manterá a exceção para você, para poder inspecionar suas propriedades. O exemplo abaixo mostra como fazer isso.
 
+```csharp
 try
 {
     string s = Console.ReadLine();
@@ -6489,15 +7065,24 @@ catch (FormatException e)
     Console.WriteLine("Source: {0}", e.Source);
 }
 
- 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/exceptiontype.png" alt="Image" width="100%" />
+</p>
+
 
 Se você incluir o ExceptionType, mas omitir a variável, a seção catch será executada para combinar os tipos de exceção mais específicos adicionando blocos catch extras. Como todas as exceções no .NET Framework são herdadas de System.Exception, você pode capturar todas as exceções possíveis capturando pelo tipo System.Exception. Os blocos catch devem ser especificados de mais específicos para menos específicos, porque esta é a ordem na qual o tempo de execução os examinará. Quando uma exceção é lançada, o primeiro bloco catch correspondente será executado. Se nenhum bloco de captura correspondente puder ser encontrado, a exceção ocorrerá. 
 
 O .NET Framework define centenas de classes de exceção para representar diferentes condições de erro. A figura abaixo mostra a hierarquia de algumas das classes de exceção mais comuns e úteis definidas no namespace System. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hierarquiaclasses.png" alt="Image" width="100%" />
+</p>
  
 
 O código abaixo mostra um exemplo de captura de dois tipos de exceção diferentes.
 
+```csharp
 string s = null;
 
 try
@@ -6517,6 +7102,8 @@ finally
     Console.WriteLine("Program complete.");
     Console.ReadLine();
 }
+```
+
 
 Se a sequência s for nula, será lançada uma ArgumentNullException. Se a sequência não for um número, será lançada uma FormatException. Usando diferentes blocos de captura, quando encontra um ExceptionType correspondente, o programa executa as instruções dessa seção de captura, cada uma à sua maneira e ignora as seções de captura restantes. 
 
@@ -6528,10 +7115,11 @@ Outro recurso importante do tratamento de exceções é a capacidade de especifi
 - O código em uma seção catch usa uma instrução de retorno para sair do método.
 - O código em uma seção de captura gera uma exceção.
 
-Instrução Using
+### Instrução Using
 
 A instrução using se comporta de fato como uma sequência de try-finally com finalidade especial que chama o método Dispose do objeto em sua seção finally. Por exemplo, considere o seguinte código:
 
+```csharp
 internal class Pen : IDisposable
 {
     private Color color;
@@ -6553,9 +7141,12 @@ using (Pen pen = new Pen(Color.Red, 10))
 {
     // Use a caneta para desenhar ...
 }
+```
+
 
 Isso é aproximadamente equivalente à seguinte sequência de try-finally:
 
+```csharp
 Pen pen2 = new Pen(Color.Red, 10);
 try
 {
@@ -6566,6 +7157,8 @@ finally
 {
     if (pen2 != null) pen2.Dispose();
 }
+```
+
 
 Isso significa que o programa chama o método Dispose da pen, não importa como ele saia do bloco using . Por exemplo, se as instruções no bloco executarem uma declaração de retorno ou lançarem uma exceção, o método Dispose ainda será chamado.
 
@@ -6573,6 +7166,7 @@ Obviamente, ainda existem situações em que um bloco finally não será executa
 
 Impedir a execução do bloco finally pode ser alcançado usando o Environment.FailFast. Este método possui duas sobrecargas diferentes, uma que aceita apenas uma string e outra que aceita uma exceção. Quando esse método é chamado, a mensagem (e opcionalmente a exceção) é gravada no log de eventos do aplicativo Windows e o aplicativo é encerrado. A código abaixo mostra como você pode usar esse método. 
 
+```csharp
 string s = Console.ReadLine();
 try
 {
@@ -6583,44 +7177,46 @@ finally
 {
     Console.WriteLine("Program complete finally.");
 }
+```
 
-	Se estiver em modo Debug emite o seguinte erro:
- 
+Se estiver em modo Debug emite o seguinte erro:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/mododebug.png" alt="Image" width="100%" />
+</p>
+
 
 Mas quando você executa esse aplicativo sem um depurador conectado, uma mensagem é gravada no log de eventos. Para visualizar o log criado, abra o Visualizador de Eventos, indo em "Iniciar" no Windows >>“Administrative Tools”. Quando a janela estiver aberta, abra o aplicativo "Event Viewer".
- 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/eventviewer.png" alt="Image" width="100%" />
+</p>
+
+
 
 A linha Programa concluído não será executada se 42 for inserido. Em vez disso, o aplicativo é encerrado imediatamente.  É importante garantir que seu bloqueio finally não cause nenhuma exceção. Quando isso acontece, o controle sai imediatamente do bloco finally e passa para o próximo bloco externo, se houver. A exceção original foi perdida e você não pode mais acessá-la.
 
 Você deve capturar apenas uma exceção quando puder resolver o problema ou quando desejar registrar o erro. Por esse motivo, é importante evitar bloqueios gerais nas camadas inferiores do seu aplicativo. Dessa forma, você pode perder acidentalmente uma exceção importante, mesmo sem saber que isso aconteceu. O registro também deve ser feito em algum lugar mais alto no seu aplicativo. Dessa forma, você pode evitar o registro de erros duplicados em várias camadas no seu aplicativo.
 
-Exceções SQL
+### Exceções SQL
 
 Além dessas exceções básicas, o .NET Framework define várias outras classes de exceção que têm uso mais especializado. Por exemplo, exceções SQL podem ocorrer quando um programa trabalha com bancos de dados do SQL Server.  O SQL Server usa a classe única System.Data.SqlClient.SqlException para representar todos os erros e exceções. Você pode usar as propriedades do objeto SqlException para determinar o que deu errado e qual a gravidade. A tabela abaixo descreve algumas das propriedades da classe SqlException mais úteis.
 
-Propriedade	Descrição
-Class	Um número entre 0 e 25, indicando o tipo de erro. 
-Class (0–10)	Mensagens informativas em vez de erros. e indicam problemas causados por erros nas informações inseridas por um usuário.
-Class (11–16)	Problemas do usuário que podem ser corrigidos pelo usuário.
-Class (17–19)	Você pode continuar trabalhando, embora talvez não seja possível executar uma determinada instrução.
-17: O SQL Server ficou sem um recurso configurável, como bloqueios. O DBA pode
-conserte isso.
-18: Um problema de software interno não fatal.
-19: O SQL Server excedeu um limite de recurso não configurável.
-Class (20–25)	Os valores 20 a 25 são fatais e a conexão com o banco de dados é fechada.
-20: Ocorreu um problema em uma declaração emitida pelo processo atual.
-21: O SQL Server encontrou um problema que afeta todos os processos em um banco de dados.
-22: Uma tabela ou índice foi danificado.
-23: O banco de dados é suspeito.
-24: Problema de hardware.
-25: Erro do sistema.
-LineNumber	Retorna o número da linha no lote de comandos T-SQL ou procedimento armazenado que causou o erro.
-Message	Uma mensagem (esperançosamente) amigável para humanos que descreve a exceção.
-Number	Retorna o número do erro.
-Procedure	Retorna o nome do procedimento armazenado ou da chamada de procedimento remoto que causou o erro.
+|     Propriedade      |     Descrição        |
+|----------------------|-------------------------|
+|     Class            |     Um número entre 0 e   25, indicando o tipo de erro.               |
+|     Class (0–10)     |     Mensagens   informativas em vez de erros. e indicam problemas causados por erros nas   informações inseridas por um usuário.         |
+|     Class (11–16)    |     Problemas do usuário   que podem ser corrigidos pelo usuário.        |
+|     Class (17–19)    |     Você pode continuar   trabalhando, embora talvez não seja possível executar uma determinada   instrução.     17: O SQL Server   ficou sem um recurso configurável, como bloqueios. O DBA pode     conserte isso.     18: Um problema de   software interno não fatal.     19: O SQL Server   excedeu um limite de recurso não configurável.    |
+|     Class (20–25)    |     Os valores 20 a 25   são fatais e a conexão com o banco de dados é fechada.     20: Ocorreu um   problema em uma declaração emitida pelo processo atual.     21: O SQL Server   encontrou um problema que afeta todos os processos em um banco de dados.     22: Uma tabela ou   índice foi danificado.     23: O banco de dados   é suspeito.     24: Problema de   hardware.     25: Erro do sistema.    |
+|     LineNumber       |     Retorna o número da   linha no lote de comandos T-SQL ou procedimento armazenado que causou o erro.              |
+|     Message          |     Uma mensagem   (esperançosamente) amigável para humanos que descreve a exceção.   |
+|     Number       |     Retorna o número do   erro.         |
+|     Procedure        |     Retorna o nome do   procedimento armazenado ou da chamada de procedimento remoto que causou o erro.       |
 
-	Abaixo segue um exemplo de tratamento erro utilizando a classe SqlException:
+Abaixo segue um exemplo de tratamento erro utilizando a classe SqlException:
 
+```csharp
 string queryString = "EXECUTE NonExistantStoredProcedure";
 StringBuilder errorMessages = new StringBuilder();
 string connectionString = ConfigurationManager.ConnectionStrings["PeopleConnection"].ConnectionString;
@@ -6648,13 +7244,17 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 
     Console.ReadKey();
 }
+```
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/dbexception.png" alt="Image" width="100%" />
+</p>
  
 
 A classe System.Data.Common.DbException é a classe pai de SqlException e outras três classes que retornam informações semelhantes para outros tipos de banco de dados. A lista a seguir resume as outras três classes filho DbException filho:
-- System.Data.Odbc.OdbcException: erros nos bancos de dados ODBC
-- System.Data.OleDb.OleDbException: erros nos bancos de dados OLE DB
-- System.Data.OracleClient.OracleException: erros nos bancos de dados Oracle
+- **System.Data.Odbc.OdbcException**: erros nos bancos de dados ODBC
+- **System.Data.OleDb.OleDbException**: erros nos bancos de dados OLE DB
+- **System.Data.OracleClient.OracleException**: erros nos bancos de dados Oracle
 
 Todas essas classes fornecem uma propriedade Message que fornece informações sobre a exceção, embora não forneçam as propriedades Class, LineNumber, Number e Procedure fornecidas pela classe SqlException.
 
@@ -6664,6 +7264,7 @@ Entrada inadequada pode fazer com que um .NET Framework tipo de provedor de dado
 
 Portanto, em geral, grave um manipulador de exceção que captura quaisquer exceções específicas de provedor, bem como exceções da Common Language Runtime. Eles podem ser dispostos em camadas da seguinte maneira:
 
+```csharp
 try
 {
     // code here  
@@ -6676,9 +7277,12 @@ catch (Exception ex)
 {
     // Handle generic ones here.  
 }
+```
+
 
 OU
 
+```csharp
 try
 {
     // code here  
@@ -6695,13 +7299,16 @@ catch (Exception ex)
     }
 }
 
-Exceções de Overflow
+```
+
+### Exceções de Overflow
 
 Por padrão, um programa C# não lança uma exceção se uma operação aritmética causar um estouro de número inteiro. Se os operandos são integrais ou decimais, o programa descarta qualquer bit extra, retorna um resultado truncado e continua em execução como se nada tivesse dado errado. Nesse caso, você pode não estar ciente de que o resultado é sem sentido.
 Você pode fazer o programa lançar uma OverflowException usando um bloco checked/unchecked ou usando a caixa de diálogo Configurações avançadas de compilação. 
 
 A palavra-chave checked adiciona exceções em estouros de número e erros podem ser evitados capturando o estouro mais cedo. Com unchecked, é o inverso, ele especifica que o estouro é um resultado aceitável de uma operação e nenhuma exceção é lançada. No exemplo abaixo, o tipo das variáveis é short, que não pode exceder o valor 32767. O programa incrementa o short e causa Overflow na variável estoura mas não em naoestoura, que retornaria um valor incorreto.
 
+```csharp
 // The first short will overflow after the second short does.
 short estoura = 0;
 short naoestoura = 100;
@@ -6730,18 +7337,23 @@ catch (OverflowException)
     Console.WriteLine(estoura);  //  32767, valor mácimo de um short
     Console.WriteLine(naoestoura);  // -32669
 }
+```
+
 
 De fato, o overflow de float e double nunca gera uma exceção, mas simplesmente retorna um valor especial de +/- Infinity. Por outro lado, para o tipo decimal, as palavras-chave checked/unchecked também são ignoradas, mas o excesso sempre gera uma OverflowException.
 
 Quando uma operação de ponto flutuante causar um overflow(+) ou underflow(-) ou se produzir o valor especial NaN (que significa "não é um número") os tipos de ponto flutuante definem as propriedades estáticas PositiveInfinity, NegativeInfinity e NaN. Se você tentar colocar dentro de um número flutuante um número maior que float.MaxValue, será " IsInfinity". Você pode comparar uma variável de ponto flutuante com os valores PositiveInfinity e NegativeInfinity. Em vez de tentar comparar resultados com valores especiais, é melhor usar os métodos do tipo para determinar se uma variável possui um desses valores especiais. A tabela abaixo descreve esses métodos.
-Método	Descrição
-IsInfinity	Retorna true se o valor for PositiveInfinity ou NegativeInfinity
-IsNaN	Retorna true se o valor for NaN
-IsNegativeInfinity	Retorna true se o valor for NegativeInfinity
-IsPositiveInfinity	Retorna true se o valor for PositiveInfinity
+
+|     Método                |     Descrição          |
+|---------------------------|----------------|
+|     IsInfinity            |     Retorna true se o   valor for PositiveInfinity ou NegativeInfinity    |
+|     IsNaN                 |     Retorna true se o   valor for NaN                                     |
+|     IsNegativeInfinity    |     Retorna true se o   valor for NegativeInfinity                        |
+|     IsPositiveInfinity    |     Retorna true se o   valor for PositiveInfinity                        |
 
 No entanto, se você comparar uma variável com NaN, o resultado será sempre falso. (Mesmo float.NaN == float.NaN retorna false). Um forma correta de fazer esta comparação seria como aseguir:
 
+```csharp
 var zero = 0.0f;
 // This will return true.
 if (Single.IsNaN(0 / zero))
@@ -6755,10 +7367,12 @@ Console.WriteLine("Infinity plus 10.0 equals {0}.", (Single.PositiveInfinity + 1
 
 // This will return true.
 Console.WriteLine("IsNegativeInfinity(-5.0F / 0) == {0}.", Single.IsNegativeInfinity(-5.0F / 0) ? "true" : "false");
+```
+
 
 O uso dos métodos de valor especial listados na tabela facilita a compreensão e a proteção do código, caso os valores especiais, como PositiveInfinity, sejam alterados em alguma versão posterior do .NET, por exemplo, se o tipo de dados flutuante passar para 64 bits.
 
-Lançando Exceções (Throwing Exceptions)
+### Lançando Exceções (Throwing Exceptions)
 
 Quando você deseja gerar um erro, primeiro precisa criar uma nova instância de uma exceção. Em C#, um objeto de exceção pode ser explicitamente lançado do código usando a palavra-chave throw. Um programador deve lançar uma exceção do código se uma ou mais das seguintes condições forem verdadeiras:
 1.	Quando o método não completa sua funcionalidade definida, por exemplo, Parâmetros possui valores nulos etc.
@@ -6766,6 +7380,7 @@ Quando você deseja gerar um erro, primeiro precisa criar uma nova instância de
 
 Depois disso, o tempo de execução começará a procurar catch e, finalmente, os blocos. Se esse método interagir com o usuário, ele poderá exibir uma mensagem para informar ao usuário sobre o problema. O código abaixo mostra como você pode lançar uma exceção ArgumentNullException.
 
+```csharp
 public static string OpenAndParse(string fileName)
 {
     if (string.IsNullOrWhiteSpace(fileName))
@@ -6793,15 +7408,19 @@ finally
     Console.WriteLine("Program complete.");
     Console.ReadLine();
 }
+```
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/programcomplete .png" alt="Image" width="100%" />
+</p>
+
 
 No entanto, geralmente um método não deve interagir diretamente com o usuário. Por exemplo, se você estiver escrevendo uma biblioteca de ferramentas que serão chamadas por outros métodos, é provável que seus métodos não interajam diretamente com o usuário. Em vez disso, esses métodos devem lançar exceções próprias para informar o código de chamada que deu errado e, em seguida, deixar esse código lidar com o problema. Esse código pode exibir uma mensagem para o usuário ou pode resolver o problema sem incomodar o usuário. A se definir uma estratégia de excessão os seguintes quesitos devem ser consideradas:
 - Quais exceções seu método deve capturar
 - Quais exceções ele deve ignorar 
 - Quais exceções ele deve lançar 
 
-Usando exceções e valores de retorno
+### Usando exceções e valores de retorno
 
 Um método pode executar alguma ação e, em seguida, retornar informações ao código de chamada através de um valor de retorno ou através de parâmetros de saída. As exceções fornecem um método para mais uma maneira de se comunicar com o código de chamada. Uma exceção informa ao programa que algo de excepcional aconteceu e que o método pode não ter concluído a tarefa que estava executando.
 
@@ -6809,6 +7428,7 @@ Há alguma discussão na Internet sobre quando um método deve retornar informa�
 
 A melhor maneira de decidir se deseja usar uma exceção é perguntar se o código de chamada deve ter permissão para ignorar o status do método. Se um método retornar informações de status através de seu valor de retorno, o código de chamada poderá ignorá-las. Se o método lançar uma exceção, o código de chamada deverá incluir um bloco trycatch para manipular a exceção explicitamente. Por exemplo, considere o seguinte método que retorna o fatorial de um número:
 
+```csharp
 private long Factorial(long n)
 {
     // Make sure n >= 0.
@@ -6827,6 +7447,8 @@ private long Factorial(long n)
         }
     }
 }
+```
+
 
 Há dois problemas com esta abordagem. Primeiro, o código de chamada pode ignorar o erro e tratar o valor 0 como fatorial de um número, fornecendo um resultado incorreto. Se o valor for usado em um cálculo complexo, o erro poderá ser incorporado no cálculo. O programa produziria um resultado incorreto que pode ser difícil de reparar e corrigir posteriormente.
 
@@ -6834,6 +7456,7 @@ O segundo problema é que o código de chamada não pode dizer o que deu errado.
 
 Uma solução melhor é lançar exceções apropriadas quando apropriado. A seguinte versão do método fatorial, mostrada anteriormente neste capítulo, usa exceções:
 
+```csharp
 private long Factorial_Checked(long n)
 {
     // Make sure n >= 0.
@@ -6846,18 +7469,21 @@ private long Factorial_Checked(long n)
         return result;
     }
 }
+```
+
 
 Se o parâmetro for menor que zero, o código emitirá uma exceção. Como os cálculos são colocados em um bloco checked, se causarem um integer overflow, eles lançarão uma OverflowException.
 Você não deve tentar reutilizar objetos de exceção. Cada vez que você lança uma exceção, deve criar uma nova, especialmente ao trabalhar em um ambiente multithread, o rastreamento de pilha da sua exceção pode ser alterado por outro thread. Ao capturar uma exceção, você pode optar por repetir a exceção. Você tem três maneiras de fazer isso:
-1.	Use throw sem um identificador
-2.	Use throw com a exceção original
-3.	Use throw com uma nova exceção
-4.	Método ExceptionDispatchInfo.Throw
+1.	**Use throw sem um identificador**
+2.	**Use throw com a exceção original**
+3.	**Use throw com uma nova exceção**
+4.	**Método ExceptionDispatchInfo.Throw**
 
-Use throw sem um identificador
+### Use throw sem um identificador
 
 Reproduz novamente a exceção sem modificar a pilha de chamadas. Essa opção deve ser usada quando você não deseja modificações na exceção. O código abaixo mostra um exemplo de uso desse mecanismo.
 
+```csharp
 [Conditional("DEBUG")]
 private static void Log(Exception logEx)
 {
@@ -6899,16 +7525,23 @@ public static void Main(string[] args)
         Console.ReadLine();
     }
 }
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/finally.png" alt="Image" width="100%" />
+</p>
 
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/justthrow.png" alt="Image" width="100%" />
+</p>
 
- 
 
-Use throw com a exceção original
+### Use throw com a exceção original
 
 Esta opção redefine a pilha de chamadas para o local atual no código. Portanto, você não pode ver de onde veio a exceção e é mais difícil depurar o erro. A nova versão lança explicitamente o mesmo objeto de exceção que o bloco try-catch apanhado. Quando o código lança uma exceção dessa maneira, a pilha de chamadas da exceção é redefinida para o local atual, para que se refira à linha de código que contém a instrução throw. Isso pode enganar todos os programadores que tentam localizar um problema, fazendo-os olhar para a linha de código errada. A situação é ainda pior se a linha de código que lançou a exceção estiver dentro de outro método chamado por este. Se você repetir a exceção dessa maneira, o fato de o erro estar em outro método será perdido.
 
+```csharp
 private static void Rethrowing_OriginalException(string fileName)
 {
     try
@@ -6922,14 +7555,22 @@ private static void Rethrowing_OriginalException(string fileName)
     }
 }
 
- 
+```
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/logex.png" alt="Image" width="100%" />
+</p>
 
-Use throw com uma nova exceção
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/logexlinha.png" alt="Image" width="100%" />
+</p>
+
+### Use throw com uma nova exceção
 
 Uma outra maneira de preservar as informações de rastreamento da pilha da exceção original na repetição da reprodução é agrupar a exceção original com outra exceção. Esta opção pode ser útil quando você deseja gerar outra exceção para o chamador do seu código, como esta:
 
+```csharp
 private static void Rethrowing_NewException(string fileName)
 {
     try
@@ -6942,14 +7583,13 @@ private static void Rethrowing_NewException(string fileName)
         throw new Exception("Rethrown", logEx);
     }
 }
- 
-
- 
+```
 
 Diga, por exemplo, que você está trabalhando em um aplicativo de pedidos. Quando um usuário faz um pedido, você o coloca imediatamente em uma fila de mensagens para que outro aplicativo possa processá-lo. Quando ocorre um erro interno na fila de mensagens, uma exceção do tipo MessageQueueException é gerada. Para os usuários do seu aplicativo de pedidos, essa exceção não faz sentido. Eles não conhecem o funcionamento interno do seu módulo e não entendem de onde vem o erro na fila de mensagens.
 
 Em vez disso, você pode lançar outra exceção, algo como uma OrderProcessingException personalizada e definir a InnerException como a exceção original. Em OrderProcessingException, você pode colocar informações extras para o usuário do seu código colocar o erro no contexto e ajudá-lo a resolvê-lo. O código abaico mostra um exemplo. A exceção original é preservada, incluindo o rastreamento de pilha, e uma nova exceção com informações extras é adicionada.
 
+```csharp
 [Serializable]
 public class OrderProcessingException : Exception, ISerializable
 {
@@ -6975,12 +7615,23 @@ private static void Rethrowing_AnotherNewException(string fileName)
     }
 }
 
+```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/rethrown.png" alt="Image" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/rethrownlinha.png" alt="Image" width="100%" />
+</p>
+
+
 Certifique-se de não perca nenhum detalhe de exceção ao repetir uma exceção. Lance uma nova exceção que aponte para a original quando você desejar adicionar informações extras; caso contrário, use a palavra-chave throw sem um identificador para preservar os detalhes da exceção original.
 
-Método ExceptionDispatchInfo.Throw
+### Método ExceptionDispatchInfo.Throw
 
 No C# 5, uma nova opção é adicionada para relançar uma exceção. Você pode usar o método ExceptionDispatchInfo.Throw, que pode ser encontrado no espaço para nome System.Runtime.ExceptionServices. Este método pode ser usado para lançar uma exceção e preservar o rastreamento de pilha original. Você pode usar esse método mesmo fora de um bloco catch, como mostra a abaixo.
 
+```csharp
 private static void Rethrowing_CaptureThrow(string fileName)
 {
     try
@@ -6994,23 +7645,35 @@ private static void Rethrowing_CaptureThrow(string fileName)
     }
 }
 
- 
+```
 
- 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/dispatchinfo.png" alt="Image" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/dispatchinfolinha.png" alt="Image" width="100%" />
+</p>
+
 
 Ao examinar o rastreamento de pilha, você vê esta linha, que mostra onde o rastreamento de pilha de exceção original termina e o ExceptionDispatchInfo.Throw é usado:
+
+```csharp
 --- Fim do rastreio de pilha do local anterior onde a exceção foi gerada ---
+```
+
 
 Esse recurso pode ser usado quando você deseja capturar uma exceção em um segmento e lançá-lo em outro segmento. Usando a classe ExceptionDispatchInfo, você pode mover os dados de exceção entre os threads e lançá-los. O .NET Framework usa isso ao lidar com o recurso assíncrono / aguardado adicionado no C# 5. Uma exceção lançada em um encadeamento assíncrono será capturada e retrocedida no encadeamento em execução.
 
 Em geral, no .Net é desaconselhado fortemente o uso de throw ex para refazer a exceção em um bloco catch, pois destrói as informações sobre onde a exceção foi lançada originalmente e definitivamente causará frustração ao olhar para os logs e tentar descobrir fora o que tinha acontecido. Com o .NET Framework 4.5 e superior, eu sempre usava ExceptionDispatchInfo para retroceder, pois fornece a imagem mais completa dos eventos que aconteceram. Nas versões da estrutura inferiores a 4,5, eu usaria o throw como a maneira mais simples de rever novamente e manter as informações sobre a origem da exceção. O agrupamento da exceção por outra exceção para manter as informações sobre o método que levou à exceção simplesmente não vale a pena.
 
-Criando exceções personalizadas
+### Criando exceções personalizadas
 
 Depois que a exceção for lançada, se possível, você deve lançar uma das classes de exceção definidas pelo .NET Framework. As classes de exceção predefinidas têm significados específicos; portanto, se você usar uma, outros desenvolvedores terão uma boa idéia do que a exceção representa. Mas há situações em que você deseja usar uma exceção personalizada. Isso é especialmente útil quando os desenvolvedores que trabalham com seu código estão cientes dessas exceções e podem tratá-las de uma maneira mais específica do que as exceções da estrutura.
 
 Uma exceção personalizada deve herdar de System.Exception. Você precisa fornecer pelo menos um construtor sem parâmetros. Também é uma prática recomendada adicionar outros construtores: um que aceita uma string, outro que aceita uma string e uma exceção e outro para serialização. O código a seguir mostra uma classe InvalidException simples que fornece quatro construtores que usam parâmetros semelhantes aos usados pelos construtores definidos na classe Exception:
 
+```csharp
 [Serializable]
 class InvalidProjectionException : Exception
 {
@@ -7059,6 +7722,8 @@ private static void Show()
 {
     throw new InvalidProjectionException("It's a custom exception!");
 }
+```
+
 
 Por convenção, você deve usar o sufixo Exception ao nomear todas as suas exceções personalizadas. Também é importante adicionar o atributo Serializable, que garante que sua exceção possa ser serializada e desserializada para cruzar os limites do AppDomain e funcione corretamente nos domínios de aplicativos (por exemplo, quando um serviço da Web retorna uma exceção). Cada um dos construtores simplesmente passa seus parâmetros para os construtores da classe base. Os tipos SerializationInfo e StreamingContext são definidos no namespace System.Runtime.Serialization. 
 
@@ -7066,28 +7731,28 @@ Ao criar sua exceção personalizada, você pode decidir quais dados extras voc�
 
 A Microsoft costumava recomendar que você derivasse novas classes de exceção do ApplicationException, mas depois decidiu que isso adicionaria outro nível à hierarquia de exceções sem fornecer nenhum benefício real. Você nunca deve herdar de System.ApplicationException. A idéia original era que todas as exceções de tempo de execução do C# fossem herdadas de System.Exception e todas as exceções personalizadas de System.ApplicationException. No entanto, como o .NET Framework não segue esse padrão, a classe se tornou inútil e perdeu seu significado. Não importa se você deriva novas classes de exceção de Exception ou ApplicationException, mas provavelmente vale a pena usar Exception para ser consistente com outros desenvolvedores que seguem as recomendações da Microsoft.
 
-Classe  NetworkException/TransactionException
+### Classe  NetworkException/TransactionException
 
-??????????????????
+### ??????????????????
 
 
-Classe  CommunicationException 
+### Classe  CommunicationException 
 
 Em clientes WCF, as falhas de SOAP que ocorrem durante a comunicação que são de interesse para aplicativos cliente são geradas como exceções gerenciadas. As exceções que podem ocorrer durante a execução de aplicativos que usam o modelo de programação de cliente do Windows Communication Foundation (WCF) são:
-- Exceções Inesperadas: normalmente, não há uma maneira útil de lidar com erros inesperados, portanto, normalmente você não deve capturá-los ao chamar um método de comunicação do cliente WCF. Incluem falhas catastróficas como OutOfMemoryException e erros de programação como ArgumentNullException ou InvalidOperationException .
-- Exceções Esperadas: indicam um problema durante a comunicação que pode ser manipulada com segurança anulando o cliente WCF e relatando uma falha de comunicação. Como fatores externos podem causar esses erros em qualquer aplicativo, os aplicativos corretos devem capturar essas exceções e recuperar quando ocorrerem. Os aplicativos WCF incluem exceções dos dois tipos a seguir como resultado da comunicação.
-1.	TimeoutException: são emitidos quando uma operação excede o período de tempo limite especificado.
-2.	CommunicationException: são lançados quando há alguma condição de erro de comunicação recuperável no serviço ou no cliente. A CommunicationException classe tem dois tipos derivados importantes: 
-- FaultException: são geradas quando um ouvinte recebe uma falha de SOAP que não é esperada ou especificada no contrato de operação; Geralmente isso ocorre quando o aplicativo está sendo depurado e o serviço tem a ServiceDebugBehavior.IncludeExceptionDetailInFaults propriedade definida como true . 
-- FaultException<TDetail> : tipo genérico, são geradas no cliente quando uma falha de SOAP especificada no contrato de operação é recebida em resposta a uma operação bidirecional (ou seja, um método com atributo OperationContractAttribute com IsOneWay definido como false ). 
-Como FaultException<TDetail> deriva de, FaultException e FaultException deriva de CommunicationException , é importante capturar essas exceções na ordem correta. Se, por exemplo, você tiver um bloco try/catch no qual você captura primeiro CommunicationException , todas as falhas de SOAP especificadas e não especificadas serão tratadas lá; quaisquer blocos catch subsequentes para manipular uma FaultException<TDetail> exceção personalizada nunca serão invocados. Portanto, para impedir que o manipulador de CommunicationException genérico detecte esses tipos de exceção mais específicos, Capture essas exceções antes de manipular CommunicationException.
+- **Exceções Inesperadas**: normalmente, não há uma maneira útil de lidar com erros inesperados, portanto, normalmente você não deve capturá-los ao chamar um método de comunicação do cliente WCF. Incluem falhas catastróficas como OutOfMemoryException e erros de programação como ArgumentNullException ou InvalidOperationException .
+- **Exceções Esperadas**: indicam um problema durante a comunicação que pode ser manipulada com segurança anulando o cliente WCF e relatando uma falha de comunicação. Como fatores externos podem causar esses erros em qualquer aplicativo, os aplicativos corretos devem capturar essas exceções e recuperar quando ocorrerem. Os aplicativos WCF incluem exceções dos dois tipos a seguir como resultado da comunicação.
+1.	**TimeoutException**: são emitidos quando uma operação excede o período de tempo limite especificado.
+2.	**CommunicationException**: são lançados quando há alguma condição de erro de comunicação recuperável no serviço ou no cliente. A CommunicationException classe tem dois tipos derivados importantes: 
+    - ```**FaultException**```: são geradas quando um ouvinte recebe uma falha de SOAP que não é esperada ou especificada no contrato de operação; Geralmente isso ocorre quando o aplicativo está sendo depurado e o serviço tem a ServiceDebugBehavior.IncludeExceptionDetailInFaults propriedade definida como true . 
+    - ```**FaultException<TDetail>**``` : tipo genérico, são geradas no cliente quando uma falha de SOAP especificada no contrato de operação é recebida em resposta a uma operação bidirecional (ou seja, um método com atributo OperationContractAttribute com IsOneWay definido como false ). 
+Como ```FaultException<TDetail>``` deriva de, FaultException e FaultException deriva de CommunicationException , é importante capturar essas exceções na ordem correta. Se, por exemplo, você tiver um bloco try/catch no qual você captura primeiro CommunicationException , todas as falhas de SOAP especificadas e não especificadas serão tratadas lá; quaisquer blocos catch subsequentes para manipular uma ```FaultException<TDetail>``` exceção personalizada nunca serão invocados. Portanto, para impedir que o manipulador de CommunicationException genérico detecte esses tipos de exceção mais específicos, Capture essas exceções antes de manipular CommunicationException.
 
 
-?????????????????? Exemplo
+### ?????????????????? Exemplo
 
 
 
-Classe TimeoutException 
+### Classe TimeoutException 
 
 A classe TimeoutException pode especificar uma mensagem para descrever a origem da exceção. Quando um método gera essa exceção, a mensagem é geralmente "o tempo limite fornecido expirou e a operação não foi concluída". A exceção é gerada quando o tempo alocado para um processo ou uma operação tiver expirado.
 
@@ -7095,6 +7760,7 @@ Essa classe é usada, por exemplo, pelo membro WaitForStatus da classe ServiceCo
 
 O exemplo de código a seguir demonstra o uso de TimeoutException em conjunto com membros da classe System.IO.Ports.SerialPort.
 
+```csharp
 string input;
 try
 {
@@ -7118,13 +7784,16 @@ catch (TimeoutException e)
 {
     Console.WriteLine(e);
 }
+```
 
-Classe AggregateException
+
+### Classe AggregateException
 
 Exceções no .NET são o mecanismo fundamental pelo qual erros e outras condições excepcionais são comunicados. Com base no modelo de manipulação de exceção estruturada (SEH) do Windows, apenas uma exceção do .NET pode estar "em andamento" a qualquer momento em qualquer thread específico, afinal, uma operação normalmente gera apenas uma exceção e, portanto, no código seqüencial que escrevemos na maioria das vezes, precisamos nos preocupar com apenas uma exceção por vez. 
 
 AggregateException é usado para consolidar várias falhas em um único objeto de exceção rethrowável. Ele é usado extensivamente, mas não se limita a,  na TPL (biblioteca paralela de tarefas) e no Parallel LINQ (PLINQ) qunado ocorrem alguma exceção. O .NET Framework lida com isso agregando todas as exceções em um AggregateException. Esta exceção expõe uma lista de todas as exceções que ocorreram durante a execução paralela. O exemplo abaixo mostra como você pode lidar com isso.
 
+```csharp
 public static bool IsEven(int i)
 {
     if (i % 10 == 0) throw new ArgumentException("i");
@@ -7141,13 +7810,16 @@ catch (AggregateException e)
 {
     Console.WriteLine("There where {0} exceptions", e.InnerExceptions.Count);
 }
+```
+
 
 Quando estamos fazendo o tratamento de exceção em um determinado programa, pode ser interressante primeiro classifica-los em  quatro tipos:
-- Rxceções fatais: não são sua culpa, você não pode evitá-las e não pode limpar sensivelmente delas. Elas quase sempre acontecem porque o processo está profundamente doente e está prestes a ser eliminado de sua miséria. Falta de memória, encadeamento interrompido e assim por diante. Não há absolutamente nenhum sentido em capturá-los, porque nada que seu código de usuário insignificante possa fazer resolverá o problema. Apenas deixe seus blocos "finalmente" correrem e espere o melhor.
-- Exceções desordenadas: são sua própria falha, você poderia tê-las evitado e, portanto, são erros no seu código. Você não deve pegá-los; isso é ocultar um bug no seu código. Em vez disso, você deve escrever seu código para que a exceção não possa ocorrer em primeiro lugar e, portanto, não precise ser detectada. Esse argumento é nulo, o tipo de conversão é ruim, o índice está fora do intervalo, você está tentando dividir por zero - todos esses problemas que você poderia ter evitado com muita facilidade em primeiro lugar, portanto, evite a bagunça em primeiro lugar ao invés de tentar limpá-lo.
-- Exceções irritantes: são o resultado de decisões infelizes de design. As exceções irritantes são lançadas em uma circunstância completamente não excepcional e, portanto, devem ser capturadas e manipuladas o tempo todo. O exemplo clássico de uma exceção irritante é Int32.Parse, que lança se você der uma string que não possa ser analisada como um número inteiro. Mas o caso de uso de 99% para esse método está transformando as seqüências de caracteres inseridas pelo usuário, o que pode ser algo antigo e, portanto, não é de forma alguma excepcional que a análise falhe. Pior, não há como o chamador determinar antecipadamente se o argumento é ruim sem implementar o método inteiro, caso em que não precisaria chamá-lo em primeiro lugar. Essa infeliz decisão de design foi tão irritante é claro que a equipe de estruturas implementou o TryParse logo em seguida, o que faz a coisa certa. Você precisa capturar exceções irritantes, mas fazê-lo é irritante. Tente nunca escrever uma biblioteca que gere uma exceção irritante.
-- Exceções exógenas: parecem ser um pouco como exceções irritantes, exceto que elas não são o resultado de escolhas infelizes de design. Em vez disso, são o resultado de realidades externas desarrumadas que afetam sua lógica bonita e nítida do programa. Considere este código pseudo-C #, por exemplo:
+- **Exceções fatais**: não são sua culpa, você não pode evitá-las e não pode limpar sensivelmente delas. Elas quase sempre acontecem porque o processo está profundamente doente e está prestes a ser eliminado de sua miséria. Falta de memória, encadeamento interrompido e assim por diante. Não há absolutamente nenhum sentido em capturá-los, porque nada que seu código de usuário insignificante possa fazer resolverá o problema. Apenas deixe seus blocos "finalmente" correrem e espere o melhor.
+- **Exceções desordenadas**: são sua própria falha, você poderia tê-las evitado e, portanto, são erros no seu código. Você não deve pegá-los; isso é ocultar um bug no seu código. Em vez disso, você deve escrever seu código para que a exceção não possa ocorrer em primeiro lugar e, portanto, não precise ser detectada. Esse argumento é nulo, o tipo de conversão é ruim, o índice está fora do intervalo, você está tentando dividir por zero - todos esses problemas que você poderia ter evitado com muita facilidade em primeiro lugar, portanto, evite a bagunça em primeiro lugar ao invés de tentar limpá-lo.
+- **Exceções irritantes**: são o resultado de decisões infelizes de design. As exceções irritantes são lançadas em uma circunstância completamente não excepcional e, portanto, devem ser capturadas e manipuladas o tempo todo. O exemplo clássico de uma exceção irritante é Int32.Parse, que lança se você der uma string que não possa ser analisada como um número inteiro. Mas o caso de uso de 99% para esse método está transformando as seqüências de caracteres inseridas pelo usuário, o que pode ser algo antigo e, portanto, não é de forma alguma excepcional que a análise falhe. Pior, não há como o chamador determinar antecipadamente se o argumento é ruim sem implementar o método inteiro, caso em que não precisaria chamá-lo em primeiro lugar. Essa infeliz decisão de design foi tão irritante é claro que a equipe de estruturas implementou o TryParse logo em seguida, o que faz a coisa certa. Você precisa capturar exceções irritantes, mas fazê-lo é irritante. Tente nunca escrever uma biblioteca que gere uma exceção irritante.
+- **Exceções exógenas**: parecem ser um pouco como exceções irritantes, exceto que elas não são o resultado de escolhas infelizes de design. Em vez disso, são o resultado de realidades externas desarrumadas que afetam sua lógica bonita e nítida do programa. Considere este código pseudo-C #, por exemplo:
 
+```csharp
 var filename = @"C:\DummyFile.txt";
 try
 {      
@@ -7160,9 +7832,12 @@ catch (FileNotFoundException)
 {
     // Handle filename not found
 }
+```
+
 
 Se eliminássemos o estrutura try-catch  poderíamos ter uma situação de "condição de corrida". Algum outro processo poderia ter excluído, bloqueado, movido ou alterado as permissões do arquivo entre o FileExists e o OpenFile.
 
+```csharp
 if (!File.Exists(filename)) ;
 // Handle filename not found
 else
@@ -7172,6 +7847,8 @@ else
         // Blah blah blah
     }
 }
+```
+
 
 Podemos ser mais sofisticados? E se bloquearmos o arquivo com um lock? Isso não ajuda. A mídia pode ter sido removida da unidade, a rede pode ter caído. Você precisa capturar uma exceção exógena, porque sempre pode acontecer, por mais que você tente evitá-la; é uma condição exógena fora do seu controle. Entao, para resumir:
 - Não pegue exceções fatais; nada que você possa fazer sobre eles, e tentar geralmente piora as coisas.
@@ -7179,9 +7856,10 @@ Podemos ser mais sofisticados? E se bloquearmos o arquivo com um lock? Isso não
 - Evite irritar exceções sempre que possível chamando as versões "Try" desses métodos irritantes que geram circunstâncias não excepcionais. Se você não puder evitar chamar um método vexatório, pegue suas exceções vexatórias.
 - Sempre lide com exceções que indicam condições exógenas inesperadas; geralmente não vale a pena nem é prático antecipar todas as falhas possíveis. Apenas tente a operação e esteja preparado para lidar com a exceção.
 
-Sumário
+**Sumário**
 - Exceção é um erro que ocorre no tempo de execução e pode interromper a execução de um aplicativo.
 - Os blocos try-catch-finalmente são úteis para lidar com as exceções normalmente.
 - Programaticamente, uma exceção pode ser lançada usando uma palavra-chave throw.
 - Um personalizado pode ser criado herdando a classe Exception.
 - Expressão regular é útil para validar os valores grandes de cadeias com certos padrões.
+
