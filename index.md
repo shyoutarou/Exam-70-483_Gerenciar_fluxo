@@ -237,7 +237,7 @@ Console.WriteLine("Hello From Main Thread");
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/hellofrom.png" alt="Image" width="350px" />
 </p>
 
 O Tópico Principal inicializa “mythread” e imprime “Hello From Main Thread”. Enquanto "mythread" estava sendo inicializado, "myThread.Start ()" altera seu estado para execução e depois executa "MyThreadMethod ()". "Hello From Main Thread" fazia parte do MainThread e foi exibido na tela primeiro, porque "myThread" estava demorando para mudar seu estado para execução.
@@ -546,7 +546,7 @@ static void Main(string[] args)
 No snippet de código acima, o threadA e o threadB têm seus valores locais exclusivos com o atributo "ThreadStatic" _count_ts. Ambos os threads aumentaram o valor de _count 10 vezes. O resultado final não é 19, porque cada thread aumentou o valor de sua cópia local da variável _count_ts. Na variável _count não marcou com o atributo "ThreadStatic", portanto, os dois threads compartilharam a mesma variável _count. Quando um thread incrementa o valor de _count, ele afeta o valor da _count que é usada no outro thread chegando o valor até 19.
  
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadb.png" alt="Image" width="350px" />
 </p>
 
 ### Classe ThreadLocal<T>
@@ -639,7 +639,7 @@ myThread.Start();
 Console.WriteLine("Hello From Main Thread");
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="400px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.github/threadstart.png" alt="Image" width="350px" />
 </p>
 
 
@@ -3223,7 +3223,7 @@ No código acima, criamos uma função booleana chamada "IsInstance", que verifi
 A primeira linha de comando aberta exibirá a mensagem como: Nova instância criada Todas as outras linhas de comando abertas exibirão mensagens como: Instância já adquirida
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.mutex/MCSDcert.png" alt="Image" width="500px" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/Exam-70-483_Gerenciar_fluxo/master/.mutex/MCSDcert.png" alt="Image" width="350px" />
 </p>
 
 
