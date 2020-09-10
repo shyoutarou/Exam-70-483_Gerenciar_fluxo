@@ -154,6 +154,20 @@ O thread também incorre em um custo de recurso e CPU na programação e troca d
 ### Gerenciando um thread
 
 A classe Thread não é algo que você deve usar em seus aplicativos, exceto quando você tiver necessidades especiais. No entanto, ao usar a classe Thread, você tem controle sobre todas as opções de configuração. Você pode, por exemplo, especificar a prioridade do seu Thread, informar ao Windows que seu Thread está demorando ou configurar outras opções avançadas.  A classe System.Threading.Thread contém os seguintes métodos e propriedades comuns, que são úteis para gerenciar um thread.
+
+|     Propriedades          |     Descrição                                                                                   |
+|---------------------------|-------------------------------------------------------------------------------------------------|
+|     CurrentContext        |     Obtém o contexto   atual no qual o thread está em execução.                                 |
+|     CurrentThread         |     Obtém o thread em   execução no momento.                                                    |
+|     IsAlive               |     Obtém um valor que   indica o status de execução do thread atual.                           |
+|     IsBackground          |     Obtém ou define um   valor que indica se um thread é ou não um thread de segundo plano.     |
+|     IsThreadPoolThread    |     Obtém um valor que   indica se um thread pertence ao pool de threads gerenciados ou não.    |
+|     ManagedThreadId       |     Obtém um   identificador exclusivo para o thread gerenciado atual.                          |
+|     Name                  |     Obtém ou define o   nome do thread.                                                         |
+|     Priority              |     Obtém ou define um   valor que indica a prioridade de agendamento de um thread.             |
+|     ThreadState           |     Obtém um valor que   contém os estados do thread atual.                                     |
+
+
 |     Propriedades          |     Descrição               |
 |---------------------------|-----------------------------|
 |     CurrentContext        |     Obtém o contexto atual no qual o thread está em execução.  |
