@@ -2,3 +2,13 @@ title: Exam 70-483
 description: Gerenciar fluxo
 github_username: https://github.com/shyoutarou
 theme: jekyll-theme-midnight
+
+head: {
+    title: 'starter',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'keywords', content: 'keyword 1, keyword 2'},
+      { hid: 'description', name: 'description', content: 'This is the generic description.'}
+    ],
+  },
